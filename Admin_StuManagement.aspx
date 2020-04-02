@@ -48,8 +48,7 @@
                             <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                             </td>
                         <td align="left" width="50%">
-                            <asp:DropDownList ID="ddlStudentLevel" runat="server" AutoPostBack="true" 
-                                CssClass="DDSelect" Enabled="False">
+                            <asp:DropDownList ID="ddlStudentLevel" runat="server" AutoPostBack="true">
                                 <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
                                 <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
                                 <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
@@ -59,7 +58,7 @@
                             </asp:DropDownList>
                         </td>
                     </tr>
-                    <tr><td align="center" colspan="3"></td></tr>
+                    <tr><td align="center" colspan="3">&nbsp;</td></tr>
                     <tr>
                         <td align="center" colspan="3">
                             <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="Btn" />&nbsp;

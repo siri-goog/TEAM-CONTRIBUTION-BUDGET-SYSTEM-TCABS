@@ -1,9 +1,9 @@
 Imports Microsoft.VisualBasic
 Imports System.Data
 Imports System.Text
-Imports System.Data.SqlClient
-Imports System.Data.SqlClient.SqlCommand
 Imports System.TimeZone
+Imports MySql.Data.MySqlClient
+
 Public Class Class_Connect
     Public Function GetDatatable(ByVal strsql As String) As DataTable
         Try
@@ -12,7 +12,7 @@ Public Class Class_Connect
                 Me.OpenConnection()
             End If
             'Dim DA As New OleDbDataAdapter(strsql, Myconn)
-            Dim DA As New SqlDataAdapter(strsql, Myconn)
+            Dim DA As New MySqlDataAdapter(strsql, Myconn)
             DA.Fill(DT)
             Return DT
         Catch ex As Exception
@@ -40,21 +40,21 @@ Public Class Class_Connect
             Return False
         End Try
     End Function
-    
+
     '==============================================================================
     Public Sub CreateConnection()
         If Myconn Is Nothing Then
-            Myconn = New SqlConnection(StrDb)
+            Myconn = New MySqlConnection(StrDb)
             Myconn.Open()
         End If
     End Sub
     '==============================================================================
     Public Function Execute(ByVal strsql As String) As Integer
         'Dim cmd As New OleDbCommand(strsql)
-        Dim cmd As New SqlCommand(strsql)
+        Dim cmd As New MySqlCommand(strsql)
         Return Me.Execute(cmd)
     End Function
-    Public Function Execute(ByVal cmd As SqlCommand) As Integer
+    Public Function Execute(ByVal cmd As MySqlCommand) As Integer
         Dim Y As Boolean = Me.OpenConnection()
         If Y = True Then
             Dim X As Integer
@@ -84,14 +84,14 @@ Public Class Class_Connect
 End Class
 Public Module Module1
     'Public StrDb As String = "Password=chom8540;Persist Security Info=True;User ID=chompunut;Initial Catalog=ETHANOL;Data Source=10.28.99.109\dom"
-    Public StrDb As String = "Password=admintrue;Persist Security Info=True;User ID=TRUE; Initial Catalog=TRUE; Pooling=False; Data Source=10.28.32.220"
+    Public StrDb As String = "Password=qweiop93;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost"
 
-    Public Myconn As SqlConnection
+    Public Myconn As MySqlConnection
     Public M1 As New Class_Connect
     Public SQL(20) As String
     Public DT As DataTable
     Public m_ErrorString As String
-    Public T1 As SqlTransaction
+    Public T1 As MySqlTransaction
     Public m_Tran As Boolean = False
     Public MessError As String = ""
     Public X4 As String = ""

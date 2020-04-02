@@ -154,3 +154,11 @@ C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Go
 C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\Microsoft.AspNet.FriendlyUrls.xml
 C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\obj\Debug\Test.vbproj.CopyComplete
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\BouncyCastle.Crypto.dll
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\Google.Protobuf.dll
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\MySql.Data.dll
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\Renci.SshNet.dll
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\Ubiety.Dns.Core.dll
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\Google.Protobuf.xml
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\MySql.Data.xml
+C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\bin\Renci.SshNet.xml
