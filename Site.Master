@@ -10,8 +10,9 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>TEAM CONTRIBUTION & BUDGET SYSTEM (TCABS)</title>
-    <asp:ContentPlaceHolder id="head" runat="server" />
+    <title>
+        TEAM CONTRIBUTION & BUDGET SYSTEM (TCABS)
+    </title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
@@ -53,7 +54,6 @@
             <div class="sidebar-heading">
                 Admin
             </div>
-
             <!-- Nav Item - Unit Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUnit" aria-expanded="true" aria-controls="collapseUnit">
@@ -68,7 +68,6 @@
                     </div>
                 </div>
             </li>
-
             <!-- Nav Item - Employee Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmp" aria-expanded="true" aria-controls="collapseEmp">
@@ -83,7 +82,6 @@
                     </div>
                 </div>
             </li>
-
             <!-- Nav Item - Student Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseStu" aria-expanded="true" aria-controls="collapseStu">
@@ -106,40 +104,116 @@
             <div class="sidebar-heading">
                 Convenor
             </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                <i class="fas fa-fw fa-folder"></i>
-                <span>Pages</span>
-            </a>
-            <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Login Screens:</h6>
-                <a class="collapse-item" href="login.html">Login</a>
-                <a class="collapse-item" href="register.html">Register</a>
-                <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                <div class="collapse-divider"></div>
-                <h6 class="collapse-header">Other Pages:</h6>
-                <a class="collapse-item" href="404.html">404 Page</a>
-                <a class="collapse-item" href="blank.html">Blank Page</a>
+            <!-- Nav Item - Team Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTeam" aria-expanded="true" aria-controls="collapseTeam">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Team</span>
+                </a>
+                <div id="collapseTeam" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Team Menu:</h6>
+                        <a class="collapse-item" href="#">Team Formation</a>
+                    </div>
                 </div>
+            </li>
+            <!-- Nav Item - Project Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProject" aria-expanded="true" aria-controls="collapseProject">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Project</span>
+                </a>
+                <div id="collapseProject" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Project Menu:</h6>
+                        <a class="collapse-item" href="#">Project Management</a>
+                        <a class="collapse-item" href="#">Project Role</a>
+                        <a class="collapse-item" href="#">Project Allocation</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Peer Assessment Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseConvPeer" aria-expanded="true" aria-controls="collapseConvPeer">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Peer Assessment</span>
+                </a>
+                <div id="collapseConvPeer" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Peer Assessment Menu:</h6>
+                        <a class="collapse-item" href="#">Manage Peer Assessment</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Supervisor
             </div>
-            </li> -->
+            <!-- Nav Item - Unit Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSupMeeting" aria-expanded="true" aria-controls="collapseSupMeeting">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Meeting</span>
+                </a>
+                <div id="collapseSupMeeting" class="collapse" aria-labelledby="headingUnit" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Meeting Menu:</h6>
+                        <a class="collapse-item" href="buttons.html">Meeting Management</a>
+                    </div>
+                </div>
+            </li>
 
-            <!-- Nav Item - Charts -->
-            <!-- <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Charts</span></a>
-            </li> -->
+            <!-- Divider -->
+            <hr class="sidebar-divider">
 
-            <!-- Nav Item - Tables -->
-            <!-- <li class="nav-item">
-            <a class="nav-link" href="tables.html">
-                <i class="fas fa-fw fa-table"></i>
-                <span>Tables</span></a>
-            </li> -->
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Student
+            </div>
+            <!-- Nav Item - Task Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTask" aria-expanded="true" aria-controls="collapseTask">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Task</span>
+                </a>
+                <div id="collapseTask" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Task Menu:</h6>
+                        <a class="collapse-item" href="#">Submit Individual Task</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Meeting Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseMeeting" aria-expanded="true" aria-controls="collapseMeeting">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Meeting</span>
+                </a>
+                <div id="collapseMeeting" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Meeting Menu:</h6>
+                        <a class="collapse-item" href="#">Supervisor Meeting</a>
+                        <a class="collapse-item" href="#">Team Meeting</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Peer Assessment Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePeer" aria-expanded="true" aria-controls="collapsePeer">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Peer Assessment</span>
+                </a>
+                <div id="collapsePeer" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Peer Assessment Menu:</h6>
+                        <a class="collapse-item" href="#">Submit Peer Assessment</a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

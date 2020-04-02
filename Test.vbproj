@@ -130,14 +130,19 @@
     <Import Include="System.Web.UI.HtmlControls" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
-    <Content Include="Contact.aspx" />
+    <Content Include="Admin_EmpDesignation.aspx" />
+    <Content Include="Admin_EmpManagement.aspx" />
+    <Content Include="Conv_ProjManagement.aspx" />
+    <Content Include="Conv_TeamFormation.aspx" />
+    <Content Include="Admin_StuEnrolment.aspx" />
+    <Content Include="Admin_UnitManagement.aspx" />
+    <Content Include="Admin_StuManagement.aspx" />
+    <Content Include="Admin_UnitOffering.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -183,29 +188,64 @@
     <Content Include="Bundle.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Admin_EmpDesignation.aspx.designer.vb">
+      <DependentUpon>Admin_EmpDesignation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_EmpDesignation.aspx.vb">
+      <DependentUpon>Admin_EmpDesignation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin_EmpManagement.aspx.designer.vb">
+      <DependentUpon>Admin_EmpManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_EmpManagement.aspx.vb">
+      <DependentUpon>Admin_EmpManagement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Conv_ProjManagement.aspx.designer.vb">
+      <DependentUpon>Conv_ProjManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Conv_ProjManagement.aspx.vb">
+      <DependentUpon>Conv_ProjManagement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Conv_TeamFormation.aspx.designer.vb">
+      <DependentUpon>Conv_TeamFormation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Conv_TeamFormation.aspx.vb">
+      <DependentUpon>Conv_TeamFormation.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin_StuEnrolment.aspx.designer.vb">
+      <DependentUpon>Admin_StuEnrolment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_StuEnrolment.aspx.vb">
+      <DependentUpon>Admin_StuEnrolment.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin_UnitManagement.aspx.designer.vb">
+      <DependentUpon>Admin_UnitManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_UnitManagement.aspx.vb">
+      <DependentUpon>Admin_UnitManagement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin_StuManagement.aspx.designer.vb">
+      <DependentUpon>Admin_StuManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_StuManagement.aspx.vb">
+      <DependentUpon>Admin_StuManagement.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Admin_UnitOffering.aspx.designer.vb">
+      <DependentUpon>Admin_UnitOffering.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin_UnitOffering.aspx.vb">
+      <DependentUpon>Admin_UnitOffering.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
-    <Compile Include="About.aspx.designer.vb">
-      <DependentUpon>About.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="About.aspx.vb">
-      <DependentUpon>About.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="Contact.aspx.designer.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Contact.aspx.vb">
-      <DependentUpon>Contact.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="Default.aspx.vb">
-      <SubType>ASPXCodeBehind</SubType>
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Default.aspx.designer.vb">
-      <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,13 +289,6 @@
     <Compile Include="ViewSwitcher.ascx.designer.vb">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.vb">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Site.Mobile.Master.designer.vb">
-      <DependentUpon>Site.Mobile.Master</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="My Project\Resources.resx">
@@ -276,7 +309,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <Content Include="Site.Master" />
-    <Content Include="Site.Mobile.Master" />
     <Content Include="ViewSwitcher.ascx" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
