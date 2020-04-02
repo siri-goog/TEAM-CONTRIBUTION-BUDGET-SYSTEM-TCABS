@@ -1,291 +1,291 @@
 ﻿Public Class Admin_StuManagement
     Inherits System.Web.UI.Page
 
-    '#Region "Check"
+#Region "check"
 
-    '    '-- Alert
-    '    Protected Sub alert(ByVal scriptAlert As String)
-    '        Dim script As String = ""
-    '        script = "alert('" + scriptAlert + "');"
-    '        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jsCall", script, True)
-    '    End Sub
+    '-- alert
+    Protected Sub alert(ByVal scriptalert As String)
+        Dim script As String = ""
+        script = "alert('" + scriptalert + "');"
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
+    End Sub
 
-    '    '--Function Check()
-    '    Function Check() As Boolean
-    '        Dim chk As String = 1
+    '--function check()
+    Function check() As Boolean
+        Dim chk As String = 1
 
-    '        If ddlCompany.SelectedItem.ToString = " [-- Please Select --] " Then
-    '            Me.ddlCompany.Focus()
-    '            alert("กรุณาเลือกบริษัท\nPlease Select Company")
-    '            chk = 0
-    '        Else
-    '            If ddlHolding.SelectedItem.ToString = " [-- Please Select --] " Then
-    '                Me.ddlHolding.Focus()
-    '                alert("กรุณาเลือกกลุ่มบริษัท\nPlease Select Holding")
-    '                chk = 0
-    '            ElseIf txtName.Text = "" Then
-    '                Me.txtName.Focus()
-    '                alert("กรุณาระบุชื่อบริษัท\nPlease Add Company Name")
-    '                chk = 0
-    '            ElseIf rblStatus.SelectedValue = "" Then
-    '                Me.rblStatus.Focus()
-    '                alert("กรุณาระบุสถานะการใช้งาน\nPlease select status")
-    '                chk = 0
-    '            End If
-    '        End If
-
-
-    '        Sql(0) = "Select ComCode From Master_Company where ComCode = '" & Me.lblComCode.Text & "' "
-    '        DT = M1.GetDatatable(Sql(0))
-    '        If DT.Rows.Count > 0 Then
-    '            alert("รหัสบริษัทนี้ได้รับการเพิ่มแล้วค่ะ\nThis Company Code is already exist")
-    '            chk = 0
-    '        End If
+        If ddlcompany.selecteditem.tostring = " [-- please select --] " Then
+            Me.ddlcompany.focus()
+            alert("กรุณาเลือกบริษัท\nplease select company")
+            chk = 0
+        Else
+            If ddlholding.selecteditem.tostring = " [-- please select --] " Then
+                Me.ddlholding.focus()
+                alert("กรุณาเลือกกลุ่มบริษัท\nplease select holding")
+                chk = 0
+            ElseIf txtname.text = "" Then
+                Me.txtname.focus()
+                alert("กรุณาระบุชื่อบริษัท\nplease add company name")
+                chk = 0
+            ElseIf rblstatus.selectedvalue = "" Then
+                Me.rblstatus.focus()
+                alert("กรุณาระบุสถานะการใช้งาน\nplease select status")
+                chk = 0
+            End If
+        End If
 
 
-    '        If chk = 0 Then
-    '            Return False
-    '        Else
-    '            Return True
-    '        End If
-    '    End Function
+        Sql(0) = "select comcode from master_company where comcode = '" & Me.lblcomcode.text & "' "
+        dt = m1.getdatatable(Sql(0))
+        If dt.rows.count > 0 Then
+            alert("รหัสบริษัทนี้ได้รับการเพิ่มแล้วค่ะ\nthis company code is already exist")
+            chk = 0
+        End If
 
-    '    '--Check ว่าเวลาต้องเลือกค้นหาตาม Holding หรือ ComCode
-    '    Function chkSearch() As Boolean
-    '        Dim chk As String = 1
 
-    '        If chkHolding.Checked = False And chkComCode.Checked = False Then
-    '            alert("กรุณาเลือกประเภทการค้นหาค่ะ\nPlease select search type")
-    '            chk = 0
-    '        End If
+        If chk = 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
-    '        If chk = 0 Then
-    '            Return False
-    '        Else
-    '            Return True
-    '        End If
-    '    End Function
+    '--check ว่าเวลาต้องเลือกค้นหาตาม holding หรือ comcode
+    Function chksearch() As Boolean
+        Dim chk As String = 1
 
-    '#End Region
+        If chkholding.checked = False And chkcomcode.checked = False Then
+            alert("กรุณาเลือกประเภทการค้นหาค่ะ\nplease select search type")
+            chk = 0
+        End If
 
-#Region "AddNewStudent"
+        If chk = 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
-    '--Load GridView
-    Sub LoadData()
-        Sql(0) = " select * , case when a.status = 'Y' then 'Use' else 'Not use' end as status1 ," _
-               & " case when a.Holding_Group = 'AA' then 'AA : Paper Holding' when a.Holding_Group = 'PO' then 'PO : Power Holding'  else 'QS : Other Holding' end as Holding , " _
-               & " Company_Code + ' , ' + b.Company_NameT as companyName from [TRUE].[dbo].[Master_Company] A" _
-               & " join [HRMS].[dbo].[COM_Company] B on a.id_company = b.id_company " _
-               & " order by Holding_Group ASC, ComCode ASC "
-        DT = M1.GetDatatable(Sql(0))
-        gvStudent.DataSource = DT
+#End Region
+
+#Region "Manage Student"
+
+    '--load gridview
+    Sub loaddata()
+        Sql(0) = " select * , case when a.status = 'y' then 'use' else 'not use' end as status1 ," _
+               & " case when a.holding_group = 'aa' then 'aa : paper holding' when a.holding_group = 'po' then 'po : power holding'  else 'qs : other holding' end as holding , " _
+               & " company_code + ' , ' + b.company_namet as companyname from [true].[dbo].[master_company] a" _
+               & " join [hrms].[dbo].[com_company] b on a.id_company = b.id_company " _
+               & " order by holding_group asc, comcode asc "
+        dt = m1.getdatatable(Sql(0))
+        gvStudent.DataSource = dt
         gvStudent.DataBind()
     End Sub
 
-    '--แสดง ddlCompany
-    Sub LoadCompanyCode()
-        Sql(0) = " select ID_Company, Company_Code As companyCode ,Company_Code + ' , ' + Company_NameT As companyName " _
-                & " from HRMS.dbo.COM_Company Order By companyName ASC"
-        DT = M1.GetDatatable(Sql(0))
+    --แสดง ddlcompany
+    Sub loadcompanycode()
+        Sql(0) = " select id_company, company_code as companycode ,company_code + ' , ' + company_namet as companyname " _
+                & " from hrms.dbo.com_company order by companyname asc"
+        dt = m1.getdatatable(Sql(0))
         Try
-            ddlCompany.DataTextField = "companyName"
-            ddlCompany.DataValueField = "ID_Company"
+            ddlcompany.datatextfield = "companyname"
+            ddlcompany.datavaluefield = "id_company"
         Catch ex As Exception
-            ddlCompany.DataTextField = ""
-            ddlCompany.DataValueField = ""
+            ddlcompany.datatextfield = ""
+            ddlcompany.datavaluefield = ""
         End Try
-        Me.ddlCompany.DataSource = DT
-        Me.ddlCompany.DataBind()
-        Me.ddlCompany.Items.Insert(0, " [-- Please Select --] ")
+        Me.ddlcompany.datasource = dt
+        Me.ddlcompany.databind()
+        Me.ddlcompany.items.insert(0, " [-- please select --] ")
     End Sub
 
-    '--แสดงข้อมูลทุกครั้งที่ Load Page ขึ้นมา
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        'Session("USERID") = "26018"
+    --แสดงข้อมูลทุกครั้งที่ load page ขึ้นมา
+    Protected Sub page_load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        Session("userid") = "26018"
         If Not Page.IsPostBack Then
-            LoadData()
-            LoadCompanyCode()
+            loaddata()
+            loadcompanycode()
         End If
     End Sub
 
-    '--Click Cancel
-    Protected Sub btnCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        lblComCode.Text = ""
-        txtName.Text = ""
-        ddlCompany.SelectedIndex() = 0
-        ddlHolding.SelectedIndex() = 0
-        rblStatus.SelectedValue = False
-        rblStatus.ClearSelection()
+    --click cancel
+    Protected Sub btncancel_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        lblcomcode.text = ""
+        txtname.text = ""
+        ddlcompany.selectedindex() = 0
+        ddlholding.selectedindex() = 0
+        rblstatus.selectedvalue = False
+        rblstatus.clearselection()
     End Sub
 
-    Protected Sub ddlHolding_SelectedIndexChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlHolding.SelectedIndexChanged
-        Sql(0) = " Select MAX( SUBSTRING( ComCode,3,3)) As [MaxComCode] From Master_Company " _
-                & " Where ComCode not like '%999' "
-        DT = M1.GetDatatable(Sql(0))
-        Dim NoComCode As Integer = DT.Rows(0)("MaxComCode") + 1
-        If ddlHolding.SelectedItem.ToString = "[--Please Select--]" Then
-            lblComCode.Text = ""
-        ElseIf ddlHolding.SelectedValue.ToString() = "AA" Then
-            lblComCode.Text = "AA" + NoComCode.ToString()
-        ElseIf ddlHolding.SelectedValue.ToString() = "PO" Then
-            lblComCode.Text = "PO" + NoComCode.ToString()
-        ElseIf ddlHolding.SelectedValue.ToString() = "QS" Then
-            lblComCode.Text = "QS" + NoComCode.ToString()
+    Protected Sub ddlholding_selectedindexchanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles ddlholding.selectedindexchanged
+        Sql(0) = " select max( substring( comcode,3,3)) as [maxcomcode] from master_company " _
+                & " where comcode not like '%999' "
+        dt = m1.getdatatable(Sql(0))
+        Dim nocomcode As Integer = dt.rows(0)("maxcomcode") + 1
+        If ddlholding.selecteditem.tostring = "[--please select--]" Then
+            lblcomcode.text = ""
+        ElseIf ddlholding.selectedvalue.tostring() = "aa" Then
+            lblcomcode.text = "aa" + nocomcode.ToString()
+        ElseIf ddlholding.selectedvalue.tostring() = "po" Then
+            lblcomcode.text = "po" + nocomcode.ToString()
+        ElseIf ddlholding.selectedvalue.tostring() = "qs" Then
+            lblcomcode.text = "qs" + nocomcode.ToString()
         End If
     End Sub
 
-    '--Click Save
-    Protected Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        If Check() = False Then
+    --click save
+    Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        If check() = False Then
             Exit Sub
         End If
 
-        Dim compCode As String = Trim(Me.lblComCode.Text)
-        Dim compName As String = Trim(Me.txtName.Text)
+        Dim compcode As String = Trim(Me.lblcomcode.text)
+        Dim compname As String = Trim(Me.txtname.text)
 
-        Dim id_comp As String = ddlCompany.SelectedValue.ToString()
-        Dim holding As String = ddlHolding.SelectedValue.ToString()
+        Dim id_comp As String = ddlcompany.selectedvalue.tostring()
+        Dim holding As String = ddlholding.selectedvalue.tostring()
         Dim lost_status As String = ""
-        If rblStatus.SelectedIndex = 0 Then
-            lost_status = "Y"
-        ElseIf rblStatus.SelectedIndex = 1 Then
-            lost_status = "N"
+        If rblstatus.selectedindex = 0 Then
+            lost_status = "y"
+        ElseIf rblstatus.selectedindex = 1 Then
+            lost_status = "n"
         End If
 
-        Sql(0) = "insert into Master_Company (ComCode,ComName,ID_Company,Holding_Group,Status) values('" & compCode & "','" & compName & "','" & id_comp & "','" & holding & "','" & lost_status & "')"
-        M1.Execute(Sql(0))
-        alert("ดำเนินการเรียบร้อยแล้วค่ะ\nData is complete.")
-        GridViewCompany.EditIndex = -1
-        LoadData()
+        Sql(0) = "insert into master_company (comcode,comname,id_company,holding_group,status) values('" & compcode & "','" & compname & "','" & id_comp & "','" & holding & "','" & lost_status & "')"
+        m1.execute(Sql(0))
+        alert("ดำเนินการเรียบร้อยแล้วค่ะ\ndata is complete.")
+        gridviewcompany.editindex = -1
+        loaddata()
 
-        txtName.Text = ""
-        lblComCode.Text = ""
-        ddlCompany.SelectedIndex() = 0
-        ddlHolding.SelectedIndex() = 0
-        rblStatus.ClearSelection()
+        txtname.text = ""
+        lblcomcode.text = ""
+        ddlcompany.selectedindex() = 0
+        ddlholding.selectedindex() = 0
+        rblstatus.clearselection()
     End Sub
 
-    '--แสดง ddlID กับ rb_status ใน GridView
-    Protected Sub GridViewCompany_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles GridViewCompany.RowDataBound
+    --แสดง ddlid กับ rb_status ใน gridview
+    Protected Sub gridviewcompany_rowdatabound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gridviewcompany.rowdatabound
         If e.Row.RowType = DataControlRowType.DataRow Then
             Dim drv As DataRowView = e.Row.DataItem
             Dim no As Integer = e.Row.RowIndex
-            Dim itemNo As Integer = (ViewState("Page") * 10) + no
+            Dim itemno As Integer = (ViewState("page") * 10) + no
 
-            Dim ddlID As DropDownList = e.Row.FindControl("ddlID")
-            If Not IsNothing(ddlID) Then
-                Sql(0) = "select ID_Company,Company_Code ,Company_Code + ' , ' + Company_NameT As companyName from HRMS.dbo.COM_Company"
-                DT1 = M1.GetDatatable(Sql(0))
-                ddlID.DataSource = DT1
-                ddlID.DataTextField = "companyName"
-                ddlID.DataValueField = "ID_Company"
-                ddlID.DataBind()
-                ddlID.SelectedValue = DT.Rows.Item(itemNo)("ID_Company").ToString
+            Dim ddlid As DropDownList = e.Row.FindControl("ddlid")
+            If Not IsNothing(ddlid) Then
+                Sql(0) = "select id_company,company_code ,company_code + ' , ' + company_namet as companyname from hrms.dbo.com_company"
+                dt1 = m1.getdatatable(Sql(0))
+                ddlid.DataSource = dt1
+                ddlid.DataTextField = "companyname"
+                ddlid.DataValueField = "id_company"
+                ddlid.DataBind()
+                ddlid.SelectedValue = dt.rows.item(itemno)("id_company").tostring
             End If
 
-            Dim ddlHoldingID As DropDownList = e.Row.FindControl("ddlHoldingID")
-            If Not IsNothing(ddlHoldingID) Then
-                ddlHoldingID.SelectedValue = DT.Rows.Item(itemNo)("Holding_Group").ToString
+            Dim ddlholdingid As DropDownList = e.Row.FindControl("ddlholdingid")
+            If Not IsNothing(ddlholdingid) Then
+                ddlholdingid.SelectedValue = dt.rows.item(itemno)("holding_group").tostring
             End If
 
             Dim rb_status As RadioButtonList = e.Row.FindControl("rb_status")
             If Not IsNothing(rb_status) Then
-                rb_status.SelectedValue = DT.Rows.Item(itemNo)("Status").ToString
+                rb_status.SelectedValue = dt.rows.item(itemno)("status").tostring
             End If
         End If
     End Sub
 
-#End Region
+#end region
 
-#Region "Gridview"
+#region "gridview"
 
-    '--การจัดการภายใน GridView
-    Protected Sub GridViewCostcenter_RowCancelingEdit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles GridViewCompany.RowCancelingEdit
-        GridViewCompany.EditIndex = -1
-        Me.LoadData()
+    --การจัดการภายใน gridview
+    Protected Sub gridviewcostcenter_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gridviewcompany.rowcancelingedit
+        gridviewcompany.editindex = -1
+        Me.loaddata()
     End Sub
 
-    Protected Sub GridViewCompany_RowEditing(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles GridViewCompany.RowEditing
-        GridViewCompany.EditIndex = e.NewEditIndex
-        'Bind data to the GridView control.
-        Me.LoadData()
+    Protected Sub gridviewcompany_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gridviewcompany.rowediting
+        gridviewcompany.editindex = e.NewEditIndex
+        bind Data to the gridview control.
+        Me.loaddata()
     End Sub
 
-    Protected Sub GridViewCompany_RowUpdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles GridViewCompany.RowUpdating
+    Protected Sub gridviewcompany_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gridviewcompany.rowupdating
         Dim index As Integer = e.RowIndex
-        Dim compCode As String = Me.GridViewCompany.DataKeys(index).Values(0).ToString()
-        Dim compName As TextBox = CType(GridViewCompany.Rows(e.RowIndex).FindControl("txtComName"), TextBox)
-        Dim comp As DropDownList = CType(GridViewCompany.Rows(e.RowIndex).FindControl("ddlID"), DropDownList)
-        Dim rb_status As RadioButtonList = CType(GridViewCompany.Rows(e.RowIndex).FindControl("rb_status"), RadioButtonList)
+        Dim compcode As String = Me.gridviewcompany.datakeys(index).values(0).tostring()
+        Dim compname As TextBox = CType(gridviewcompany.rows(e.RowIndex).findcontrol("txtcomname"), TextBox)
+        Dim comp As DropDownList = CType(gridviewcompany.rows(e.RowIndex).findcontrol("ddlid"), DropDownList)
+        Dim rb_status As RadioButtonList = CType(gridviewcompany.rows(e.RowIndex).findcontrol("rb_status"), RadioButtonList)
 
-        Sql(0) = "update Master_Company set ComName = '" & compName.Text & "', ID_Company = '" & comp.SelectedValue.ToString() & "' , Status = '" & rb_status.SelectedValue.ToString() & "' where ComCode = '" & compCode & "'"
-        M1.Execute(Sql(0))
-        alert("ดำเนินการเรียบร้อยแล้วค่ะ\nData is complete.")
-        GridViewCompany.EditIndex = -1
-        LoadData()
+        Sql(0) = "update master_company set comname = '" & compname.Text & "', id_company = '" & comp.SelectedValue.ToString() & "' , status = '" & rb_status.SelectedValue.ToString() & "' where comcode = '" & compcode & "'"
+        m1.execute(Sql(0))
+        alert("ดำเนินการเรียบร้อยแล้วค่ะ\ndata is complete.")
+        gridviewcompany.editindex = -1
+        loaddata()
 
     End Sub
 
-    Protected Sub GridViewCompany_SelectedIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles GridViewCompany.SelectedIndexChanging
-        Dim K1 As DataKey = GridViewCompany.DataKeys(e.NewSelectedIndex)
+    Protected Sub gridviewcompany_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gridviewcompany.selectedindexchanging
+        Dim k1 As DataKey = gridviewcompany.datakeys(e.NewSelectedIndex)
     End Sub
 
-    Protected Sub GridViewCompany_PageIndexChanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles GridViewCompany.PageIndexChanging
-        Me.GridViewCompany.PageIndex = e.NewPageIndex
-        ViewState("Page") = Me.GridViewCompany.PageIndex
-        LoadData()
+    Protected Sub gridviewcompany_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gridviewcompany.pageindexchanging
+        Me.gridviewcompany.pageindex = e.NewPageIndex
+        ViewState("page") = Me.gridviewcompany.pageindex
+        loaddata()
     End Sub
 
 #End Region
 
-#Region "Search"
+#Region "search"
 
-    Protected Sub chkHolding_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkHolding.CheckedChanged
-        ddlSearchHolding.Enabled = True
-        chkComCode.Checked = False
-        txtSearchComCode.Enabled = False
+    Protected Sub chkholding_checkedchanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkholding.checkedchanged
+        ddlsearchholding.enabled = True
+        chkcomcode.checked = False
+        txtsearchcomcode.enabled = False
     End Sub
 
-    Protected Sub chkComCode_CheckedChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkComCode.CheckedChanged
-        txtSearchComCode.Enabled = True
-        chkHolding.Checked = False
-        ddlSearchHolding.Enabled = False
+    Protected Sub chkcomcode_checkedchanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles chkcomcode.checkedchanged
+        txtsearchcomcode.enabled = True
+        chkholding.checked = False
+        ddlsearchholding.enabled = False
     End Sub
 
-    Protected Sub btnSearch_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSearch.Click
-        If chkSearch() = False Then
+    Protected Sub btnsearch_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSearch.Click
+        If chksearch() = False Then
             Exit Sub
         End If
 
-        If chkHolding.Checked = True Then
-            Dim holding As String = ddlSearchHolding.SelectedValue.ToString()
-            Sql(0) = " select * , case when a.status = 'Y' then 'Use' else 'Not use' end as status1 ," _
-               & " case when a.Holding_Group = 'AA' then 'AA : Paper Holding' when a.Holding_Group = 'PO' then 'PO : Power Holding'  else 'QS : Other Holding' end as Holding , " _
-               & " Company_Code + ' , ' + b.Company_NameT as companyName from [TRUE].[dbo].[Master_Company] A" _
-               & " join [HRMS].[dbo].[COM_Company] B on a.id_company = b.id_company " _
-               & " Where a.Holding_Group = '" & holding & "' order by Holding_Group ASC, ComCode ASC "
-            DT = M1.GetDatatable(Sql(0))
-            GridViewCompany.DataSource = DT
-            GridViewCompany.DataBind()
+        If chkholding.checked = True Then
+            Dim holding As String = ddlsearchholding.selectedvalue.tostring()
+            Sql(0) = " select * , case when a.status = 'y' then 'use' else 'not use' end as status1 ," _
+               & " case when a.holding_group = 'aa' then 'aa : paper holding' when a.holding_group = 'po' then 'po : power holding'  else 'qs : other holding' end as holding , " _
+               & " company_code + ' , ' + b.company_namet as companyname from [true].[dbo].[master_company] a" _
+               & " join [hrms].[dbo].[com_company] b on a.id_company = b.id_company " _
+               & " where a.holding_group = '" & holding & "' order by holding_group asc, comcode asc "
+            dt = m1.getdatatable(Sql(0))
+            gridviewcompany.datasource = dt
+            gridviewcompany.databind()
         Else
-            Dim ComCode As String = txtSearchComCode.Text
-            Sql(0) = " select * , case when a.status = 'Y' then 'Use' else 'Not use' end as status1 ," _
-               & " case when a.Holding_Group = 'AA' then 'AA : Paper Holding' when a.Holding_Group = 'PO' then 'PO : Power Holding'  else 'QS : Other Holding' end as Holding , " _
-               & " Company_Code + ' , ' + b.Company_NameT as companyName from [TRUE].[dbo].[Master_Company] A" _
-               & " join [HRMS].[dbo].[COM_Company] B on a.id_company = b.id_company " _
-               & " Where a.ComCode = '" & ComCode & "' order by Holding_Group ASC, ComCode ASC "
-            DT = M1.GetDatatable(Sql(0))
-            GridViewCompany.DataSource = DT
-            GridViewCompany.DataBind()
+            Dim comcode As String = txtsearchcomcode.text
+            Sql(0) = " select * , case when a.status = 'y' then 'use' else 'not use' end as status1 ," _
+               & " case when a.holding_group = 'aa' then 'aa : paper holding' when a.holding_group = 'po' then 'po : power holding'  else 'qs : other holding' end as holding , " _
+               & " company_code + ' , ' + b.company_namet as companyname from [true].[dbo].[master_company] a" _
+               & " join [hrms].[dbo].[com_company] b on a.id_company = b.id_company " _
+               & " where a.comcode = '" & comcode & "' order by holding_group asc, comcode asc "
+            dt = m1.getdatatable(Sql(0))
+            gridviewcompany.datasource = dt
+            gridviewcompany.databind()
         End If
     End Sub
 
-    Protected Sub btnSearchCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSearchCancel.Click
-        LoadData()
-        chkHolding.Checked = False
-        chkComCode.Checked = False
-        ddlSearchHolding.Enabled = False
-        txtSearchComCode.Enabled = False
+    Protected Sub btnsearchcancel_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSearchCancel.Click
+        loaddata()
+        chkholding.checked = False
+        chkcomcode.checked = False
+        ddlsearchholding.enabled = False
+        txtsearchcomcode.enabled = False
     End Sub
 
 #End Region
