@@ -80,19 +80,40 @@
             Exit Sub
         End If
 
-        Dim stuID As String = Trim(Me.txtStuID.Text)
+        Dim stuID As Integer = Trim(Me.txtStuID.Text)
         Dim stuName As String = Trim(Me.txtStuName.Text)
         Dim stuLevel As String = ddlStudentLevel.SelectedValue.ToString()
 
-        SQL(0) = "insert into student (StuID, StuName, StuLevel) values('" & stuID & "','" & stuName & "','" & stuLevel & "')"
+        SQL(0) = (" execute ADD_STUDENT @stuid = '" & stuID & "', @stuname = '" & stuName & "', @stulevel = '" & stuLevel & "' ")
         M1.Execute(SQL(0))
-        alert("Data is complete.")
-        gvStudent.EditIndex = -1
+        'alert("Data is complete.")
+        'gvStudent.EditIndex = -1
         'loaddata()
+
+        'Dim sqlquery As String = ("execute add_student @stuid = " & stuID & ", @stuname = '" & stuName & "', @stulevel = '" & stuLevel & "' ")
+        'Dim cmd As New sqlcommand(sqlquery, sqlconn)
+        'Try
+        '    sqlconn.open()
+        '    Dim changes As Integer = cmd.executenonquery()
+        '    sqlconn.close()
+        '    messagebox.show(changes & "record deleted")
+
+        'Catch ex As Exception
+        '    messagebox.show(ex.Message)
+        'End Try
 
         txtStuID.Text = ""
         txtStuName.Text = ""
         ddlStudentLevel.SelectedIndex() = 0
+    End Sub
+
+    Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        SQL(0) = "GET_STUDENT; "
+        DT = M1.GetDatatable(SQL(0))
+    End Sub
+
+    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
+
     End Sub
 
     '--แสดง ddlid กับ rb_status ใน gridview

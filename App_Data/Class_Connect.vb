@@ -52,6 +52,7 @@ Public Class Class_Connect
     Public Function Execute(ByVal strsql As String) As Integer
         'Dim cmd As New OleDbCommand(strsql)
         Dim cmd As New MySqlCommand(strsql)
+        cmd.CommandType = CommandType.StoredProcedure
         Return Me.Execute(cmd)
     End Function
     Public Function Execute(ByVal cmd As MySqlCommand) As Integer
@@ -84,7 +85,7 @@ Public Class Class_Connect
 End Class
 Public Module Module1
     'Public StrDb As String = "Password=chom8540;Persist Security Info=True;User ID=chompunut;Initial Catalog=ETHANOL;Data Source=10.28.99.109\dom"
-    Public StrDb As String = "Password=qweiop93;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost"
+    Public StrDb As String = "Password=qweiop93;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost; Allow User Variables=True"
 
     Public Myconn As MySqlConnection
     Public M1 As New Class_Connect
