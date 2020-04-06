@@ -1225,9 +1225,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_StuManagement._txtSearchID">
+<member name="F:Test.Admin_StuManagement._txtSearch">
 <summary>
-txtSearchID control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
