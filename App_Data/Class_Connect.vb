@@ -11,9 +11,9 @@ Public Class Class_Connect
             If Myconn Is Nothing Then
                 Me.OpenConnection()
             End If
-            'Dim DA As New OleDbDataAdapter(strsql, Myconn)
             Dim DA As New MySqlDataAdapter(strsql, Myconn)
             DA.Fill(DT)
+            cmd.Parameters.Clear()
             Return DT
         Catch ex As Exception
             m_ErrorString = ex.Message
@@ -50,8 +50,7 @@ Public Class Class_Connect
     End Sub
     '==============================================================================
     Public Function Execute(ByVal strsql As String) As Integer
-        'Dim cmd As New OleDbCommand(strsql)
-        Dim cmd As New MySqlCommand(strsql)
+        'Dim cmd As New MySqlCommand(strsql)
         cmd.CommandType = CommandType.StoredProcedure
         Return Me.Execute(cmd)
     End Function
@@ -65,7 +64,7 @@ Public Class Class_Connect
                     cmd.Transaction = T1
                 End If
                 X = cmd.ExecuteNonQuery
-
+                cmd.Parameters.Clear()
             Catch ex As Exception
                 m_ErrorString = ex.Message
                 Return -1
@@ -84,7 +83,6 @@ Public Class Class_Connect
     End Sub
 End Class
 Public Module Module1
-    'Public StrDb As String = "Password=chom8540;Persist Security Info=True;User ID=chompunut;Initial Catalog=ETHANOL;Data Source=10.28.99.109\dom"
     Public StrDb As String = "Password=qweiop93;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost; Allow User Variables=True"
 
     Public Myconn As MySqlConnection
@@ -100,4 +98,5 @@ Public Module Module1
     Public DT2 As DataTable
     Public DT3 As DataTable
     Public DT4 As DataTable
+    Public cmd As New MySqlCommand
 End Module

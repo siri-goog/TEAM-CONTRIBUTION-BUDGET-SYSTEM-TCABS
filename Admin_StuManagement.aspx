@@ -115,7 +115,6 @@
                         <asp:TemplateField HeaderText="Student Level">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlStuLevel" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
                                     <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
                                     <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
                                     <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>
@@ -129,8 +128,12 @@
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
-                        <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        <asp:CommandField ShowEditButton="True" >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+
+                        <asp:CommandField ShowDeleteButton="True"  >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />

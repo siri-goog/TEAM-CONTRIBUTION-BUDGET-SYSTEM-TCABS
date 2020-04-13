@@ -41,7 +41,7 @@
 
     '--load gridview
     Sub loaddata()
-        SQL(0) = " select * From Student "
+        SQL(0) = " GET_STUDENT;"
         DT = M1.GetDatatable(SQL(0))
         gvStudent.DataSource = DT
         gvStudent.DataBind()
@@ -69,17 +69,19 @@
         Dim stuID As Integer = Trim(Me.txtStuID.Text)
         Dim stuName As String = Trim(Me.txtStuName.Text)
         Dim stuLevel As String = ddlStudentLevel.SelectedValue.ToString()
+        Dim regDate As Date = Date.Today()
 
-        SQL(0) = ("ADD_STUDENT @stuID, @stuName, @stuLevel")
-        'SQL(0) = "Insert into Student (stuID, stuName, stuLevel) " _
-        '& " values (" & stuID & ", '" & stuName & "', '" & stuLevel & "') "
-
+        cmd.CommandText = "ADD_STUDENT;"
+        cmd.Parameters.AddWithValue("@stuId", stuID)
+        cmd.Parameters.AddWithValue("@stuName", stuName)
+        cmd.Parameters.AddWithValue("@stulevel", stuLevel)
         M1.Execute(SQL(0))
         Try
             alert("Data entered successfully.")
             txtStuID.Text = ""
             txtStuName.Text = ""
             ddlStudentLevel.SelectedIndex() = 0
+            loaddata()
         Catch ex As Exception
             alert("Data entered fail, please Try again.")
         End Try
@@ -87,15 +89,15 @@
 
 #End Region
 
-#Region "gridview"
+#Region "gridview data"
 
-    '--การจัดการภายใน gridview
+    '--managing gridview
     Protected Sub gvStudent_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvStudent.RowCancelingEdit
         gvStudent.EditIndex = -1
         Me.loaddata()
     End Sub
 
-    '--แสดง ddlID กับ rb_status ใน GridView
+    '--show ddl and radiobutton GridView
     Protected Sub gvStudent_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvStudent.RowDataBound
         If e.Row.RowType = DataControlRowType.DataRow Then
             Dim drv As DataRowView = e.Row.DataItem
@@ -109,13 +111,14 @@
         End If
     End Sub
 
-
+    '--click edit
     Protected Sub gvStudent_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvStudent.RowEditing
         gvStudent.EditIndex = e.NewEditIndex
         'bind Data to the gridview control.
         Me.loaddata()
     End Sub
 
+    '--click update
     Protected Sub gvStudent_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvStudent.RowUpdating
         Dim index As Integer = e.RowIndex
         Dim stuid As String = Me.gvStudent.DataKeys(index).Values(0).ToString()
@@ -123,18 +126,32 @@
         Dim stulevel As DropDownList = CType(gvStudent.Rows(e.RowIndex).FindControl("ddlStuLevel"), DropDownList)
 
         Dim stunameStr As String = stuname.Text
-        'stuLevel = '" & stulevel.SelectedValue.ToString() & "' " 
+        Dim stulevelStr As String = stulevel.SelectedValue.ToString()
 
-        Dim str As String = stuname.Text
-
-        SQL(0) = " update student set stuname = '" & stunameStr & "' where stuId = " & stuid & " "
+        cmd.CommandText = "UPDATE_STUDENT;"
+        cmd.Parameters.AddWithValue("@pstuId", stuid)
+        cmd.Parameters.AddWithValue("@stuName", stunameStr)
+        cmd.Parameters.AddWithValue("@stulevel", stulevelStr)
         M1.Execute(SQL(0))
         alert("Data edited successfully")
         gvStudent.EditIndex = -1
         loaddata()
-
     End Sub
 
+    '--click delete
+    Protected Sub gvStudent_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvStudent.RowDeleting
+        Dim index As Integer = e.RowIndex
+        Dim stuid As String = Me.gvStudent.DataKeys(index).Values(0).ToString()
+
+        cmd.CommandText = "DELETE_STUDENT;"
+        cmd.Parameters.AddWithValue("@pstuId", stuid)
+        M1.Execute(SQL(0))
+        alert("Data edited successfully")
+        gvStudent.EditIndex = -1
+        loaddata()
+    End Sub
+
+    '--gridview page
     Protected Sub gridviewcompany_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvStudent.SelectedIndexChanging
         Dim k1 As DataKey = gvStudent.DataKeys(e.NewSelectedIndex)
     End Sub
@@ -150,10 +167,8 @@
 #Region "search"
 
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        'SQL(0) = "GET_STUDENT; "
-        SQL(0) = "Select * From Student" _
-                & " Where stuid Like '%" & txtSearch.Text & "%' " _
-                & " Or stuname like '%" & txtSearch.Text & "%'  "
+        Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
+        SQL(0) = "SEARCH_STUDENT('" & searchTerm & "');"
         DT = M1.GetDatatable(SQL(0))
         gvStudent.DataSource = DT
         gvStudent.DataBind()
