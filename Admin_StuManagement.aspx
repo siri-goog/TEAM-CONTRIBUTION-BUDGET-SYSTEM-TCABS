@@ -75,8 +75,7 @@
                                     </td>
                                     <td align="center">:</td>
                                     <td align="left">
-                                        <asp:TextBox ID="txtSearchID" runat="server" CssClass="textbox" 
-                                            Enabled="False"></asp:TextBox>
+                                        <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr><td colspan="3">&nbsp;</td></tr>
@@ -95,15 +94,15 @@
         <tr>
             <td align="center" colspan="3">
                 <asp:GridView ID="gvStudent" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="ComCode" 
+                    DataKeyNames="stuid" 
                     AllowPaging="True" CssClass="GridViewBodyStyle" 
                     EmptyDataText="---No Record---">
                     <Columns>
-                        <asp:BoundField HeaderText="Student ID" DataField="StuID" ReadOnly="True" >
+                        <asp:BoundField HeaderText="Student ID" DataField="stuid" ReadOnly="True" >
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:BoundField>
 
-                        <asp:TemplateField HeaderText="Student Name" SortExpression="ComName">
+                        <asp:TemplateField HeaderText="Student Name" SortExpression="stuname">
                             <EditItemTemplate>
                                 <asp:Textbox ID="txtStuName" runat="server" Text='<%# Bind("StuName") %>' ></asp:Textbox>
                            </EditItemTemplate>
@@ -116,7 +115,6 @@
                         <asp:TemplateField HeaderText="Student Level">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlStuLevel" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
                                     <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
                                     <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
                                     <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>
@@ -125,13 +123,17 @@
                                 </asp:DropDownList>
                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblCredit" runat="server" Text='<%# Bind("UnitCredit") %>' Width="100px"></asp:Label>
+                                <asp:Label ID="lblStuLevel" runat="server" Text='<%# Bind("stulevel") %>' Width="100px"></asp:Label>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
-                        <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        <asp:CommandField ShowEditButton="True" >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+
+                        <asp:CommandField ShowDeleteButton="True"  >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
