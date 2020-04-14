@@ -5,4 +5,33 @@
 
     End Sub
 
+#Region "Unit"
+
+    Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
+
+    End Sub
+
+    Protected Sub btnAdd_Click(sender As Object, e As EventArgs) Handles btnAdd.Click
+
+    End Sub
+
+#End Region
+
+#Region "GV Search"
+
+#End Region
+
+#Region "Student"
+
+#End Region
+
+#Region "GV Student"
+
+#End Region
+
+
+
+
+
+
 End Class
