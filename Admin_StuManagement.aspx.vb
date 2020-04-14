@@ -130,8 +130,8 @@
 
         cmd.CommandText = "UPDATE_STUDENT;"
         cmd.Parameters.AddWithValue("@pstuId", stuid)
-        cmd.Parameters.AddWithValue("@stuName", stunameStr)
-        cmd.Parameters.AddWithValue("@stulevel", stulevelStr)
+        cmd.Parameters.AddWithValue("@pstuName", stunameStr)
+        cmd.Parameters.AddWithValue("@pstulevel", stulevelStr)
         M1.Execute(SQL(0))
         alert("Data edited successfully")
         gvStudent.EditIndex = -1
