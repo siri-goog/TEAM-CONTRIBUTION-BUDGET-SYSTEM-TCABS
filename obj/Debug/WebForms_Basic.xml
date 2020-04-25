@@ -496,6 +496,195 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:Test.Conv_setProjectRole._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._ddlYear">
+<summary>
+ddlYear control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label7">
+<summary>
+Label7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._ddlSemester">
+<summary>
+ddlSemester control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label13">
+<summary>
+Label13 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._ddlUnitCode">
+<summary>
+ddlUnitCode control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label3">
+<summary>
+Label3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label9">
+<summary>
+Label9 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._lblUnitName">
+<summary>
+lblUnitName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._Label10">
+<summary>
+Label10 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._txtProjectName">
+<summary>
+txtProjectName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._trSearchNo">
+<summary>
+trSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._pnQuerySearch">
+<summary>
+pnQuerySearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._gvSearch">
+<summary>
+gvSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._gvStudent">
+<summary>
+gvStudent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._btnSave">
+<summary>
+btnSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_setProjectRole._btnCancelSave">
+<summary>
+btnCancelSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:Test.Conv_TeamFormation._Label2">
 <summary>
 Label2 control.
@@ -649,150 +838,6 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_StuEnrolment._trSearchNo">
-<summary>
-trSearchNo control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._lblMenuSearchNo">
-<summary>
-lblMenuSearchNo control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._txtSearchStu">
-<summary>
-txtSearchStu control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._Button1">
-<summary>
-Button1 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._pnQuerySearch">
-<summary>
-pnQuerySearch control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._gvSearch">
-<summary>
-gvSearch control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._pnQueryData">
-<summary>
-pnQueryData control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._Label1">
-<summary>
-Label1 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._Label17">
-<summary>
-Label17 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._lblID">
-<summary>
-lblID control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._Label4">
-<summary>
-Label4 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._Label18">
-<summary>
-Label18 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._lblName">
-<summary>
-lblName control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._Label5">
-<summary>
-Label5 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._Label19">
-<summary>
-Label19 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_StuEnrolment._lblLevel">
-<summary>
-lblLevel control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
 <member name="F:Test.Admin_StuEnrolment._Label2">
 <summary>
 Label2 control.
@@ -892,9 +937,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_StuEnrolment._lblUnitCode">
+<member name="F:Test.Admin_StuEnrolment._lblUnitName">
 <summary>
-lblUnitCode control.
+lblUnitName control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -937,27 +982,81 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_StuEnrolment._btnAdd">
+<member name="F:Test.Admin_StuEnrolment._trSearchNo">
 <summary>
-btnAdd control.
+trSearchNo control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_StuEnrolment._btnCancel">
+<member name="F:Test.Admin_StuEnrolment._lblMenuSearchNo">
 <summary>
-btnCancel control.
+lblMenuSearchNo control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_StuEnrolment._gvUnit">
+<member name="F:Test.Admin_StuEnrolment._txtSearchStu">
 <summary>
-gvUnit control.
+txtSearchStu control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_StuEnrolment._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_StuEnrolment._pnQuerySearch">
+<summary>
+pnQuerySearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_StuEnrolment._gvSearch">
+<summary>
+gvSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_StuEnrolment._gvStudent">
+<summary>
+gvStudent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_StuEnrolment._btnSave">
+<summary>
+btnSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_StuEnrolment._btnCancelSave">
+<summary>
+btnCancelSave control.
 </summary>
 <remarks>
 Auto-generated field.

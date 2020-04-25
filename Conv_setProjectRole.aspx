@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_StuEnrolment.aspx.vb" Inherits="Test.Admin_StuEnrolment" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_setProjectRole.aspx.vb" Inherits="Test.Conv_setProjectRole" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Student
+    Convenor
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
-    Student Enrolment
+    Set up project role
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table width="100%">
@@ -69,38 +69,41 @@
                 </tr>
                 <tr>
                     <td align="right" width="47%">
-                        Description</td>
+                        Project Name</td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:Label ID="lblUnitDesc" runat="server" CssClass="LabelData"></asp:Label>
+                        <asp:TextBox ID="txtProjectName" runat="server" Width="171px" 
+                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                     </td>
                 </tr>
+            
                 <tr>
                     <td align="right" width="47%">
-                        Credit</td>
+                        </td>
                     <td align="center" width="3%">
-                        <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
+                        
                         </td>
                     <td align="left" width="50%">
-                        <asp:Label ID="lblCredit" runat="server" CssClass="LabelData"></asp:Label></td>
+                        
+                        <br />
+                        
+                    </td>
                 </tr>
-                <tr><td align="center" colspan="3"></td></tr>
                 
+                <tr><td align="center" colspan="3">
+                        <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="Btn" />
+                    </td></tr>
                 
                 <tr id="trSearchNo" runat="server">
                     <td align="right">
-                        <asp:Label ID="lblMenuSearchNo" runat="server" CssClass="LabelMenu" 
-                            Text="Searching by Student ID or Name"></asp:Label>&nbsp;
+                        &nbsp;
                     </td>
-                    <td align="center"> : </td>
+                    <td align="center"> &nbsp;</td>
                     <td align="left" colspan="3">
-                        <asp:TextBox ID="txtSearchStu" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         &nbsp;&nbsp;
-                        <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="Btn" />
-                    </td>
+                        </td>
                 </tr>
                 <tr>
                     <td colspan="3">
@@ -115,9 +118,9 @@
                                                     <asp:GridView ID="gvSearch" runat="server" AutoGenerateColumns="False" 
                                                         CssClass="GridViewBodyStyle">
                                                         <Columns>
-                                                            <asp:BoundField HeaderText="Student ID" DataField="StuID" ReadOnly="True" />
-                                                            <asp:BoundField HeaderText="Name" DataField="StuName" ReadOnly="True"/>
-                                                            <asp:BoundField HeaderText="Level" DataField="stulevel" ReadOnly="True"/>
+                                                            <asp:BoundField HeaderText="Unit Code" DataField="unitId" ReadOnly="True" />
+                                                            <asp:BoundField HeaderText="Unit Name" DataField="unitName" ReadOnly="True" />
+                                                            <asp:BoundField HeaderText="Project Name" DataField="projName" ReadOnly="True"/>
                                                             <asp:CommandField ShowSelectButton="True" />
                                                         </Columns>
                                                         <%--<SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />--%>
