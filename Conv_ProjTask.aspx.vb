@@ -1,26 +1,31 @@
-﻿Imports System.Data
-Imports System.Configuration
-Imports MySql.Data.MySqlClient
-Imports MySql.Data
-Public Class Conv_TeamFormation
+﻿Public Class Conv_ProjTask
     Inherits System.Web.UI.Page
 
-    Sub clear()
-        ddlYear.SelectedIndex() = 0
-        ddlSemester.SelectedIndex() = 0
-        ddlUnitCode.SelectedIndex() = 0
-        ddlProject.SelectedIndex() = 0
-        ddlSupervisor.SelectedIndex() = 0
-        txtNo.Text = ""
-        txtName.Text = ""
+    Sub Clear()
+        txtTaskNo.Text = ""
+        txtTaskTitle.Text = ""
+        txtTaskDesc.Text = ""
+        txtStartDate.Text = ""
+        txtEndDate.Text = ""
+        ddlYear.Items.Clear()
+        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Clear()
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Clear()
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlProject.Items.Clear()
+        ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", ""))
     End Sub
 
-#Region "check"
     Protected Sub alert(ByVal scriptalert As String)
         Dim script As String = ""
         script = "alert('" + scriptalert + "');"
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
     End Sub
+
+#Region "check"
+
+    '--function check()
     Function check() As Boolean
         Dim chk As String = 1
 
@@ -37,16 +42,28 @@ Public Class Conv_TeamFormation
             alert("Please select unit")
             chk = 0
         ElseIf ddlProject.SelectedItem.ToString = " [-- please select --] " Then
-            Me.ddlUnitCode.Focus()
-            alert("Please select unit")
+            Me.ddlProject.Focus()
+            alert("Please select project")
             chk = 0
-        ElseIf txtNo.Text = "" Then
-            Me.txtNo.Focus()
-            alert("Please add role name")
+        ElseIf txtTaskNo.Text = "" Then
+            Me.txtTaskNo.Focus()
+            alert("Please add task No")
             chk = 0
-        ElseIf txtName.Text = "" Then
-            Me.txtName.Focus()
-            alert("Please add cost")
+        ElseIf txtTaskTitle.Text = "" Then
+            Me.txtTaskTitle.Focus()
+            alert("Please add task title")
+            chk = 0
+        ElseIf txtTaskDesc.Text = "" Then
+            Me.txtTaskDesc.Focus()
+            alert("Please add task description")
+            chk = 0
+        ElseIf txtStartDate.Text = "" Then
+            Me.txtStartDate.Focus()
+            alert("Please add start date")
+            chk = 0
+        ElseIf txtEndDate.Text = "" Then
+            Me.txtEndDate.Focus()
+            alert("Please add end date")
             chk = 0
         End If
 
@@ -56,6 +73,32 @@ Public Class Conv_TeamFormation
             Return True
         End If
     End Function
+
+#End Region
+
+#Region "Carlendar"
+
+    Dim vClsFunc As New ClassFunction()
+
+    Protected Sub IMbStartDate_Click(sender As Object, e As ImageClickEventArgs) Handles IMbStartDate.Click
+        Calendar1.Visible = True
+        Calendar2.Visible = False
+    End Sub
+    Protected Sub IMbEndDate_Click(sender As Object, e As ImageClickEventArgs) Handles IMbEndDate.Click
+        Calendar2.Visible = True
+        Calendar1.Visible = False
+    End Sub
+
+    Protected Sub Calendar1_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Calendar1.SelectionChanged
+        Me.txtStartDate.Text = vClsFunc.DateString_Show(Calendar1.SelectedDate)
+        Calendar1.Visible = False
+    End Sub
+    Protected Sub Calendar2_SelectionChanged(ByVal sender As Object, ByVal e As System.EventArgs) Handles Calendar2.SelectionChanged
+        Me.txtEndDate.Text = vClsFunc.DateString_Show(Calendar2.SelectedDate)
+        Calendar2.Visible = False
+    End Sub
+
+
 #End Region
 
 #Region "load data"
@@ -72,6 +115,7 @@ Public Class Conv_TeamFormation
         ddlYear.DataBind()
 
     End Sub
+
     Protected Sub ddlYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlYear.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
@@ -83,6 +127,7 @@ Public Class Conv_TeamFormation
         ddlSemester.DataValueField = "offUnitSem"
         ddlSemester.DataBind()
     End Sub
+
     Protected Sub ddlSemester_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSemester.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
@@ -98,6 +143,7 @@ Public Class Conv_TeamFormation
         ddlUnitCode.DataValueField = "offUnitId"
         ddlUnitCode.DataBind()
     End Sub
+
     Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
@@ -113,99 +159,51 @@ Public Class Conv_TeamFormation
         ddlProject.DataValueField = "projId"
         ddlProject.DataBind()
     End Sub
-    Protected Sub ddlProject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlProject.SelectedIndexChanged
-        SQL(0) = "  Select a.empEnrolId, CONCAT(a.empId, ' - ', b.empName) as empStr " _
-                 & " From employeeEnrolment a " _
-                 & " Join employee b " _
-                 & " On a.empId = b.empId  " _
-                 & " Where roleId = 2 "
-        DT = M1.GetDatatable(SQL(0))
-        ddlSupervisor.DataSource = DT
-        ddlSupervisor.DataTextField = "empStr"
-        ddlSupervisor.DataValueField = "empEnrolId"
-        ddlSupervisor.DataBind()
-    End Sub
-
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        If Not Page.IsPostBack Then
-            loadYear()
-            loaddata()
-        End If
-    End Sub
 
     Sub loaddata()
-        SQL(0) = " Select z.*, CONCAT(b.unitId, ' - ', b.unitName) as unitStr, " _
-                & " d.EmpName, a.offUnitYear, a.offUnitSem, e.projName " _
-                & " From team z " _
-                & " join project e On e.projId = z.projId " _
-                & " join offeredUnit a on e.offUnitId = a.offUnitId " _
-                & " join unit b On a.unitID = b.unitID " _
-                & " join employeeEnrolment c on a.empEnrolId = c.EmpEnrolId " _
-                & " join employee d On c.empId = d.EmpId "
+        SQL(0) = "Select c.offUnitYear, c.offUnitSem, CONCAT(d.unitID, '-', d.unitName) as unitStr, " _
+                   & " b.projName, a.* " _
+                   & "  From task a " _
+                   & "  Join project b on a.projId = b.projId " _
+                   & "  Join offeredunit c on b.offUnitId = c.offUnitId " _
+                   & "  Join unit d on c.UnitId = d.UnitId "
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
         gvData.DataBind()
     End Sub
 
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not Page.IsPostBack Then
+            loadYear()
+            Calendar1.Visible = False
+            Calendar2.Visible = False
+            loaddata()
+        End If
+    End Sub
+
 #End Region
 
 #Region "Save"
-    '--click cancel
-    Protected Sub btncancel_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        clear()
-    End Sub
-    Private Sub alert(ByVal scriptalert As String)
-        Dim script As String = ""
-        script = "alert('" + scriptalert + "');"
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
-    End Sub
-    Protected Sub btnSearch_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-        Dim con As New MySqlConnection(constr)
-        Dim cmd As New MySqlCommand
-
-        cmd.Connection = con
-        cmd.CommandText = "SP_ADD_TEAM"
-        cmd.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.AddWithValue("@pteamNo", Convert.ToInt64(txtTeamNum.Text))
-        cmd.Parameters.AddWithValue("@pteamTitle", txtTeamTitle.Text)
-        cmd.Parameters.AddWithValue("@pprojId", Convert.ToInt64(txtprojId.Text))
-        cmd.Parameters.AddWithValue("@pempEnrolId", Convert.ToInt64(txtEnrolId.Text))
-        Try
-            con.Open()
-            If cmd.ExecuteScalar() IsNot " " Then
-                Dim message As String = cmd.ExecuteScalar.ToString()
-                alert(message)
-            Else
-                alert("Data inserted successfully")
-            End If
-
-        Catch er As MySqlException
-            MsgBox(er.Message)
-        Finally
-            con.Close()
-        End Try
-    End Sub
-    '--click save
     Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If check() = False Then
             Exit Sub
         End If
 
         Dim projId As String = ddlProject.SelectedValue.ToString()
-        Dim teamNo As String = Me.txtNo.Text
-        Dim teamName As String = Me.txtName.Text
-        Dim empEnrolId As String = ddlSupervisor.SelectedValue.ToString()
+        Dim taskNo As String = Me.txtTaskNo.Text
+        Dim taskTitle As String = Me.txtTaskTitle.Text
+        Dim taskDesc As String = Me.txtTaskDesc.Text
+        Dim startDate As String = vClsFunc.DateString_Save(txtStartDate.Text)
+        Dim endDate As String = vClsFunc.DateString_Save(txtEndDate.Text)
 
-        cmd.CommandText = "ADD_TEAM;"
-        cmd.Parameters.AddWithValue("@pteamNo", teamNo)
-        cmd.Parameters.AddWithValue("@pteamTitle", teamName)
+        cmd.CommandText = "ADD_TASK;"
         cmd.Parameters.AddWithValue("@pprojId", projId)
-        cmd.Parameters.AddWithValue("@pempEnrolId", empEnrolId)
+        cmd.Parameters.AddWithValue("@ptaskNo", taskNo)
+        cmd.Parameters.AddWithValue("@ptaskTitle", taskTitle)
+        cmd.Parameters.AddWithValue("@ptaskDesc", taskDesc)
+        cmd.Parameters.AddWithValue("@pstartDate", startDate)
+        cmd.Parameters.AddWithValue("@pendDate", endDate)
         M1.Execute(SQL(0))
         Try
             alert("Data entered successfully.")
@@ -214,6 +212,28 @@ Public Class Conv_TeamFormation
         Catch ex As Exception
             alert("Data entered fail, please Try again.")
         End Try
+    End Sub
+
+    Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        Clear()
+    End Sub
+
+    Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        SQL(0) = "Select c.offUnitYear, c.offUnitSem, CONCAT(d.unitID, '-', d.unitName) as unitStr, " _
+                   & " b.projName, a.* " _
+                   & "  From task a " _
+                   & "  Join project b on a.projId = b.projId " _
+                   & "  Join offeredunit c on b.offUnitId = c.offUnitId " _
+                   & "  Join unit d on c.UnitId = d.UnitId " _
+                   & "  Where taskTitle like '%" & txtSearch.Text & "%'  "
+        DT = M1.GetDatatable(SQL(0))
+        gvData.DataSource = DT
+        gvData.DataBind()
+    End Sub
+
+    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
+        txtSearch.Text = ""
+        loaddata()
     End Sub
 
 #End Region

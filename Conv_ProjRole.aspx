@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_TeamFormation.aspx.vb" Inherits="Test.Conv_TeamFormation" %>
+﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_ProjRole.aspx.vb" Inherits="Test.Conv_ProjRole" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Team
+    Convenor
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
-    Team Formation
+    Set Up Team Role
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table width="100%">
@@ -48,15 +48,12 @@
                 <tr><td colspan="3">&nbsp;</td></tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        Team Number</td>
                         <asp:Label ID="Label2" runat="server" CssClass="LabelMenu" Text="Project"></asp:Label>
                     </td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtTeamNum" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         <asp:DropDownList ID="ddlProject" runat="server" AutoPostBack="true" 
                             CssClass="DDSelect" Enabled="True" AppendDataBoundItems="true">
                             <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
@@ -65,80 +62,25 @@
                 </tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        Team Title</td>
-                        <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Team No"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Role Name"></asp:Label>
                     </td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        
-                        <asp:TextBox ID="txtTeamTitle" runat="server" Width="171px" 
-                        <asp:TextBox ID="txtNo" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtRole" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                     </td>
                 </tr>
-                    <tr>
-                    <td align="right" valign="top" width="47%">
-                        Project Id</td>
-                    <td align="center" valign="top" width="3%">
                 <tr>
                     <td align="right" width="47%">
-                        Team Name</td>
+                        Cost</td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                    </td>
+                        </td>
                     <td align="left" width="50%">
-                        
-                        <asp:TextBox ID="txtprojId" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtCost" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                        
-                    </td>
-                    </tr>
-                    <tr>
-                    <td align="right" valign="top" width="47%">
-                        Employee Enrol ID</td>
-                    <td align="center" valign="top" width="3%">
-                        <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                    </td>
-                    <td align="left" width="50%">
-                        
-                        <asp:TextBox ID="txtEnrolId" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                        
-                    </td>
-                    </tr>
-                    <tr>
-                    <td align="right" width="47%">
-                        &nbsp;</td>
-                    <td align="center" width="3%">
-                        &nbsp;</td>
-                    <td align="left" width="50%">
-                        &nbsp;</td>
-                </tr>
-                    <tr>
-                    <td align="right" width="47%">
-                        &nbsp;</td>
-                    <td align="center" width="3%">
-                        &nbsp;</td>
-                    <td align="left" width="50%">
-                        &nbsp;</td>
-                        <asp:TextBox ID="txtName" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label6" runat="server" CssClass="LabelMenu" Text="Supervisor"></asp:Label>
-                    </td>
-                    <td align="center" valign="top" width="3%">
-                        <asp:Label ID="Label7" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                    </td>
-                    <td align="left" width="50%">
-                        <asp:DropDownList ID="ddlSupervisor" runat="server" AutoPostBack="true" 
-                            CssClass="DDSelect" Enabled="True" AppendDataBoundItems="true">
-                            <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
-                        </asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -158,7 +100,7 @@
         <tr>
             <td align="center" colspan="3">
                 <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="teamId" 
+                    DataKeyNames="tmRolId" 
                     AllowPaging="True" CssClass="GridViewBodyStyle" 
                     EmptyDataText="---No Record---">
                     <Columns>
@@ -177,38 +119,30 @@
                                 <asp:Textbox ID="txtProjName" runat="server" Text='<%# Bind("projName") %>' ></asp:Textbox>
                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblProjName" runat="server" Text='<%# Bind("projName") %>'></asp:Label>
+                                <asp:Label ID="lblProjName" runat="server" Text='<%# Bind("projName") %>' Width="200px"></asp:Label>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Team No" SortExpression="teamNo">
+                        <asp:TemplateField HeaderText="Role" SortExpression="tmRolName">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtTeamNo" runat="server" Text='<%# Bind("teamNo") %>' ></asp:Textbox>
+                                <asp:Textbox ID="txtRole" runat="server" Text='<%# Bind("tmRolName") %>' ></asp:Textbox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblTeamNo" runat="server" Text='<%# Bind("teamNo") %>'></asp:Label>
+                                <asp:Label ID="lblRole" runat="server" Text='<%# Bind("tmRolName") %>' Width="250px"></asp:Label>
                             </ItemTemplate>
+                            <HeaderStyle Width="200px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Team Name" SortExpression="teamTitle">
+                        <asp:TemplateField HeaderText="Cost" SortExpression="tmRolName">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtTeamName" runat="server" Text='<%# Bind("teamTitle") %>' ></asp:Textbox>
+                                <asp:Textbox ID="txtCost" runat="server" Text='<%# Bind("tmRolCost") %>' ></asp:Textbox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblTeamName" runat="server" Text='<%# Bind("teamTitle") %>'></asp:Label>
+                                <asp:Label ID="lblCost" runat="server" Text='<%# Bind("tmRolCost") %>' Width="250px"></asp:Label>
                             </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Supervisor" SortExpression="supStr">
-                            <EditItemTemplate>
-                                <asp:Textbox ID="txtSup" runat="server" Text='<%# Bind("empName") %>' ></asp:Textbox>
-                            </EditItemTemplate>
-                            <ItemTemplate>
-                                <asp:Label ID="lblSup" runat="server" Text='<%# Bind("empName") %>'></asp:Label>
-                            </ItemTemplate>
+                            <HeaderStyle Width="200px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
@@ -221,5 +155,6 @@
                 </asp:GridView>
             </td>
         </tr>
+        <tr><td align="center" colspan="3"></td></tr>
     </table>
 </asp:Content>

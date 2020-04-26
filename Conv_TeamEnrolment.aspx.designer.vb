@@ -11,8 +11,7 @@ Option Strict On
 Option Explicit On
 
 
-Partial Public Class Conv_TeamFormation
-    
+Partial Public Class Conv_TeamEnrolment
 
     '''<summary>
     '''Label1 control.
@@ -30,10 +29,6 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''txtTeamNum control.
     Protected WithEvents ddlYear As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
@@ -43,8 +38,6 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTeamNum As Global.System.Web.UI.WebControls.TextBox
-    
     Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
@@ -63,10 +56,6 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''txtTeamTitle control.
     Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
@@ -76,8 +65,6 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtTeamTitle As Global.System.Web.UI.WebControls.TextBox
-    
     Protected WithEvents ddlUnitCode As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
@@ -87,10 +74,6 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''txtprojId control.
     Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
@@ -100,8 +83,6 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtprojId As Global.System.Web.UI.WebControls.TextBox
-    
     Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
@@ -111,95 +92,97 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
-    
-    '''<summary>
-    '''txtEnrolId control.
     Protected WithEvents ddlProject As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Label3 control.
+    '''Label11 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtEnrolId As Global.System.Web.UI.WebControls.TextBox
-    
-    Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Label9 control.
+    '''Label12 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
-    
-    Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Label12 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtNo control.
+    '''ddlTeam control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
-    
-    Protected WithEvents txtNo As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents ddlTeam As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Label10 control.
+    '''trSearchNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkComCode As Global.System.Web.UI.WebControls.CheckBox
-    
-    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents trSearchNo As Global.System.Web.UI.HtmlControls.HtmlTableRow
 
     '''<summary>
-    '''txtName control.
+    '''lblMenuSearchNo control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtSearchUnit As Global.System.Web.UI.WebControls.TextBox
-    
-    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents lblMenuSearchNo As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Label6 control.
+    '''txtSearchStu control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents txtSearchStu As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Label7 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''ddlSupervisor control.
+    '''btnSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSearch As Global.System.Web.UI.WebControls.Button
-    
-    Protected WithEvents ddlSupervisor As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''pnQuerySearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents pnQuerySearch As Global.System.Web.UI.WebControls.Panel
+
+    '''<summary>
+    '''gvSearch control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gvSearch As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''gvStudent control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gvStudent As Global.System.Web.UI.WebControls.GridView
 
     '''<summary>
     '''btnSave control.
@@ -208,8 +191,6 @@ Partial Public Class Conv_TeamFormation
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents btnSearchCancel As Global.System.Web.UI.WebControls.Button
-    
     Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
@@ -220,13 +201,4 @@ Partial Public Class Conv_TeamFormation
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
-
-    '''<summary>
-    '''gvData control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents gvData As Global.System.Web.UI.WebControls.GridView
 End Class

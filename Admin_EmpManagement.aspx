@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_EmpManagement.aspx.vb" Inherits="Test.Admin_EmpManagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
     Employee Registeration
+    Employee
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Employee Management

@@ -13,8 +13,18 @@ Option Explicit On
 
 Partial Public Class Conv_ProjManagement
     
+
     '''<summary>
-    '''Label8 control.
+    '''Label12 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label12 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ddlYear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -24,6 +34,10 @@ Partial Public Class Conv_ProjManagement
     
     '''<summary>
     '''txtProjectName control.
+    Protected WithEvents ddlYear As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Label1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -31,8 +45,19 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents txtProjectName As Global.System.Web.UI.WebControls.TextBox
     
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
     '''<summary>
-    '''Label9 control.
+    '''ddlSemester control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlSemester As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Label4 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -42,6 +67,10 @@ Partial Public Class Conv_ProjManagement
     
     '''<summary>
     '''txtProjDesc control.
+    Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ddlUnitCode control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -49,8 +78,10 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents txtProjDesc As Global.System.Web.UI.WebControls.TextBox
     
+    Protected WithEvents ddlUnitCode As Global.System.Web.UI.WebControls.DropDownList
+
     '''<summary>
-    '''Label10 control.
+    '''Label3 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -60,6 +91,10 @@ Partial Public Class Conv_ProjManagement
     
     '''<summary>
     '''txtunitId control.
+    Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''Label9 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -67,8 +102,10 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents txtunitId As Global.System.Web.UI.WebControls.TextBox
     
+    Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
+
     '''<summary>
-    '''Label11 control.
+    '''txtProjName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -78,6 +115,10 @@ Partial Public Class Conv_ProjManagement
     
     '''<summary>
     '''txtDate control.
+    Protected WithEvents txtProjName As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''Label10 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -85,8 +126,10 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents txtDate As Global.System.Web.UI.WebControls.TextBox
     
+    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
+
     '''<summary>
-    '''btnSave control.
+    '''txtProjDesc control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -94,8 +137,10 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
     
+    Protected WithEvents txtProjDesc As Global.System.Web.UI.WebControls.TextBox
+
     '''<summary>
-    '''btnCancel control.
+    '''btnSave control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -103,8 +148,10 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
     
+    Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
+
     '''<summary>
-    '''chkComCode control.
+    '''btnCancel control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -112,8 +159,10 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents chkComCode As Global.System.Web.UI.WebControls.CheckBox
     
+    Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
+
     '''<summary>
-    '''txtSearchUnit control.
+    '''txtSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
@@ -121,6 +170,8 @@ Partial Public Class Conv_ProjManagement
     '''</remarks>
     Protected WithEvents txtSearchUnit As Global.System.Web.UI.WebControls.TextBox
     
+    Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
+
     '''<summary>
     '''btnSearch control.
     '''</summary>
@@ -140,11 +191,11 @@ Partial Public Class Conv_ProjManagement
     Protected WithEvents btnSearchCancel As Global.System.Web.UI.WebControls.Button
     
     '''<summary>
-    '''gvUnit control.
+    '''gvData control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents gvUnit As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents gvData As Global.System.Web.UI.WebControls.GridView
 End Class

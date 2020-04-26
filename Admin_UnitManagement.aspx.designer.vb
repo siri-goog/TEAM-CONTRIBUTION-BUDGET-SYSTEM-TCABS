@@ -77,13 +77,13 @@ Partial Public Class Admin_UnitManagement
     Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtUnitName0 control.
+    '''txtUnitDesc control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitName0 As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtUnitDesc As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Label11 control.
@@ -95,13 +95,13 @@ Partial Public Class Admin_UnitManagement
     Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtName control.
+    '''txtCredit control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtCredit As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSave control.
@@ -122,22 +122,13 @@ Partial Public Class Admin_UnitManagement
     Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''chkComCode control.
+    '''txtSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkComCode As Global.System.Web.UI.WebControls.CheckBox
-
-    '''<summary>
-    '''txtSearchUnit control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtSearchUnit As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSearch control.
@@ -158,11 +149,11 @@ Partial Public Class Admin_UnitManagement
     Protected WithEvents btnSearchCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''gvUnit control.
+    '''gvData control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents gvUnit As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents gvData As Global.System.Web.UI.WebControls.GridView
 End Class

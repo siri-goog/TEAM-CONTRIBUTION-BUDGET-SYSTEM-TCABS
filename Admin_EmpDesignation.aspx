@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_EmpDesignation.aspx.vb" Inherits="Test.Admin_EmpDesignation" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Unit of Study
+    Employee
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
-    Unit Management
+    Employee Designation
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table width="100%">
@@ -93,6 +93,7 @@
                                 <tr>
                                     <td align="right" style="height: 40px">
                                         Search By ID or Name</td>
+                                        Search By Employee ID or Name</td>
                                     <td align="center" style="height: 40px">:</td>
                                     <td align="left" style="height: 40px">
                                         <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox" 
@@ -149,13 +150,18 @@
                         </asp:TemplateField>
                         <%--<asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                        <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                         <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField> --%>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
-                    <HeaderStyle CssClass="GridViewHeaderStyle" />
+                    <HeaderStyle CssClass="GridViewHeaderStyle" HorizontalAlign="Center" VerticalAlign="Top"  />
                 </asp:GridView>
             </td>
         </tr>

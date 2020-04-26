@@ -7,6 +7,14 @@ Imports MySql.Data
 Public Class Admin_EmpManagement
     Inherits System.Web.UI.Page
 
+
+    Private Sub alert(ByVal scriptalert As String)
+        Dim script As String = ""
+        script = "alert('" + scriptalert + "');"
+        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
+    End Sub
+
+#Region "load data"
     Sub loaddata()
         SQL(0) = " GET_EMPLOYEE;"
         DT = M1.GetDatatable(SQL(0))
@@ -58,6 +66,9 @@ Public Class Admin_EmpManagement
     '    End Try
 
     'End Sub
+#End Region
+
+#Region "save"
 
     Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
 
@@ -81,6 +92,7 @@ Public Class Admin_EmpManagement
         End Try
     End Sub
 
+<<<<<<< HEAD
 
     'Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
     '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
@@ -121,6 +133,17 @@ Public Class Admin_EmpManagement
     '    End Using
 
     'End Sub
+
+    Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        txtemployeeId.Text = ""
+        txtempName.Text = ""
+        txtemailId.Text = ""
+
+    End Sub
+
+#End Region
+
+#Region "search"
 
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
@@ -214,6 +237,14 @@ Public Class Admin_EmpManagement
     '    End Using
     'End Sub
 
+    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
+        txtSearch.Text = ""
+        loaddata()
+    End Sub
+
+#End Region
+
+#Region "GV"
     Protected Sub gvEmployee_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvEmployee.RowDeleting
         Dim index As Integer = e.RowIndex
         Dim pempId As String = Me.gvEmployee.DataKeys(index).Values(0).ToString()
@@ -268,4 +299,6 @@ Public Class Admin_EmpManagement
         txtSearch.Text = ""
         loaddata()
     End Sub
+#End Region
+
 End Class
