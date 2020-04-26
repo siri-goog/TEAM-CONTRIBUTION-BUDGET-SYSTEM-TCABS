@@ -1,4 +1,4 @@
-﻿Public Class Conv_TeamFormation
+﻿Public Class Conv_TeamEnrolment
     Inherits System.Web.UI.Page
 
     Sub clear()
@@ -6,9 +6,6 @@
         ddlSemester.SelectedIndex() = 0
         ddlUnitCode.SelectedIndex() = 0
         ddlProject.SelectedIndex() = 0
-        ddlSupervisor.SelectedIndex() = 0
-        txtNo.Text = ""
-        txtName.Text = ""
     End Sub
 
 #Region "check"
@@ -35,14 +32,6 @@
         ElseIf ddlProject.SelectedItem.ToString = " [-- please select --] " Then
             Me.ddlUnitCode.Focus()
             alert("Please select unit")
-            chk = 0
-        ElseIf txtNo.Text = "" Then
-            Me.txtNo.Focus()
-            alert("Please add role name")
-            chk = 0
-        ElseIf txtName.Text = "" Then
-            Me.txtName.Focus()
-            alert("Please add cost")
             chk = 0
         End If
 
@@ -110,71 +99,109 @@
         ddlProject.DataBind()
     End Sub
     Protected Sub ddlProject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlProject.SelectedIndexChanged
-        SQL(0) = "  Select a.empEnrolId, CONCAT(a.empId, ' - ', b.empName) as empStr " _
-                 & " From employeeEnrolment a " _
-                 & " Join employee b " _
-                 & " On a.empId = b.empId  " _
-                 & " Where roleId = 2 "
+        Dim selectedProj As String = ddlProject.SelectedItem.Value.ToString()
+        SQL(0) = "  Select * " _
+                 & " From team " _
+                 & " Where projId = '" & selectedProj & "' "
         DT = M1.GetDatatable(SQL(0))
-        ddlSupervisor.DataSource = DT
-        ddlSupervisor.DataTextField = "empStr"
-        ddlSupervisor.DataValueField = "empEnrolId"
-        ddlSupervisor.DataBind()
+        ddlTeam.DataSource = DT
+        ddlTeam.DataTextField = "teamTitle"
+        ddlTeam.DataValueField = "teamId"
+        ddlTeam.DataBind()
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             loadYear()
-            loaddata()
         End If
     End Sub
 
     Sub loaddata()
-        SQL(0) = " Select z.*, CONCAT(b.unitId, ' - ', b.unitName) as unitStr, " _
-                & " d.EmpName, a.offUnitYear, a.offUnitSem, e.projName " _
-                & " From team z " _
-                & " join project e On e.projId = z.projId " _
-                & " join offeredUnit a on e.offUnitId = a.offUnitId " _
-                & " join unit b On a.unitID = b.unitID " _
-                & " join employeeEnrolment c on a.empEnrolId = c.EmpEnrolId " _
-                & " join employee d On c.empId = d.EmpId "
+        SQL(0) = " GET_STUDENT;"
         DT = M1.GetDatatable(SQL(0))
-        gvData.DataSource = DT
-        gvData.DataBind()
     End Sub
 
 #End Region
 
-#Region "Save"
+#Region "GV Search"
+
+    Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Dim searchTerm As String = "%" & Trim(txtSearchStu.Text) & "%"
+        SQL(0) = "SEARCH_STUDENT('" & searchTerm & "');"
+        DT = M1.GetDatatable(SQL(0))
+        gvSearch.DataSource = DT
+        gvSearch.DataBind()
+        pnQuerySearch.Visible = True
+        DT.Clear()
+
+    End Sub
+
+    Protected Sub gvSearch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvSearch.SelectedIndexChanged
+        Dim stuId As String
+        Dim stuName As String
+        Dim stuLevel As String
+
+        stuId = gvSearch.Rows(gvSearch.SelectedIndex).Cells(0).Text
+        stuName = gvSearch.Rows(gvSearch.SelectedIndex).Cells(1).Text
+        stuLevel = gvSearch.Rows(gvSearch.SelectedIndex).Cells(2).Text
+        gvSearch.DataSource = Nothing
+        gvSearch.DataBind()
+        If DT_Student.Columns.Count = 0 Then
+            DT_Student.Columns.Add("stuId", GetType(String))
+            DT_Student.Columns.Add("stuName", GetType(String))
+            DT_Student.Columns.Add("stulevel", GetType(String))
+        End If
+
+        Dim R As DataRow = DT_Student.NewRow
+        R("stuId") = stuId
+        R("stuName") = stuName
+        R("stuLevel") = stuLevel
+        'DT_Student.Rows.Add(stuId, stuName, stuLevel)
+        DT_Student.Rows.Add(R)
+        gvStudent.DataSource = DT_Student
+        gvStudent.DataBind()
+    End Sub
+
+#End Region
+
+#Region "GV Student"
+
+    Protected Sub gvStudent_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvStudent.RowDeleting
+        Dim index As Integer
+        index = e.RowIndex
+        DT_Student.Rows.RemoveAt(index)
+        gvStudent.DataSource = DT_Student
+        gvStudent.DataBind()
+    End Sub
+
+    Protected Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
+
+        For Each GVRow As GridViewRow In Me.gvStudent.Rows
+            Dim K1 As DataKey = Me.gvStudent.DataKeys(GVRow.RowIndex)
+            Dim stuId As String = K1(0)
+            Dim teamId As Integer = ddlTeam.SelectedValue
+
+            cmd.CommandText = "ADD_TEAM_ENROL"
+            cmd.Parameters.AddWithValue("@pteamId", teamId)
+            cmd.Parameters.AddWithValue("@penrolId", teamId)
+            cmd.Parameters.AddWithValue("@pPM_Role", teamId)
+
+            Try
+                M1.Execute(SQL(0))
+                alert("Data entered successfully.")
+
+            Catch ex As Exception
+                alert("Data entered fail, please Try again.")
+            End Try
+        Next
+
+        clear()
+        loadYear()
+    End Sub
+
     '--click cancel
     Protected Sub btncancel_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         clear()
-    End Sub
-
-    '--click save
-    Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        If check() = False Then
-            Exit Sub
-        End If
-
-        Dim projId As String = ddlProject.SelectedValue.ToString()
-        Dim teamNo As String = Me.txtNo.Text
-        Dim teamName As String = Me.txtName.Text
-        Dim empEnrolId As String = ddlSupervisor.SelectedValue.ToString()
-
-        cmd.CommandText = "ADD_TEAM;"
-        cmd.Parameters.AddWithValue("@pteamNo", teamNo)
-        cmd.Parameters.AddWithValue("@pteamTitle", teamName)
-        cmd.Parameters.AddWithValue("@pprojId", projId)
-        cmd.Parameters.AddWithValue("@pempEnrolId", empEnrolId)
-        M1.Execute(SQL(0))
-        Try
-            alert("Data entered successfully.")
-            clear()
-            loaddata()
-        Catch ex As Exception
-            alert("Data entered fail, please Try again.")
-        End Try
     End Sub
 
 #End Region

@@ -54,20 +54,6 @@
             <div class="sidebar-heading">
                 Admin
             </div>
-            <!-- Nav Item - Unit Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUnit" aria-expanded="true" aria-controls="collapseUnit">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Unit of Study</span>
-                </a>
-                <div id="collapseUnit" class="collapse" aria-labelledby="headingUnit" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                    <h6 class="collapse-header">Unit Menu:</h6>
-                    <a class="collapse-item" href="buttons.html">Unit Management</a>
-                    <a class="collapse-item" href="cards.html">Unit Offering</a>
-                    </div>
-                </div>
-            </li>
             <!-- Nav Item - Employee Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseEmp" aria-expanded="true" aria-controls="collapseEmp">
@@ -77,8 +63,22 @@
                 <div id="collapseEmp" class="collapse" aria-labelledby="headingEmp" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Employee Menu:</h6>
-                    <a class="collapse-item" href="buttons.html">Employee Management</a>
-                    <a class="collapse-item" href="cards.html">Employee Designation</a>
+                    <a class="collapse-item" href="Admin_EmpManagement.aspx">Employee Management</a>
+                    <a class="collapse-item" href="Admin_EmpDesignation.aspx">Employee Designation</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Unit Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUnit" aria-expanded="true" aria-controls="collapseUnit">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Unit of Study</span>
+                </a>
+                <div id="collapseUnit" class="collapse" aria-labelledby="headingUnit" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Unit Menu:</h6>
+                    <a class="collapse-item" href="Admin_UnitManagement.aspx">Unit Management</a>
+                    <a class="collapse-item" href="Admin_UnitOffering.aspx">Unit Offering</a>
                     </div>
                 </div>
             </li>
@@ -91,8 +91,8 @@
                 <div id="collapseStu" class="collapse" aria-labelledby="headingStu" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Student Menu:</h6>
-                    <a class="collapse-item" href="utilities-color.html">Student Management</a>
-                    <a class="collapse-item" href="utilities-border.html">Student Enrolment</a>
+                    <a class="collapse-item" href="Admin_StuManagement.aspx">Student Management</a>
+                    <a class="collapse-item" href="Admin_StuEnrolment.aspx">Student Enrolment</a>
                     </div>
                 </div>
             </li>
@@ -104,19 +104,6 @@
             <div class="sidebar-heading">
                 Convenor
             </div>
-            <!-- Nav Item - Team Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTeam" aria-expanded="true" aria-controls="collapseTeam">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Team</span>
-                </a>
-                <div id="collapseTeam" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Team Menu:</h6>
-                        <a class="collapse-item" href="#">Team Formation</a>
-                    </div>
-                </div>
-            </li>
             <!-- Nav Item - Project Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseProject" aria-expanded="true" aria-controls="collapseProject">
@@ -126,9 +113,23 @@
                 <div id="collapseProject" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Project Menu:</h6>
-                        <a class="collapse-item" href="#">Project Management</a>
-                        <a class="collapse-item" href="#">Project Role</a>
-                        <a class="collapse-item" href="#">Project Allocation</a>
+                        <a class="collapse-item" href="Conv_ProjManagement.aspx">Project Management</a>
+                        <a class="collapse-item" href="Conv_ProjRole.aspx">Project Role</a>
+                        <a class="collapse-item" href="Conv_ProjTask.aspx">Project Task</a>
+                    </div>
+                </div>
+            </li>
+            <!-- Nav Item - Team Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTeam" aria-expanded="true" aria-controls="collapseTeam">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Team</span>
+                </a>
+                <div id="collapseTeam" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Team Menu:</h6>
+                        <a class="collapse-item" href="Conv_TeamFormation.aspx">Team Formation</a>
+                        <a class="collapse-item" href="Conv_TeamEnrolment.aspx">Team Allocation</a>
                     </div>
                 </div>
             </li>

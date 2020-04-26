@@ -1,5 +1,22 @@
 ﻿Public Class Admin_StuEnrolment
     Inherits System.Web.UI.Page
+
+    Sub ClearValue()
+        lblCredit.Text = ""
+        lblUnitDesc.Text = ""
+        lblUnitName.Text = ""
+        DT_Student.Clear()
+        DT.Clear()
+        gvStudent.DataSource = DT_Student
+        gvStudent.DataBind()
+        ddlYear.Items.Clear()
+        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Clear()
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Clear()
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+    End Sub
+
     '--load Year for dropdown
     Sub loadYear()
         Dim nowYear As Integer = Date.Now.Year
@@ -38,8 +55,6 @@
 
     End Sub
 
-
-
     Protected Sub ddlYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlYear.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
@@ -64,6 +79,10 @@
         ddlUnitCode.DataValueField = "offUnitId"
         ddlUnitCode.DataBind()
     End Sub
+
+#End Region
+
+#Region "GV Search"
 
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
         Dim searchTerm As String = "%" & Trim(txtSearchStu.Text) & "%"
@@ -100,9 +119,11 @@
         DT_Student.Rows.Add(R)
         gvStudent.DataSource = DT_Student
         gvStudent.DataBind()
-
-
     End Sub
+
+#End Region
+
+#Region "GV Student"
 
     Protected Sub gvStudent_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvStudent.RowDeleting
         Dim index As Integer
@@ -134,39 +155,7 @@
 
         ClearValue()
         loadYear()
-
-
-
     End Sub
-    Sub ClearValue()
-        lblCredit.Text = ""
-        lblUnitDesc.Text = ""
-        lblUnitName.Text = ""
-        DT_Student.Clear()
-        DT.Clear()
-        gvStudent.DataSource = DT_Student
-        gvStudent.DataBind()
-        ddlYear.Items.Clear()
-        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", ""))
-        ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
-        ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
-    End Sub
-
-
-
-#End Region
-
-#Region "GV Search"
-
-#End Region
-
-#Region "Student"
-
-#End Region
-
-#Region "GV Student"
 
 #End Region
 

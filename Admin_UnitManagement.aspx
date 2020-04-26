@@ -45,7 +45,7 @@
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitName0" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtUnitDesc" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         </td>
                 </tr>
@@ -56,7 +56,7 @@
                         <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtName" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtCredit" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox></td>
                 </tr>
                     
@@ -87,13 +87,10 @@
                                     </td>
                                 </tr>--%>
                                 <tr>
-                                    <td align="right">
-                                        <asp:CheckBox ID="chkComCode" runat="server" AutoPostBack="true"
-                                            CssClass="LabelMenu" Text="Search by Unit Code" /></td>
+                                    <td align="right">Search by Unit Code</td>
                                     <td align="center">:</td>
                                     <td align="left">
-                                        <asp:TextBox ID="txtSearchUnit" runat="server" CssClass="textbox" 
-                                            Enabled="False"></asp:TextBox>
+                                        <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr><td colspan="3">&nbsp;</td></tr>
@@ -111,12 +108,12 @@
 
         <tr>
             <td align="center" colspan="3">
-                <asp:GridView ID="gvUnit" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="ComCode" 
+                <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" 
+                    DataKeyNames="unitId" 
                     AllowPaging="True" CssClass="GridViewBodyStyle" 
                     EmptyDataText="---No Record---">
                     <Columns>
-                        <asp:BoundField HeaderText="Unit Code" DataField="UnitCode" ReadOnly="True" >
+                        <asp:BoundField HeaderText="Unit Code" DataField="unitId" ReadOnly="True" >
 
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:BoundField>
@@ -143,13 +140,9 @@
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Credit">
-                            <%--<EditItemTemplate>
-                                <asp:DropDownList ID="ddlHoldingID" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="AA">AA : Paper Holding</asp:ListItem>
-                                    <asp:ListItem Value="PP">PP : Power Holding</asp:ListItem>
-                                    <asp:ListItem Value="QS">QS : Other Holding</asp:ListItem>
-                                </asp:DropDownList>
-                           </EditItemTemplate>--%>
+                            <EditItemTemplate>
+                                <asp:Textbox ID="txtCredit" runat="server" Text='<%# Bind("UnitCredit") %>' ></asp:Textbox>
+                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblCredit" runat="server" Text='<%# Bind("UnitCredit") %>' Width="100px"></asp:Label>
                             </ItemTemplate>
@@ -161,7 +154,7 @@
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
-                    <HeaderStyle CssClass="GridViewHeaderStyle" />
+                    <HeaderStyle CssClass="GridViewHeaderStyle" HorizontalAlign="Center" VerticalAlign="Top" />
                 </asp:GridView>
             </td>
         </tr>

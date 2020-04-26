@@ -14,31 +14,58 @@ Option Explicit On
 Partial Public Class Conv_ProjManagement
 
     '''<summary>
-    '''Label2 control.
+    '''Label12 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents Label12 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Label8 control.
+    '''ddlYear control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
+    Protected WithEvents ddlYear As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''txtUnitCode control.
+    '''Label1 control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitCode As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents Label1 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ddlSemester control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlSemester As Global.System.Web.UI.WebControls.DropDownList
+
+    '''<summary>
+    '''Label4 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label4 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''ddlUnitCode control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents ddlUnitCode As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
     '''Label3 control.
@@ -59,13 +86,13 @@ Partial Public Class Conv_ProjManagement
     Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtUnitName control.
+    '''txtProjName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtProjName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Label10 control.
@@ -77,31 +104,13 @@ Partial Public Class Conv_ProjManagement
     Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtUnitName0 control.
+    '''txtProjDesc control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitName0 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Label11 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtProjDesc As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSave control.
@@ -122,22 +131,13 @@ Partial Public Class Conv_ProjManagement
     Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''chkComCode control.
+    '''txtSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkComCode As Global.System.Web.UI.WebControls.CheckBox
-
-    '''<summary>
-    '''txtSearchUnit control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtSearchUnit As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSearch control.
@@ -158,11 +158,11 @@ Partial Public Class Conv_ProjManagement
     Protected WithEvents btnSearchCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''gvUnit control.
+    '''gvData control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents gvUnit As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents gvData As Global.System.Web.UI.WebControls.GridView
 End Class
