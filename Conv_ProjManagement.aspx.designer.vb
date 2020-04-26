@@ -12,16 +12,7 @@ Option Explicit On
 
 
 Partial Public Class Conv_ProjManagement
-
-    '''<summary>
-    '''Label2 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label2 As Global.System.Web.UI.WebControls.Label
-
+    
     '''<summary>
     '''Label8 control.
     '''</summary>
@@ -30,25 +21,16 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
-
+    
     '''<summary>
-    '''txtUnitCode control.
+    '''txtProjectName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitCode As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Label3 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label3 As Global.System.Web.UI.WebControls.Label
-
+    Protected WithEvents txtProjectName As Global.System.Web.UI.WebControls.TextBox
+    
     '''<summary>
     '''Label9 control.
     '''</summary>
@@ -57,16 +39,16 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
-
+    
     '''<summary>
-    '''txtUnitName control.
+    '''txtProjDesc control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitName As Global.System.Web.UI.WebControls.TextBox
-
+    Protected WithEvents txtProjDesc As Global.System.Web.UI.WebControls.TextBox
+    
     '''<summary>
     '''Label10 control.
     '''</summary>
@@ -75,16 +57,16 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
-
+    
     '''<summary>
-    '''txtUnitName0 control.
+    '''txtunitId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitName0 As Global.System.Web.UI.WebControls.TextBox
-
+    Protected WithEvents txtunitId As Global.System.Web.UI.WebControls.TextBox
+    
     '''<summary>
     '''Label11 control.
     '''</summary>
@@ -93,16 +75,16 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
-
+    
     '''<summary>
-    '''txtName control.
+    '''txtDate control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
-
+    Protected WithEvents txtDate As Global.System.Web.UI.WebControls.TextBox
+    
     '''<summary>
     '''btnSave control.
     '''</summary>
@@ -111,7 +93,7 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''btnCancel control.
     '''</summary>
@@ -120,7 +102,7 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''chkComCode control.
     '''</summary>
@@ -129,7 +111,7 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents chkComCode As Global.System.Web.UI.WebControls.CheckBox
-
+    
     '''<summary>
     '''txtSearchUnit control.
     '''</summary>
@@ -138,7 +120,7 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtSearchUnit As Global.System.Web.UI.WebControls.TextBox
-
+    
     '''<summary>
     '''btnSearch control.
     '''</summary>
@@ -147,7 +129,7 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSearch As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''btnSearchCancel control.
     '''</summary>
@@ -156,7 +138,7 @@ Partial Public Class Conv_ProjManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents btnSearchCancel As Global.System.Web.UI.WebControls.Button
-
+    
     '''<summary>
     '''gvUnit control.
     '''</summary>

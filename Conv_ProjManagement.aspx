@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_ProjManagement.aspx.vb" Inherits="Test.Conv_ProjManagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Unit of Study
+    Project Management 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Unit Offering
@@ -14,50 +14,57 @@
                 <table width="100%">
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label2" runat="server" CssClass="LabelMenu" Text="Unit Code"></asp:Label>
-                    </td>
+                        Project Name</td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitCode" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtProjectName" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Unit Name"></asp:Label>
-                    </td>
+                        Project Description</td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
                         
-                        <asp:TextBox ID="txtUnitName" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtProjDesc" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         
                     </td>
                 </tr>
                     <tr>
                     <td align="right" width="47%">
-                        Description</td>
+                        Unit Id</td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitName0" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtunitId" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         </td>
                 </tr>
                     <tr>
                     <td align="right" width="47%">
-                        Credit</td>
+                        Date</td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtName" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox></td>
+                        <asp:TextBox ID="txtDate" runat="server" Width="171px" 
+                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                        </td>
+                    </tr>
+                    <tr>
+                    <td align="right" width="47%">
+                        </td>
+                    <td align="center" width="3%">
+                        </td>
+                    <td align="left" width="50%">
+                        &nbsp;</td>
                 </tr>
                     
                     <tr><td align="center" colspan="3"></td></tr>

@@ -14,50 +14,69 @@
                 <table width="100%">
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label2" runat="server" CssClass="LabelMenu" Text="Unit Code"></asp:Label>
-                    </td>
+                        Team Number</td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitCode" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtTeamNum" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Unit Name"></asp:Label>
-                    </td>
+                        Team Title</td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
                         
-                        <asp:TextBox ID="txtUnitName" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtTeamTitle" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         
                     </td>
                 </tr>
                     <tr>
-                    <td align="right" width="47%">
-                        Description</td>
-                    <td align="center" width="3%">
+                    <td align="right" valign="top" width="47%">
+                        Project Id</td>
+                    <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                        </td>
+                    </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitName0" runat="server" Width="171px" 
+                        
+                        <asp:TextBox ID="txtprojId" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                        </td>
+                        
+                    </td>
+                    </tr>
+                    <tr>
+                    <td align="right" valign="top" width="47%">
+                        Employee Enrol ID</td>
+                    <td align="center" valign="top" width="3%">
+                        <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
+                    </td>
+                    <td align="left" width="50%">
+                        
+                        <asp:TextBox ID="txtEnrolId" runat="server" Width="171px" 
+                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                        
+                    </td>
+                    </tr>
+                    <tr>
+                    <td align="right" width="47%">
+                        &nbsp;</td>
+                    <td align="center" width="3%">
+                        &nbsp;</td>
+                    <td align="left" width="50%">
+                        &nbsp;</td>
                 </tr>
                     <tr>
                     <td align="right" width="47%">
-                        Credit</td>
+                        &nbsp;</td>
                     <td align="center" width="3%">
-                        <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                        </td>
+                        &nbsp;</td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtName" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox></td>
+                        &nbsp;</td>
                 </tr>
                     
                     <tr><td align="center" colspan="3"></td></tr>

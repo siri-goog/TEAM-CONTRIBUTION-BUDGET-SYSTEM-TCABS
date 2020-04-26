@@ -14,53 +14,57 @@
                 <table width="100%">
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label2" runat="server" CssClass="LabelMenu" Text="Unit Code"></asp:Label>
-                    </td>
+                        Employee Id</td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitCode" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                        <asp:DropDownList ID="ddlEmpolyee" runat="server" AutoPostBack="true" 
+                            CssClass="DDSelect" Enabled="True" AppendDataBoundItems="true">
+                            <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                        </asp:DropDownList>
                     </td>
                 </tr>
-                <tr>
+                <%-- <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Unit Name"></asp:Label>
-                    </td>
+                         Name</td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
                         
-                        <asp:TextBox ID="txtUnitName" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                        <asp:Label ID="lblEmpName" runat="server" CssClass="LabelData"></asp:Label>
                         
                     </td>
-                </tr>
-                    <tr>
+                </tr> --%>
+                    <%-- <tr>
                     <td align="right" width="47%">
-                        Description</td>
+                        Role Description</td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitName0" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtRoleDesc" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         </td>
-                </tr>
+                </tr> --%>
                     <tr>
                     <td align="right" width="47%">
-                        Credit</td>
+                        Role </td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtName" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox></td>
+                        <asp:DropDownList ID="ddlRole" runat="server" AutoPostBack="true" 
+                            CssClass="DDSelect" Enabled="True" AppendDataBoundItems="true">
+                            <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                        </asp:DropDownList>
+                        </td>
                 </tr>
                     
-                    <tr><td align="center" colspan="3"></td></tr>
+                    <tr><td align="center" colspan="3">
+                        <br />
+                        </td></tr>
                     <tr>
                         <td align="center" colspan="3">
                             <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="Btn" />&nbsp;
@@ -87,13 +91,12 @@
                                     </td>
                                 </tr>--%>
                                 <tr>
-                                    <td align="right">
-                                        <asp:CheckBox ID="chkComCode" runat="server" AutoPostBack="true"
-                                            CssClass="LabelMenu" Text="Search by Unit Code" /></td>
-                                    <td align="center">:</td>
-                                    <td align="left">
-                                        <asp:TextBox ID="txtSearchUnit" runat="server" CssClass="textbox" 
-                                            Enabled="False"></asp:TextBox>
+                                    <td align="right" style="height: 40px">
+                                        Search By ID or Name</td>
+                                    <td align="center" style="height: 40px">:</td>
+                                    <td align="left" style="height: 40px">
+                                        <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox" 
+                                            Enabled="True"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr><td colspan="3">&nbsp;</td></tr>
@@ -111,54 +114,45 @@
 
         <tr>
             <td align="center" colspan="3">
-                <asp:GridView ID="gvUnit" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="ComCode" 
+                <asp:GridView ID="gvEmpDes" runat="server" AutoGenerateColumns="False" 
+                    DataKeyNames="empEnrolId" 
                     AllowPaging="True" CssClass="GridViewBodyStyle" 
                     EmptyDataText="---No Record---">
                     <Columns>
-                        <asp:BoundField HeaderText="Unit Code" DataField="UnitCode" ReadOnly="True" >
+                        <asp:BoundField HeaderText="Employee Id" DataField="empId" ReadOnly="True" >
 
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:BoundField>
 
-                        <asp:TemplateField HeaderText="Unit Name" SortExpression="ComName">
-                            <EditItemTemplate>
-                                <asp:Textbox ID="txtUnitName" runat="server" Text='<%# Bind("UnitName") %>' ></asp:Textbox>
-                           </EditItemTemplate>
+                        <asp:TemplateField HeaderText="Employee Name" SortExpression="empName">
                             <ItemTemplate>
-                                <asp:Label ID="lblUnitName" runat="server" Text='<%# Bind("UnitName") %>' Width="200px"></asp:Label>
+                                <asp:Label ID="lblEmpName" runat="server" Text='<%# Bind("empName") %>' Width="200px"></asp:Label>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
-                        <asp:TemplateField HeaderText="Description" SortExpression="UnitDesc">
+                        <asp:TemplateField HeaderText="Role" SortExpression="roleName">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtUnitDesc" runat="server" Text='<%# Bind("UnitDesc") %>' ></asp:Textbox>
+                                <asp:DropDownList ID="ddlRoleEdit" runat="server" AutoPostBack="True">
+                                    <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
+                                    <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
+                                    <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>
+                                    <asp:ListItem Value="Master">Master</asp:ListItem>
+                                    <asp:ListItem Value="PhD">PhD</asp:ListItem>
+                                </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblUnitDesc" runat="server" Text='<%# Bind("UnitDesc") %>' Width="250px"></asp:Label>
+                                <asp:Label ID="lblRole" runat="server" Text='<%# Bind("roleName") %>' Width="250px"></asp:Label>
                             </ItemTemplate>
                             <HeaderStyle Width="200px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Credit">
-                            <%--<EditItemTemplate>
-                                <asp:DropDownList ID="ddlHoldingID" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="AA">AA : Paper Holding</asp:ListItem>
-                                    <asp:ListItem Value="PP">PP : Power Holding</asp:ListItem>
-                                    <asp:ListItem Value="QS">QS : Other Holding</asp:ListItem>
-                                </asp:DropDownList>
-                           </EditItemTemplate>--%>
-                            <ItemTemplate>
-                                <asp:Label ID="lblCredit" runat="server" Text='<%# Bind("UnitCredit") %>' Width="100px"></asp:Label>
-                            </ItemTemplate>
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
-                        </asp:TemplateField>
-
-                        <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
+                        <%--<asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
+                        <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" >
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField> --%>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
                     <HeaderStyle CssClass="GridViewHeaderStyle" />

@@ -32,13 +32,13 @@ Partial Public Class Admin_EmpManagement
     Protected WithEvents Label8 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtUnitCode control.
+    '''txtemployeeId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitCode As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtemployeeId As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Label3 control.
@@ -59,13 +59,13 @@ Partial Public Class Admin_EmpManagement
     Protected WithEvents Label9 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtUnitName control.
+    '''txtempName control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtempName As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Label10 control.
@@ -77,31 +77,13 @@ Partial Public Class Admin_EmpManagement
     Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''txtUnitName0 control.
+    '''txtemailId control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents txtUnitName0 As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Label11 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtName control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtName As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtemailId As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSave control.
@@ -122,22 +104,13 @@ Partial Public Class Admin_EmpManagement
     Protected WithEvents btnCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''chkComCode control.
+    '''txtSearch control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents chkComCode As Global.System.Web.UI.WebControls.CheckBox
-
-    '''<summary>
-    '''txtSearchUnit control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtSearchUnit As Global.System.Web.UI.WebControls.TextBox
+    Protected WithEvents txtSearch As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''btnSearch control.
@@ -158,11 +131,11 @@ Partial Public Class Admin_EmpManagement
     Protected WithEvents btnSearchCancel As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
-    '''gvUnit control.
+    '''gvEmployee control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents gvUnit As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents gvEmployee As Global.System.Web.UI.WebControls.GridView
 End Class

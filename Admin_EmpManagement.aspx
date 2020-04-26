@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_EmpManagement.aspx.vb" Inherits="Test.Admin_EmpManagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Unit of Study
+    Employee Registeration
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
-    Unit Management
+    Employee Management
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table width="100%">
@@ -14,52 +14,55 @@
                 <table width="100%">
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label2" runat="server" CssClass="LabelMenu" Text="Unit Code"></asp:Label>
+                        <asp:Label ID="Label2" runat="server" CssClass="LabelMenu" Text="Employee Id"></asp:Label>
                     </td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitCode" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtemployeeId" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                        <asp:CompareValidator ControlToValidate ="txtemployeeId" runat ="server"
+                            ErrorMessage ="Please enter a number" Operator ="DataTypeCheck" Type ="Integer"></asp:CompareValidator>
+                        
                     </td>
                 </tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Unit Name"></asp:Label>
+                        <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Employee Name"></asp:Label>
                     </td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
                         
-                        <asp:TextBox ID="txtUnitName" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtempName" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         
                     </td>
                 </tr>
-                    <tr>
+                <tr>
                     <td align="right" width="47%">
-                        Description</td>
+                        Email </td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtUnitName0" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtemailId" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         </td>
                 </tr>
-                    <tr>
+                    <%--<tr>
                     <td align="right" width="47%">
-                        Credit</td>
+                        Password</td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtName" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtpass" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox></td>
-                </tr>
-                    
+                </tr>--%>
+
                     <tr><td align="center" colspan="3"></td></tr>
                     <tr>
                         <td align="center" colspan="3">
@@ -87,13 +90,14 @@
                                     </td>
                                 </tr>--%>
                                 <tr>
+
+                                    <h2 align = "center">Search and Edit Employee Details</h2>
                                     <td align="right">
-                                        <asp:CheckBox ID="chkComCode" runat="server" AutoPostBack="true"
-                                            CssClass="LabelMenu" Text="Search by Unit Code" /></td>
+                                        Employee Name or ID</td>
                                     <td align="center">:</td>
                                     <td align="left">
-                                        <asp:TextBox ID="txtSearchUnit" runat="server" CssClass="textbox" 
-                                            Enabled="False"></asp:TextBox>
+                                        <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox" 
+                                            Enabled="True"></asp:TextBox>
                                     </td>
                                 </tr>
                                 <tr><td colspan="3">&nbsp;</td></tr>
@@ -111,53 +115,39 @@
 
         <tr>
             <td align="center" colspan="3">
-                <asp:GridView ID="gvUnit" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="ComCode" 
+                <asp:GridView ID="gvEmployee" runat="server" AutoGenerateColumns="False" 
+                    DataKeyNames="empId" 
                     AllowPaging="True" CssClass="GridViewBodyStyle" 
                     EmptyDataText="---No Record---">
                     <Columns>
-                        <asp:BoundField HeaderText="Unit Code" DataField="UnitCode" ReadOnly="True" >
-
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        <asp:BoundField HeaderText="Empolyee ID" DataField="empId" ReadOnly="True" >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:BoundField>
 
-                        <asp:TemplateField HeaderText="Unit Name" SortExpression="ComName">
+                        <asp:TemplateField HeaderText="Employee Name" SortExpression="empName">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtUnitName" runat="server" Text='<%# Bind("UnitName") %>' ></asp:Textbox>
+                                <asp:Textbox ID="txtEmpName" runat="server" Text='<%# Bind("empName") %>' ></asp:Textbox>
                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblUnitName" runat="server" Text='<%# Bind("UnitName") %>' Width="200px"></asp:Label>
+                                <asp:Label ID="lblEmpName" runat="server" Text='<%# Bind("empName") %>' Width="200px"></asp:Label>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Description" SortExpression="UnitDesc">
+                        <asp:TemplateField HeaderText="Employee Email" SortExpression="empEmail">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtUnitDesc" runat="server" Text='<%# Bind("UnitDesc") %>' ></asp:Textbox>
-                            </EditItemTemplate>
+                                <asp:Textbox ID="txtEmpEmail" runat="server" Text='<%# Bind("empEmail") %>' ></asp:Textbox>
+                           </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblUnitDesc" runat="server" Text='<%# Bind("UnitDesc") %>' Width="250px"></asp:Label>
-                            </ItemTemplate>
-                            <HeaderStyle Width="200px" />
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
-                        </asp:TemplateField>
-
-                        <asp:TemplateField HeaderText="Credit">
-                            <%--<EditItemTemplate>
-                                <asp:DropDownList ID="ddlHoldingID" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="AA">AA : Paper Holding</asp:ListItem>
-                                    <asp:ListItem Value="PP">PP : Power Holding</asp:ListItem>
-                                    <asp:ListItem Value="QS">QS : Other Holding</asp:ListItem>
-                                </asp:DropDownList>
-                           </EditItemTemplate>--%>
-                            <ItemTemplate>
-                                <asp:Label ID="lblCredit" runat="server" Text='<%# Bind("UnitCredit") %>' Width="100px"></asp:Label>
+                                <asp:Label ID="lblEmpEmail" runat="server" Text='<%# Bind("empEmail") %>' Width="200px"></asp:Label>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
+                        <asp:CommandField ShowEditButton="True" >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
 
-                        <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        <asp:CommandField ShowDeleteButton="True"  >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
