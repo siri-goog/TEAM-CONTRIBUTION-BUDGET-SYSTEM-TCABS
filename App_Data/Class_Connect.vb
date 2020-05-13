@@ -64,9 +64,12 @@ Public Class Class_Connect
                     cmd.Transaction = T1
                 End If
                 X = cmd.ExecuteNonQuery
+                resultMsg = cmd.Parameters.Item("msg").Value.ToString
                 cmd.Parameters.Clear()
+
             Catch ex As Exception
                 m_ErrorString = ex.Message
+                cmd.Parameters.Clear()
                 Return -1
             End Try
             Return X
@@ -83,13 +86,14 @@ Public Class Class_Connect
     End Sub
 End Class
 Public Module Module1
-    Public StrDb As String = "Password=qweiop93;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost; Allow User Variables=True"
+    Public StrDb As String = "Password=Hangcross99;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost; Allow User Variables=True"
 
     Public Myconn As MySqlConnection
     Public M1 As New Class_Connect
     Public SQL(20) As String
     Public DT As DataTable
     Public m_ErrorString As String
+    Public resultMsg As String
     Public T1 As MySqlTransaction
     Public m_Tran As Boolean = False
     Public MessError As String = ""
