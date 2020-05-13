@@ -57,13 +57,13 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="right" valign="top" width="47%">
+                    <td align="right" valign="top" width="47%" style="height: 32px">
                         <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Unit Name"></asp:Label>
                     </td>
-                    <td align="center" valign="top" width="3%">
+                    <td align="center" valign="top" width="3%" style="height: 32px">
                         <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
-                    <td align="left" width="50%">
+                    <td align="left" width="50%" style="height: 32px">
                         <asp:Label ID="lblUnitName" runat="server" CssClass="LabelData"></asp:Label>
                     </td>
                 </tr>

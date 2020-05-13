@@ -41,6 +41,15 @@ Partial Public Class Admin_UnitManagement
     Protected WithEvents txtUnitCode As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
+    '''UnitCodeValidator control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents UnitCodeValidator As Global.System.Web.UI.WebControls.RegularExpressionValidator
+
+    '''<summary>
     '''Label3 control.
     '''</summary>
     '''<remarks>

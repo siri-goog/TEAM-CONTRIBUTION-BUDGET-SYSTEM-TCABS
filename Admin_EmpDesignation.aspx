@@ -134,11 +134,7 @@
                         <asp:TemplateField HeaderText="Role" SortExpression="roleName">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlRoleEdit" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
-                                    <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
-                                    <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>
-                                    <asp:ListItem Value="Master">Master</asp:ListItem>
-                                    <asp:ListItem Value="PhD">PhD</asp:ListItem>
+                                  <asp:ListItem Value="">[--Please Select--]</asp:ListItem>
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>

@@ -49,7 +49,7 @@
                             </td>
                         <td align="left" width="50%">
                             <asp:DropDownList ID="ddlStudentLevel" runat="server" AutoPostBack="true">
-                                <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                                <asp:ListItem Value="none">[--Please Select--]</asp:ListItem>
                                 <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
                                 <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
                                 <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>

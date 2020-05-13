@@ -1,4 +1,6 @@
-﻿Public Class Admin_StuManagement
+﻿Imports MySql.Data.MySqlClient
+
+Public Class Admin_StuManagement
     Inherits System.Web.UI.Page
 
 #Region "check"
@@ -22,9 +24,19 @@
             Me.txtStuName.Focus()
             alert("Please add student name")
             chk = 0
-        ElseIf ddlStudentLevel.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlStudentLevel.SelectedItem.Value = "none" Then
             Me.ddlStudentLevel.Focus()
             alert("Please select student level")
+            chk = 0
+        End If
+
+        If IsNumeric(txtStuID.Text) Then
+            If txtStuID.Text.Length <> 9 Then
+                alert("Student Id must has 9 digits")
+                chk = 0
+            End If
+        Else
+            alert("Only 9 digits allowed for student Id")
             chk = 0
         End If
 
@@ -66,24 +78,38 @@
             Exit Sub
         End If
 
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim stuID As Integer = Trim(Me.txtStuID.Text)
         Dim stuName As String = Trim(Me.txtStuName.Text)
         Dim stuLevel As String = ddlStudentLevel.SelectedValue.ToString()
         Dim regDate As Date = Date.Today()
 
         cmd.CommandText = "ADD_STUDENT;"
-        cmd.Parameters.AddWithValue("@stuId", stuID)
-        cmd.Parameters.AddWithValue("@stuName", stuName)
-        cmd.Parameters.AddWithValue("@stulevel", stuLevel)
-        M1.Execute(SQL(0))
+        cmd.Parameters.AddWithValue("@pstuId", stuID)
+        cmd.Parameters.AddWithValue("@pstuName", stuName)
+        cmd.Parameters.AddWithValue("@pstulevel", stuLevel)
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
         Try
-            alert("Data entered successfully.")
-            txtStuID.Text = ""
-            txtStuName.Text = ""
-            ddlStudentLevel.SelectedIndex() = 0
-            loaddata()
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data entered successfully.")
+                txtStuID.Text = ""
+                txtStuName.Text = ""
+                ddlStudentLevel.SelectedIndex() = 0
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
         Catch ex As Exception
             alert("Data entered fail, please Try again.")
+            cmd.Parameters.Clear()
+            resultMsg = ""
         End Try
     End Sub
 
@@ -120,9 +146,14 @@
 
     '--click update
     Protected Sub gvStudent_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvStudent.RowUpdating
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim index As Integer = e.RowIndex
         Dim stuid As String = Me.gvStudent.DataKeys(index).Values(0).ToString()
         Dim stuname As TextBox = CType(gvStudent.Rows(e.RowIndex).FindControl("txtStuName"), TextBox)
+        If stuname.Text = "" Then
+            alert("please enter updated student Name")
+            Exit Sub
+        End If
         Dim stulevel As DropDownList = CType(gvStudent.Rows(e.RowIndex).FindControl("ddlStuLevel"), DropDownList)
 
         Dim stunameStr As String = stuname.Text
@@ -132,23 +163,59 @@
         cmd.Parameters.AddWithValue("@pstuId", stuid)
         cmd.Parameters.AddWithValue("@pstuName", stunameStr)
         cmd.Parameters.AddWithValue("@pstulevel", stulevelStr)
-        M1.Execute(SQL(0))
-        alert("Data edited successfully")
-        gvStudent.EditIndex = -1
-        loaddata()
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data edited successfully")
+                gvStudent.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to update, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+
     End Sub
 
     '--click delete
     Protected Sub gvStudent_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvStudent.RowDeleting
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim index As Integer = e.RowIndex
         Dim stuid As String = Me.gvStudent.DataKeys(index).Values(0).ToString()
 
         cmd.CommandText = "DELETE_STUDENT;"
         cmd.Parameters.AddWithValue("@pstuId", stuid)
-        M1.Execute(SQL(0))
-        alert("Data edited successfully")
-        gvStudent.EditIndex = -1
-        loaddata()
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data deleted successfully")
+                gvStudent.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to delete, please Try again.")
+            cmd.Parameters.Clear()
+            resultMsg = ""
+        End Try
     End Sub
 
     '--gridview page
