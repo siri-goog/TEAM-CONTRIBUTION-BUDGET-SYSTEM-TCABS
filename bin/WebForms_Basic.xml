@@ -37,15 +37,6 @@ Test
  Returns the Asp log object.
  </summary>
 </member>
-<member name="F:Test.Admin_EmpDesignation._Label2">
-<summary>
-Label2 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
 <member name="F:Test.Admin_EmpDesignation._Label8">
 <summary>
 Label8 control.
@@ -55,54 +46,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._txtUnitCode">
+<member name="F:Test.Admin_EmpDesignation._ddlEmpolyee">
 <summary>
-txtUnitCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._Label3">
-<summary>
-Label3 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._Label9">
-<summary>
-Label9 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._txtUnitName">
-<summary>
-txtUnitName control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._Label10">
-<summary>
-Label10 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._txtUnitName0">
-<summary>
-txtUnitName0 control.
+ddlEmpolyee control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -118,9 +64,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._txtName">
+<member name="F:Test.Admin_EmpDesignation._ddlRole">
 <summary>
-txtName control.
+ddlRole control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -145,18 +91,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._chkComCode">
+<member name="F:Test.Admin_EmpDesignation._txtSearch">
 <summary>
-chkComCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._txtSearchUnit">
-<summary>
-txtSearchUnit control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -181,9 +118,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._gvUnit">
+<member name="F:Test.Admin_EmpDesignation._gvEmpDes">
 <summary>
-gvUnit control.
+gvEmpDes control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -208,9 +145,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._txtUnitCode">
+<member name="F:Test.Admin_EmpManagement._txtemployeeId">
 <summary>
-txtUnitCode control.
+txtemployeeId control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -235,9 +172,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._txtUnitName">
+<member name="F:Test.Admin_EmpManagement._txtempName">
 <summary>
-txtUnitName control.
+txtempName control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -253,27 +190,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._txtUnitName0">
+<member name="F:Test.Admin_EmpManagement._txtemailId">
 <summary>
-txtUnitName0 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpManagement._Label11">
-<summary>
-Label11 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpManagement._txtName">
-<summary>
-txtName control.
+txtemailId control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -298,18 +217,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._chkComCode">
+<member name="F:Test.Admin_EmpManagement._txtSearch">
 <summary>
-chkComCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpManagement._txtSearchUnit">
-<summary>
-txtSearchUnit control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -334,9 +244,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._gvUnit">
+<member name="F:Test.Admin_EmpManagement._gvEmployee">
 <summary>
-gvUnit control.
+gvEmployee control.
 </summary>
 <remarks>
 Auto-generated field.

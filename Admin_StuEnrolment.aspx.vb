@@ -10,12 +10,39 @@
         gvStudent.DataSource = DT_Student
         gvStudent.DataBind()
         ddlYear.Items.Clear()
-        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", 0))
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", 0))
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", 0))
     End Sub
+
+    Function check() As Boolean
+        Dim chk As String = 1
+
+        If ddlYear.SelectedItem.Value = 0 Then
+            Me.ddlYear.Focus()
+            alert("Please select year")
+            chk = 0
+        ElseIf ddlSemester.SelectedItem.Value = 0 Then
+            Me.ddlSemester.Focus()
+            alert("Please select semester")
+            chk = 0
+        ElseIf ddlUnitCode.SelectedItem.Value = 0 Then
+            Me.ddlUnitCode.Focus()
+            alert("Please select unit")
+            chk = 0
+        ElseIf Me.gvStudent.Rows.Count = 0 Then
+            alert("Please search and select student to enrol")
+            chk = 0
+        End If
+
+        If chk = 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 
     '--load Year for dropdown
     Sub loadYear()
@@ -58,7 +85,7 @@
     Protected Sub ddlYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlYear.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", 0))
         SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
@@ -71,7 +98,7 @@
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", 0))
         SQL(0) = "select unitId,offUnitId from offeredunit where offUnitYear = " & selectedYear & " and offUnitSem = " & selectedSem
         DT = M1.GetDatatable(SQL(0))
         ddlUnitCode.DataSource = DT
@@ -134,7 +161,13 @@
     End Sub
 
     Protected Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-
+        If check() = False Then
+            Exit Sub
+        End If
+        Dim message As String
+        Dim success = ""
+        Dim failure = ""
+        Dim newLine = "\r\n"
         For Each GVRow As GridViewRow In Me.gvStudent.Rows
             Dim K1 As DataKey = Me.gvStudent.DataKeys(GVRow.RowIndex)
             Dim stuId As String = K1(0)
@@ -146,16 +179,37 @@
 
             Try
                 M1.Execute(SQL(0))
-                alert("Data entered successfully.")
-
+                If m_ErrorString = "" Then
+                    success += stuId + newLine
+                Else
+                    failure += m_ErrorString + newLine
+                    m_ErrorString = ""
+                    cmd.Parameters.Clear()
+                End If
             Catch ex As Exception
                 alert("Data entered fail, please Try again.")
             End Try
         Next
-
+        If success = "" Then
+            success = " - "
+        End If
+        If failure = "" Then
+            failure = " - "
+        End If
+        message = "Successful enrolment student Id :" + newLine + success
+        message += newLine + "Student already enrol this unit :" + newLine + failure
+        alert(message)
         ClearValue()
+        pnQuerySearch.Visible = False
         loadYear()
     End Sub
+
+    Protected Sub btnCancelSave_Click(sender As Object, e As EventArgs) Handles btnCancelSave.Click
+        ClearValue()
+        pnQuerySearch.Visible = False
+    End Sub
+
+
 
 #End Region
 

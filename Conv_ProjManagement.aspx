@@ -143,6 +143,9 @@
                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
                     <HeaderStyle CssClass="GridViewHeaderStyle" />
