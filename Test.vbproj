@@ -153,8 +153,10 @@
   <ItemGroup>
     <Content Include="Admin_EmpDesignation.aspx" />
     <Content Include="Admin_EmpManagement.aspx" />
+    <Content Include="Conv_ProjTask.aspx" />
     <Content Include="Conv_ProjManagement.aspx" />
-    <Content Include="Conv_setProjectRole.aspx" />
+    <Content Include="Conv_ProjRole.aspx" />
+    <Content Include="Conv_TeamEnrolment.aspx" />
     <Content Include="Conv_TeamFormation.aspx" />
     <Content Include="Admin_StuEnrolment.aspx" />
     <Content Include="Admin_UnitManagement.aspx" />
@@ -165,6 +167,12 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="login.aspx" />
+    <Content Include="dashboard.aspx" />
+    <Content Include="Student_MeetingAttendee.aspx" />
+    <Content Include="Student_MeetingMinutes.aspx" />
+    <Content Include="Student_MeetingAgenda.aspx" />
+    <Content Include="Student_MeetingSetup.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -177,6 +185,7 @@
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="icons\icon_carlendar.gif" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -205,6 +214,8 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
+    <Content Include="Student_TaskAccept.aspx" />
+    <Content Include="Student_TaskSubmit.aspx" />
     <Content Include="Test.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -224,7 +235,15 @@
       <DependentUpon>Admin_EmpManagement.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="App_Data\ClassFunction.vb" />
     <Compile Include="App_Data\Class_Connect.vb" />
+    <Compile Include="Conv_ProjTask.aspx.designer.vb">
+      <DependentUpon>Conv_ProjTask.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Conv_ProjTask.aspx.vb">
+      <DependentUpon>Conv_ProjTask.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Conv_ProjManagement.aspx.designer.vb">
       <DependentUpon>Conv_ProjManagement.aspx</DependentUpon>
     </Compile>
@@ -232,11 +251,18 @@
       <DependentUpon>Conv_ProjManagement.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
-    <Compile Include="Conv_setProjectRole.aspx.designer.vb">
-      <DependentUpon>Conv_setProjectRole.aspx</DependentUpon>
+    <Compile Include="Conv_ProjRole.aspx.designer.vb">
+      <DependentUpon>Conv_ProjRole.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Conv_setProjectRole.aspx.vb">
-      <DependentUpon>Conv_setProjectRole.aspx</DependentUpon>
+    <Compile Include="Conv_ProjRole.aspx.vb">
+      <DependentUpon>Conv_ProjRole.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Conv_TeamEnrolment.aspx.designer.vb">
+      <DependentUpon>Conv_TeamEnrolment.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Conv_TeamEnrolment.aspx.vb">
+      <DependentUpon>Conv_TeamEnrolment.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Conv_TeamFormation.aspx.designer.vb">
@@ -276,6 +302,48 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="login.aspx.designer.vb">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.vb">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="dashboard.aspx.designer.vb">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard.aspx.vb">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Student_MeetingAttendee.aspx.designer.vb">
+      <DependentUpon>Student_MeetingAttendee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student_MeetingAttendee.aspx.vb">
+      <DependentUpon>Student_MeetingAttendee.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Student_MeetingMinutes.aspx.designer.vb">
+      <DependentUpon>Student_MeetingMinutes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student_MeetingMinutes.aspx.vb">
+      <DependentUpon>Student_MeetingMinutes.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Student_MeetingAgenda.aspx.designer.vb">
+      <DependentUpon>Student_MeetingAgenda.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student_MeetingAgenda.aspx.vb">
+      <DependentUpon>Student_MeetingAgenda.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Student_MeetingSetup.aspx.designer.vb">
+      <DependentUpon>Student_MeetingSetup.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student_MeetingSetup.aspx.vb">
+      <DependentUpon>Student_MeetingSetup.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -304,6 +372,20 @@
     <Compile Include="Site.Master.vb">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student_TaskAccept.aspx.designer.vb">
+      <DependentUpon>Student_TaskAccept.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student_TaskAccept.aspx.vb">
+      <DependentUpon>Student_TaskAccept.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Student_TaskSubmit.aspx.designer.vb">
+      <DependentUpon>Student_TaskSubmit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Student_TaskSubmit.aspx.vb">
+      <DependentUpon>Student_TaskSubmit.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Test.aspx.designer.vb">
       <DependentUpon>Test.aspx</DependentUpon>

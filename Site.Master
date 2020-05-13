@@ -460,7 +460,7 @@
     <script src="js/demo/chart-pie-demo.js"></script>
 
     <footer>
-        <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>
+        <p>&copy; <%: DateTime.Now.Year %> - TCABS Application</p>
     </footer>
 </body>
 </html>
