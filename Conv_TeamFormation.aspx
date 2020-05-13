@@ -48,15 +48,12 @@
                 <tr><td colspan="3">&nbsp;</td></tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        Team Number</td>
                         <asp:Label ID="Label2" runat="server" CssClass="LabelMenu" Text="Project"></asp:Label>
                     </td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtTeamNum" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         <asp:DropDownList ID="ddlProject" runat="server" AutoPostBack="true" 
                             CssClass="DDSelect" Enabled="True" AppendDataBoundItems="true">
                             <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
@@ -65,64 +62,23 @@
                 </tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
-                        Team Title</td>
                         <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Team No"></asp:Label>
                     </td>
                     <td align="center" valign="top" width="3%">
                         <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                     </td>
                     <td align="left" width="50%">
-                        
-                        <asp:TextBox ID="txtTeamTitle" runat="server" Width="171px" 
                         <asp:TextBox ID="txtNo" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                     </td>
                 </tr>
-                    <tr>
-                    <td align="right" valign="top" width="47%">
-                        Project Id</td>
-                    <td align="center" valign="top" width="3%">
                 <tr>
                     <td align="right" width="47%">
                         Team Name</td>
                     <td align="center" width="3%">
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                    </td>
+                        </td>
                     <td align="left" width="50%">
-                        
-                        <asp:TextBox ID="txtprojId" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                        
-                    </td>
-                    </tr>
-                    <tr>
-                    <td align="right" valign="top" width="47%">
-                        Employee Enrol ID</td>
-                    <td align="center" valign="top" width="3%">
-                        <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                    </td>
-                    <td align="left" width="50%">
-                        
-                        <asp:TextBox ID="txtEnrolId" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                        
-                    </td>
-                    </tr>
-                    <tr>
-                    <td align="right" width="47%">
-                        &nbsp;</td>
-                    <td align="center" width="3%">
-                        &nbsp;</td>
-                    <td align="left" width="50%">
-                        &nbsp;</td>
-                </tr>
-                    <tr>
-                    <td align="right" width="47%">
-                        &nbsp;</td>
-                    <td align="center" width="3%">
-                        &nbsp;</td>
-                    <td align="left" width="50%">
-                        &nbsp;</td>
                         <asp:TextBox ID="txtName" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                     </td>

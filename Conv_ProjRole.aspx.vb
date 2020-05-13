@@ -97,14 +97,10 @@
     End Sub
 
     Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
-        Dim selectedYear = ddlYear.SelectedItem.Value
-        Dim selectedSem = ddlSemester.SelectedItem.Value
+        Dim selectedUnit = ddlUnitCode.SelectedItem.Value
         ddlProject.Items.Clear()
         ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", ""))
-        SQL(0) = " Select z.projId, z.projName " _
-                & " From project z " _
-                & " join offeredUnit a on z.offUnitId = a.offUnitId " _
-                & " where a.offUnitYear = " & selectedYear & " And a.offUnitSem = " & selectedSem
+        SQL(0) = " Select projId, projName from project where offUnitId = " & selectedUnit
         DT = M1.GetDatatable(SQL(0))
         ddlProject.DataSource = DT
         ddlProject.DataTextField = "projName"

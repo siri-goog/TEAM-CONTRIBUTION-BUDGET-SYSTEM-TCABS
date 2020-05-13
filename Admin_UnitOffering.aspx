@@ -84,14 +84,14 @@
                     </tr>
                     <tr>
                         <td align="right" valign="top" width="47%">
-                            <asp:Label ID="Label5" runat="server" CssClass="LabelMenu" Text="Start Date"></asp:Label>
+                            <asp:Label ID="Label5" runat="server" CssClass="LabelMenu" Text="Start Date" ></asp:Label>
                         </td>
                         <td align="center" valign="top" width="3%">
                             <asp:Label ID="Label6" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                         <td align="left" width="50%">
                             <asp:TextBox ID="txtStartDate" runat="server" Width="171px" 
-                                Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                                Font-Size="8pt" CssClass="textbox" readonly = "true"></asp:TextBox>
                             <asp:ImageButton ID="IMbStartDate" runat="server" ImageUrl="~/icons/icon_carlendar.gif" />
                         </td>
                     </tr>
@@ -198,39 +198,60 @@
 
                         <asp:TemplateField HeaderText="Year" SortExpression="offUnitYear">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtYear" runat="server" Text='<%# Bind("offUnitYear") %>' ></asp:Textbox>
+                                <asp:DropDownList ID="ddlYearEdit" runat="server" AutoPostBack="true" 
+                                CssClass="DDSelect" Enabled="True" AppendDataBoundItems="true">
+                                <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                                </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblYear" runat="server" Text='<%# Bind("offUnitYear") %>' Width="250px"></asp:Label>
+                                <asp:Label ID="lblYear" runat="server" Text='<%# Bind("offUnitYear") %>' Width="80"></asp:Label>
                             </ItemTemplate>
-                            <HeaderStyle Width="200px" />
+                            <HeaderStyle Width="80px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
                         
                         <asp:TemplateField HeaderText="Semester" SortExpression="offUnitSem">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtSem" runat="server" Text='<%# Bind("offUnitSem") %>' ></asp:Textbox>
+                                <asp:DropDownList ID="ddlSemesterEdit" runat="server" AutoPostBack="true" 
+                                CssClass="DDSelect" Enabled="True" AppendDataBoundItems="true">
+                                <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                                <asp:ListItem Value="1">1</asp:ListItem>
+                                <asp:ListItem Value="2">2</asp:ListItem>
+                            </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblSem" runat="server" Text='<%# Bind("offUnitSem") %>' Width="250px"></asp:Label>
+                                <asp:Label ID="lblSem" runat="server" Text='<%# Bind("offUnitSem") %>' Width="50px"></asp:Label>
                             </ItemTemplate>
-                            <HeaderStyle Width="200px" />
+                            <HeaderStyle Width="50px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Convenor" SortExpression="empEnrolId">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtConv" runat="server" Text='<%# Bind("EmpName") %>' ></asp:Textbox>
+                                <asp:DropDownList ID="ddlConvenorEdit" runat="server" AutoPostBack="true" 
+                                CssClass="DDSelect" Enabled="true" AppendDataBoundItems="true">
+                                <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                            </asp:DropDownList>
                            </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblConv" runat="server" Text='<%# Bind("EmpName") %>' Width="200px"></asp:Label>
+                                <asp:Label ID="lblConv" runat="server" Text='<%# Bind("EmpName") %>' Width="100px"></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Start date" SortExpression="offUnitStart">
+                         
+                            <ItemTemplate>
+                                <asp:Label ID="lbloffUnitStart" runat="server" Text='<%# Bind("dateStr") %>' Width="100px"></asp:Label>
                             </ItemTemplate>
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
-                        <%-- <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
+                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
-                        </asp:CommandField> --%>
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
                     <HeaderStyle CssClass="GridViewHeaderStyle" HorizontalAlign="Center" VerticalAlign="Top"/>

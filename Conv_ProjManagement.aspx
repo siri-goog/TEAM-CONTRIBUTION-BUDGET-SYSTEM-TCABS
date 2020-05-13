@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_ProjManagement.aspx.vb" Inherits="Test.Conv_ProjManagement" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Project Management 
     Project
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
@@ -10,41 +9,6 @@
     <table width="100%">
         <tr><td align="center" colspan="5" height="20px"></td></tr>
         <tr>
-            <td align="center">
-                <table width="100%">
-                <tr>
-                    <td align="right" valign="top" width="47%">
-                        Project Name</td>
-                    <td align="center" valign="top" width="3%">
-                        <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                    </td>
-                    <td align="left" width="50%">
-                        <asp:TextBox ID="txtProjectName" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right" valign="top" width="47%">
-                        Project Description</td>
-                    <td align="center" valign="top" width="3%">
-                        <asp:Label ID="Label9" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                    </td>
-                    <td align="left" width="50%">
-                        
-                        <asp:TextBox ID="txtProjDesc" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                        
-                    </td>
-                </tr>
-                    <tr>
-                    <td align="right" width="47%">
-                        Unit Id</td>
-                    <td align="center" width="3%">
-                        <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                        </td>
-                    <td align="left" width="50%">
-                        <asp:TextBox ID="txtunitId" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
             <td align="center" colspan="5">
                 <table>
                     <tr>
@@ -83,25 +47,6 @@
             <td colspan="5" align="center">
                 <table>
                     <tr>
-                    <td align="right" width="47%">
-                        Date</td>
-                    <td align="center" width="3%">
-                        <asp:Label ID="Label11" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                        </td>
-                    <td align="left" width="50%">
-                        <asp:TextBox ID="txtDate" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
-                        </td>
-                    </tr>
-                    <tr>
-                    <td align="right" width="47%">
-                        </td>
-                    <td align="center" width="3%">
-                        </td>
-                    <td align="left" width="50%">
-                        &nbsp;</td>
-                </tr>
-                    
                         <td align="right" valign="top" width="47%">
                             <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Project Name"></asp:Label>
                         </td>
@@ -197,6 +142,9 @@
 
                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />

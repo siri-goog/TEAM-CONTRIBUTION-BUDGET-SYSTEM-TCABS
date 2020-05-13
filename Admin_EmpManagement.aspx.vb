@@ -1,13 +1,36 @@
-﻿Imports System.Data
-Imports System.Configuration
-Imports MySql.Data.MySqlClient
-Imports MySql.Data
-
+﻿Imports MySql.Data.MySqlClient
 
 Public Class Admin_EmpManagement
     Inherits System.Web.UI.Page
 
+    Function check() As Boolean
+        Dim chk As String = 1
 
+        If txtemployeeId.Text = "" Then
+            Me.txtemployeeId.Focus()
+            alert("Please Enter Employee ID")
+            chk = 0
+        ElseIf txtempName.Text = "" Then
+            Me.txtempName.Focus()
+            alert("Please Enter Employee Name")
+            chk = 0
+        ElseIf txtemailId.Text = "" Then
+            Me.txtemailId.Focus()
+            alert("Please Enter Email")
+            chk = 0
+        End If
+
+        If Not (IsNumeric(txtemployeeId.Text)) Then
+            alert("Employee ID must be number")
+            chk = 0
+        End If
+
+        If chk = 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
     Private Sub alert(ByVal scriptalert As String)
         Dim script As String = ""
         script = "alert('" + scriptalert + "');"
@@ -27,51 +50,15 @@ Public Class Admin_EmpManagement
         End If
     End Sub
 
-    Private Sub alert(ByVal scriptalert As String)
-        Dim script As String = ""
-        script = "alert('" + scriptalert + "');"
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
-    End Sub
-
-
-    'Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-    '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-    '    Dim con As New MySqlConnection(constr)
-    '    Dim cmd As New MySqlCommand
-
-    '    cmd.Connection = con
-    '    cmd.CommandText = "SP_ADD_EMPLOYEE"
-    '    cmd.CommandType = CommandType.StoredProcedure
-    '    cmd.Parameters.AddWithValue("@pempId", Convert.ToInt64(txtemployeeId.Text))
-    '    cmd.Parameters.AddWithValue("@pempName", txtempName.Text)
-    '    cmd.Parameters.AddWithValue("@pempuser", txtemailId.Text)
-    '    cmd.Parameters.AddWithValue("@pempPass", txtpass.Text)
-
-    '    Try
-
-    '        con.Open()
-
-    '        If cmd.ExecuteScalar() IsNot " " Then
-    '            Dim message As String = cmd.ExecuteScalar.ToString()
-    '            alert(message)
-    '        Else
-
-    '            alert("Data inserted successfully")
-    '        End If
-
-    '    Catch er As MySqlException
-    '        MsgBox(er.Message)
-    '    Finally
-    '        con.Close()
-    '    End Try
-
-    'End Sub
 #End Region
 
 #Region "save"
 
     Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-
+        If check() = False Then
+            Exit Sub
+        End If
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim pempId As Integer = Trim(Me.txtemployeeId.Text)
         Dim pempName As String = Me.txtempName.Text
         Dim pemail As String = txtemailId.Text
@@ -80,59 +67,32 @@ Public Class Admin_EmpManagement
         cmd.Parameters.AddWithValue("@pempId", pempId)
         cmd.Parameters.AddWithValue("@pempName", pempName)
         cmd.Parameters.AddWithValue("@pempEmail", pemail)
-        M1.Execute(SQL(0))
+
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
         Try
-            alert("Data entered successfully.")
-            txtemployeeId.Text = ""
-            txtempName.Text = ""
-            txtemailId.Text = ""
-            loaddata()
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data entered successfully.")
+                txtemployeeId.Text = ""
+                txtempName.Text = ""
+                txtemailId.Text = ""
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
         Catch ex As Exception
             alert("Data entered fail, please Try again.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
         End Try
+
     End Sub
-
-<<<<<<< HEAD
-
-    'Private Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-    '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-    '    Using con As New MySqlConnection(constr)
-
-
-    '        'Using cmd As New MySqlCommand("SP_ADD_EMPLOYEE", con)
-
-    '        Dim cmd As New MySqlCommand
-    '        cmd.Connection = con
-    '        cmd.CommandText = "SP_SEARCH_EMPLOYEE"
-    '        cmd.CommandType = CommandType.StoredProcedure
-    '        cmd.Parameters.AddWithValue("@pempId", Convert.ToInt64(txtSearchEmpId.Text))
-
-
-    '        Try
-    '            con.Open()
-    '            If cmd.ExecuteScalar() Is " " Then
-    '                If cmd.ExecuteNonQuery < 0 Then
-    '                    Dim message As String = cmd.ExecuteScalar.ToString()
-    '                    alert(message)
-    '                End If
-    '            Else
-    '                Dim sda As New MySqlDataAdapter(cmd)
-    '                Dim dt As New DataTable()
-    '                sda.Fill(dt)
-    '                gvEmployee.DataSource = dt
-    '                gvEmployee.DataBind()
-
-    '            End If
-
-    '        Catch er As MySqlException
-    '            alert(er.Message)
-    '        Finally
-    '            con.Close()
-    '        End Try
-
-    '    End Using
-
-    'End Sub
 
     Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
         txtemployeeId.Text = ""
@@ -153,90 +113,6 @@ Public Class Admin_EmpManagement
         gvEmployee.DataBind()
     End Sub
 
-
-    'Protected Sub gvUnit_SelectedIndexChanged(sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvEmployee.SelectedIndexChanged
-    '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-    '    Using con As New MySqlConnection(constr)
-    '        Dim index As Integer = e.RowIndex
-    '        'Dim stuid As String = Me.gvUnit.DataKeys(index).Values(0).ToString()
-    '        'Dim stuname As TextBox = CType(gvUnit.Rows(e.RowIndex).FindControl("txtStuName"), TextBox)
-    '        'Dim stulevel As DropDownList = CType(gvUnit.Rows(e.RowIndex).FindControl("ddlStuLevel"), DropDownList)
-
-    '        'Dim stunameStr As String = stuname.Text
-    '        'Dim stulevelStr As String = stulevel.SelectedValue.ToString()
-    '        Dim cmd As New MySqlCommand
-    '        cmd.Connection = con
-    '        cmd.CommandText = "SP_UPDATE_EMPLOYEE;"
-    '        cmd.Parameters.AddWithValue("@pempId", Convert.ToInt64(txtSearch.Text))
-    '        cmd.Parameters.AddWithValue("@txtEmailId", txtempName.Text)
-    '        cmd.Parameters.AddWithValue("@pempuser", txtemailId.Text)
-    '        con.Open()
-
-    '        If cmd.ExecuteScalar() Is " " Then
-    '            If cmd.ExecuteNonQuery < 0 Then
-    '                Dim message As String = cmd.ExecuteScalar.ToString()
-    '                alert(message)
-    '            End If
-    '        Else
-    '            alert("Data edited successfully")
-    '            gvEmployee.EditIndex = -1
-
-    '            'Dim sda As New MySqlDataAdapter(cmd)
-    '            'Dim dt As New DataTable()
-    '            'sda.Fill(dt)
-    '            'gvUnit.DataSource = dt
-    '            'gvUnit.DataBind()
-    '            ''Response.Write("<script>alert('Data inserted successfully')</script>")
-    '            ''MsgBox("Data inserted successfully")
-    '        End If
-
-    '        'M1.Execute(SQL(0))
-
-    '        'loaddata()
-
-    '        ''Using cmd As New MySqlCommand("SP_ADD_EMPLOYEE", con)
-
-    '        'Dim cmd As New MySqlCommand
-    '        'cmd.Connection = con
-    '        'cmd.CommandText = "SP_UPDATE_EMPLOYEE"
-    '        'cmd.CommandType = CommandType.StoredProcedure
-    '        'cmd.Parameters.AddWithValue("@pempId", Convert.ToInt64(txtSearchEmpId.Text))
-    '        'cmd.Parameters.AddWithValue("@txtEmailId", txtempName.Text)
-    '        ''cmd.Parameters.AddWithValue("@pempuser", txtemailId.Text)
-    '        ''cmd.Parameters.AddWithValue("@pempPass", txtpass.Text)
-
-    '        'Try
-    '        '    'Dim myreader As MySqlDataAdapter = cmd.ExecuteScalar()
-    '        '    con.Open()
-    '        '    'If cmd.ExecuteNonQuery() = 0 Then
-    '        '    'Response.Write("<script>alert('Data inserted successfully')</script>")
-    '        '    'Else
-
-    '        '    If cmd.ExecuteScalar() Is " " Then
-    '        '        If cmd.ExecuteNonQuery < 0 Then
-    '        '            Dim message As String = cmd.ExecuteScalar.ToString()
-    '        '            alert(message)
-    '        '        End If
-    '        '    Else
-    '        '        alert("Employee Details Updated successfully")
-
-    '        '        'Dim sda As New MySqlDataAdapter(cmd)
-    '        '        'Dim dt As New DataTable()
-    '        '        'sda.Fill(dt)
-    '        '        'gvUnit.DataSource = dt
-    '        '        'gvUnit.DataBind()
-    '        '        ''Response.Write("<script>alert('Data inserted successfully')</script>")
-    '        '        ''MsgBox("Data inserted successfully")
-    '        '    End If
-
-    '        'Catch er As MySqlException
-    '        '    MsgBox(er.Message)
-    '        'Finally
-    '        '    con.Close()
-    '        'End Try
-    '    End Using
-    'End Sub
-
     Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
         txtSearch.Text = ""
         loaddata()
@@ -246,32 +122,82 @@ Public Class Admin_EmpManagement
 
 #Region "GV"
     Protected Sub gvEmployee_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvEmployee.RowDeleting
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim index As Integer = e.RowIndex
         Dim pempId As String = Me.gvEmployee.DataKeys(index).Values(0).ToString()
 
         cmd.CommandText = "SP_DELETE_EMLPLOYEE;"
         cmd.Parameters.AddWithValue("@pempId", pempId)
-        M1.Execute(SQL(0))
-        alert("Data deleted successfully")
-        gvEmployee.EditIndex = -1
-        loaddata()
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+
+            If resultMsg = "SUCCESS" Then
+                alert("Data deleted successfully")
+                gvEmployee.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to delete, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
     End Sub
 
     Protected Sub gvEmployee_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvEmployee.RowUpdating
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim index As Integer = e.RowIndex
         Dim empId As String = Me.gvEmployee.DataKeys(index).Values(0).ToString()
         Dim empName As TextBox = CType(gvEmployee.Rows(e.RowIndex).FindControl("txtEmpName"), TextBox)
         Dim empEmail As TextBox = CType(gvEmployee.Rows(e.RowIndex).FindControl("txtEmpEmail"), TextBox)
 
+        If empName.Text = "" Then
+            alert("please enter updated Employee Name")
+            empName.Focus()
+            Exit Sub
+        ElseIf empEmail.Text = "" Then
+            alert("please enter updated Email")
+            empEmail.Focus()
+            Exit Sub
+        End If
+
+
         cmd.CommandText = "SP_UPDATE_EMPLOYEE;"
         cmd.Parameters.AddWithValue("@pempId", empId)
         cmd.Parameters.AddWithValue("@pempName", empName.Text)
         cmd.Parameters.AddWithValue("@pempEmail", empEmail.Text)
-        M1.Execute(SQL(0))
-        alert("Data edited successfully")
-        gvEmployee.EditIndex = -1
-        loaddata()
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Update data successfully")
+                gvEmployee.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to update, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+
     End Sub
+
     Protected Sub gvEmployee_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvEmployee.RowEditing
         gvEmployee.EditIndex = e.NewEditIndex
         'bind Data to the gridview control.
@@ -288,17 +214,6 @@ Public Class Admin_EmpManagement
         loaddata()
     End Sub
 
-    Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        txtemployeeId.Text = ""
-        txtempName.Text = ""
-        txtemailId.Text = ""
-
-    End Sub
-
-    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
-        txtSearch.Text = ""
-        loaddata()
-    End Sub
 #End Region
 
 End Class

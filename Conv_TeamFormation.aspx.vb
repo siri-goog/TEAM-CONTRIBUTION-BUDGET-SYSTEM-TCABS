@@ -1,8 +1,4 @@
-﻿Imports System.Data
-Imports System.Configuration
-Imports MySql.Data.MySqlClient
-Imports MySql.Data
-Public Class Conv_TeamFormation
+﻿Public Class Conv_TeamFormation
     Inherits System.Web.UI.Page
 
     Sub clear()
@@ -99,14 +95,10 @@ Public Class Conv_TeamFormation
         ddlUnitCode.DataBind()
     End Sub
     Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
-        Dim selectedYear = ddlYear.SelectedItem.Value
-        Dim selectedSem = ddlSemester.SelectedItem.Value
+        Dim selectedUnit = ddlUnitCode.SelectedItem.Value
         ddlProject.Items.Clear()
         ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", ""))
-        SQL(0) = " Select z.projId, z.projName " _
-                & " From project z " _
-                & " join offeredUnit a on z.offUnitId = a.offUnitId " _
-                & " where a.offUnitYear = " & selectedYear & " And a.offUnitSem = " & selectedSem
+        SQL(0) = " Select projId, projName from project where offUnitId = " & selectedUnit
         DT = M1.GetDatatable(SQL(0))
         ddlProject.DataSource = DT
         ddlProject.DataTextField = "projName"
@@ -140,7 +132,7 @@ Public Class Conv_TeamFormation
                 & " join project e On e.projId = z.projId " _
                 & " join offeredUnit a on e.offUnitId = a.offUnitId " _
                 & " join unit b On a.unitID = b.unitID " _
-                & " join employeeEnrolment c on a.empEnrolId = c.EmpEnrolId " _
+                & " join employeeEnrolment c on z.empEnrolId = c.EmpEnrolId " _
                 & " join employee d On c.empId = d.EmpId "
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
@@ -154,42 +146,7 @@ Public Class Conv_TeamFormation
     Protected Sub btncancel_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
         clear()
     End Sub
-    Private Sub alert(ByVal scriptalert As String)
-        Dim script As String = ""
-        script = "alert('" + scriptalert + "');"
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
-    End Sub
-    Protected Sub btnSearch_Click(sender As Object, e As EventArgs)
 
-    End Sub
-
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-        Dim con As New MySqlConnection(constr)
-        Dim cmd As New MySqlCommand
-
-        cmd.Connection = con
-        cmd.CommandText = "SP_ADD_TEAM"
-        cmd.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.AddWithValue("@pteamNo", Convert.ToInt64(txtTeamNum.Text))
-        cmd.Parameters.AddWithValue("@pteamTitle", txtTeamTitle.Text)
-        cmd.Parameters.AddWithValue("@pprojId", Convert.ToInt64(txtprojId.Text))
-        cmd.Parameters.AddWithValue("@pempEnrolId", Convert.ToInt64(txtEnrolId.Text))
-        Try
-            con.Open()
-            If cmd.ExecuteScalar() IsNot " " Then
-                Dim message As String = cmd.ExecuteScalar.ToString()
-                alert(message)
-            Else
-                alert("Data inserted successfully")
-            End If
-
-        Catch er As MySqlException
-            MsgBox(er.Message)
-        Finally
-            con.Close()
-        End Try
-    End Sub
     '--click save
     Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
         If check() = False Then

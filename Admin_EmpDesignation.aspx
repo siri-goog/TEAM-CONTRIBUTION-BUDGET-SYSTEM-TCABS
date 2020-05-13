@@ -92,7 +92,6 @@
                                 </tr>--%>
                                 <tr>
                                     <td align="right" style="height: 40px">
-                                        Search By ID or Name</td>
                                         Search By Employee ID or Name</td>
                                     <td align="center" style="height: 40px">:</td>
                                     <td align="left" style="height: 40px">
@@ -135,11 +134,7 @@
                         <asp:TemplateField HeaderText="Role" SortExpression="roleName">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlRoleEdit" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
-                                    <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
-                                    <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>
-                                    <asp:ListItem Value="Master">Master</asp:ListItem>
-                                    <asp:ListItem Value="PhD">PhD</asp:ListItem>
+                                  <asp:ListItem Value="">[--Please Select--]</asp:ListItem>
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
@@ -148,17 +143,12 @@
                             <HeaderStyle Width="200px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
-                        <%--<asp:CommandField HeaderText="Edit" ShowEditButton="True" >
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                         <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" >
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
-                        <asp:CommandField HeaderText="Delete" ShowDeleteButton="True" >
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
-                        </asp:CommandField> --%>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
                     <HeaderStyle CssClass="GridViewHeaderStyle" HorizontalAlign="Center" VerticalAlign="Top"  />

@@ -1,7 +1,5 @@
-﻿Imports System.Data
-Imports System.Configuration
-Imports MySql.Data.MySqlClient
-Imports MySql.Data
+﻿Imports MySql.Data.MySqlClient
+
 Public Class Conv_ProjManagement
     Inherits System.Web.UI.Page
 #Region "check"
@@ -25,25 +23,25 @@ Public Class Conv_ProjManagement
     Function check() As Boolean
         Dim chk As String = 1
 
-        If ddlYear.SelectedItem.ToString = " [-- please select --] " Then
+        If ddlYear.SelectedItem.Value = "0" Then
             Me.ddlYear.Focus()
             alert("Please select year")
             chk = 0
-        ElseIf ddlSemester.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlSemester.SelectedItem.Value = "0" Then
             Me.ddlSemester.Focus()
             alert("Please select semester")
             chk = 0
-        ElseIf ddlUnitCode.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
             Me.ddlUnitCode.Focus()
             alert("Please select unit")
             chk = 0
         ElseIf txtProjName.Text = "" Then
             Me.txtProjName.Focus()
-            alert("Please select project name")
+            alert("Please add project name")
             chk = 0
         ElseIf txtProjDesc.Text = "" Then
             Me.txtProjDesc.Focus()
-            alert("Please select project description")
+            alert("Please add project description")
             chk = 0
         End If
 
@@ -75,7 +73,7 @@ Public Class Conv_ProjManagement
     Protected Sub ddlYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlYear.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
@@ -88,7 +86,7 @@ Public Class Conv_ProjManagement
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select a.offUnitId, CONCAT(b.unitId, ' - ', b.unitName) as unitStr " _
                 & " from offeredunit a " _
                 & " join unit b on a.unitId = b.unitId " _
@@ -137,6 +135,7 @@ Public Class Conv_ProjManagement
             Exit Sub
         End If
 
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim unit As String = ddlUnitCode.SelectedValue.ToString()
         Dim projName As String = Me.txtProjName.Text
         Dim projDesc As String = Me.txtProjDesc.Text
@@ -145,79 +144,121 @@ Public Class Conv_ProjManagement
         cmd.Parameters.AddWithValue("@pprojName", projName)
         cmd.Parameters.AddWithValue("@pprojDesc", projDesc)
         cmd.Parameters.AddWithValue("@poffUnitId", unit)
-        M1.Execute(SQL(0))
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
         Try
-            alert("Data entered successfully.")
-            clear()
-            loaddata()
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data entered successfully.")
+                clear()
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
         Catch ex As Exception
-            alert("Data entered fail, please Try again.")
+            alert("Insert Error, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
         End Try
     End Sub
 
 #End Region
 
 #Region "gridview data"
+    Protected Sub gvData_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvData.RowCancelingEdit
+        gvData.EditIndex = -1
+        Me.loaddata()
+    End Sub
 
-    ''--managing gridview
-    'Protected Sub gvData_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvStudent.RowCancelingEdit
-    '    gvData.EditIndex = -1
-    '    Me.loaddata()
-    'End Sub
+    Protected Sub gvData_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvData.RowEditing
+        gvData.EditIndex = e.NewEditIndex
+        'bind Data to the gridview control.
+        Me.loaddata()
+    End Sub
 
-    ''--show ddl and radiobutton GridView
-    'Protected Sub gvData_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvStudent.RowDataBound
-    '    If e.Row.RowType = DataControlRowType.DataRow Then
-    '        Dim drv As DataRowView = e.Row.DataItem
-    '        Dim no As Integer = e.Row.RowIndex
-    '        Dim itemNo As Integer = (ViewState("Page") * 10) + no
+    Protected Sub gvData_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvData.RowUpdating
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim projId As String = Me.gvData.DataKeys(index).Values(0).ToString()
+        Dim projName As TextBox = CType(gvData.Rows(e.RowIndex).FindControl("txtProjName"), TextBox)
+        Dim projDesc As TextBox = CType(gvData.Rows(e.RowIndex).FindControl("txtDesc"), TextBox)
 
-    '        Dim ddlID As DropDownList = e.Row.FindControl("ddlStuLevel")
-    '        If Not IsNothing(ddlID) Then
-    '            ddlID.SelectedValue = DT.Rows.Item(itemNo)("stulevel").ToString
-    '        End If
-    '    End If
-    'End Sub
 
-    ''--click edit
-    'Protected Sub gvData_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvStudent.RowEditing
-    '    gvData.EditIndex = e.NewEditIndex
-    '    'bind Data to the gridview control.
-    '    Me.loaddata()
-    'End Sub
+        Dim projNameStr As String = projName.Text
+        Dim projDescStr As String = projDesc.Text
 
-    ''--click update
-    'Protected Sub gvData_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvStudent.RowUpdating
-    '    Dim index As Integer = e.RowIndex
-    '    Dim stuid As String = Me.gvStudent.DataKeys(index).Values(0).ToString()
-    '    Dim stuname As TextBox = CType(gvStudent.Rows(e.RowIndex).FindControl("txtStuName"), TextBox)
-    '    Dim stulevel As DropDownList = CType(gvStudent.Rows(e.RowIndex).FindControl("ddlStuLevel"), DropDownList)
+        If projNameStr = "" Then
+            alert("please enter updated project Name")
+            projName.Focus()
+            Exit Sub
+        ElseIf projDescStr = "" Then
+            alert("please enter updated project description")
+            projDesc.Focus()
+            Exit Sub
+        End If
 
-    '    Dim stunameStr As String = stuname.Text
-    '    Dim stulevelStr As String = stulevel.SelectedValue.ToString()
+        cmd.CommandText = "UPDATE_PROJECT;"
+        cmd.Parameters.AddWithValue("@pprojId", projId)
+        cmd.Parameters.AddWithValue("@pprojName", projNameStr)
+        cmd.Parameters.AddWithValue("@pprojDesc", projDescStr)
 
-    '    cmd.CommandText = "UPDATE_STUDENT;"
-    '    cmd.Parameters.AddWithValue("@pstuId", stuid)
-    '    cmd.Parameters.AddWithValue("@pstuName", stunameStr)
-    '    cmd.Parameters.AddWithValue("@pstulevel", stulevelStr)
-    '    M1.Execute(SQL(0))
-    '    alert("Data edited successfully")
-    '    gvData.EditIndex = -1
-    '    loaddata()
-    'End Sub
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
 
-    ''--click delete
-    'Protected Sub gvStudent_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvStudent.RowDeleting
-    '    Dim index As Integer = e.RowIndex
-    '    Dim stuid As String = Me.gvData.DataKeys(index).Values(0).ToString()
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Update data successfully")
+                gvData.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to update, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+    End Sub
 
-    '    cmd.CommandText = "DELETE_STUDENT;"
-    '    cmd.Parameters.AddWithValue("@pstuId", stuid)
-    '    M1.Execute(SQL(0))
-    '    alert("Data edited successfully")
-    '    gvData.EditIndex = -1
-    '    loaddata()
-    'End Sub
+    Protected Sub gvData_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvData.RowDeleting
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim projId As String = Me.gvData.DataKeys(index).Values(0).ToString()
+
+        cmd.CommandText = "DELETE_PROJECT;"
+        cmd.Parameters.AddWithValue("@pprojId", projId)
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+        Try
+            M1.Execute(SQL(0))
+
+            If resultMsg = "SUCCESS" Then
+                alert("Data deleted successfully")
+                gvData.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to delete, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+    End Sub
 
     '--gridview page
     Protected Sub gridviewcompany_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvData.SelectedIndexChanging
@@ -249,41 +290,6 @@ Public Class Conv_ProjManagement
         gvData.DataBind()
     End Sub
 
-    Private Sub alert(ByVal scriptalert As String)
-        Dim script As String = ""
-        script = "alert('" + scriptalert + "');"
-        ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
-    End Sub
-
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-        Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-        Dim con As New MySqlConnection(constr)
-        Dim cmd As New MySqlCommand
-
-        Dim date1 As Date = Convert.ToDateTime(txtDate.Text)
-
-        cmd.Connection = con
-        cmd.CommandText = "SP_ADD_PROJECT"
-        cmd.CommandType = CommandType.StoredProcedure
-        cmd.Parameters.AddWithValue("@pprojName", txtProjectName.Text)
-        cmd.Parameters.AddWithValue("@pprojDesc", txtProjDesc.Text)
-        cmd.Parameters.AddWithValue("@poffUnitId", Convert.ToInt64(txtunitId.Text))
-        cmd.Parameters.AddWithValue("@pprojRegDate", date1.Date)
-        Try
-            con.Open()
-            If cmd.ExecuteScalar() IsNot " " Then
-                Dim message As String = cmd.ExecuteScalar.ToString()
-                alert(message)
-            Else
-                alert("Data inserted successfully")
-            End If
-
-        Catch er As MySqlException
-            MsgBox(er.Message)
-        Finally
-            con.Close()
-        End Try
-    End Sub
     Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
         txtSearch.Text = ""
         loaddata()

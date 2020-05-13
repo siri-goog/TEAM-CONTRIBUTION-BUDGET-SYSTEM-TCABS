@@ -154,7 +154,6 @@
     <Content Include="Admin_EmpDesignation.aspx" />
     <Content Include="Admin_EmpManagement.aspx" />
     <Content Include="Conv_ProjManagement.aspx" />
-    <Content Include="Conv_setProjectRole.aspx" />
     <Content Include="Conv_TeamFormation.aspx" />
     <Content Include="Admin_StuEnrolment.aspx" />
     <Content Include="Admin_UnitManagement.aspx" />
@@ -230,13 +229,6 @@
     </Compile>
     <Compile Include="Conv_ProjManagement.aspx.vb">
       <DependentUpon>Conv_ProjManagement.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
-    </Compile>
-    <Compile Include="Conv_setProjectRole.aspx.designer.vb">
-      <DependentUpon>Conv_setProjectRole.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Conv_setProjectRole.aspx.vb">
-      <DependentUpon>Conv_setProjectRole.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="Conv_TeamFormation.aspx.designer.vb">
