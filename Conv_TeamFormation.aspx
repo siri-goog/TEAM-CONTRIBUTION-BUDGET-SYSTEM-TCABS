@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_TeamFormation.aspx.vb" Inherits="Test.Conv_TeamFormation" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Team
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Team Formation
 </asp:Content>
@@ -107,6 +104,21 @@
                     </td>
                 </tr>
                 <tr><td align="center" colspan="3" height="20px"></td></tr>
+                <tr>
+                        <td align="right">
+                            <asp:Label ID="Label12" runat="server" CssClass="LabelMenu" Text="Search by Team Name"></asp:Label>
+                        </td>
+                        <td align="center">:</td>
+                        <td align="left">
+                            <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox"></asp:TextBox>
+                        </td>
+                    </tr>
+                <tr><td colspan="3">&nbsp;</td></tr>
+                    <tr><td colspan="3" align="center">
+                        <asp:Button ID="btnSearch" runat="server" Text="Search" />
+                        &nbsp;<asp:Button ID="btnSearchCancel" runat="server" Text="Cancel" />
+                        </td></tr>
+                <tr><td colspan="3">&nbsp;</td></tr>
             </table>
             </td>
         </tr>
@@ -129,9 +141,6 @@
                         </asp:BoundField>
 
                         <asp:TemplateField HeaderText="Project" SortExpression="projName">
-                            <EditItemTemplate>
-                                <asp:Textbox ID="txtProjName" runat="server" Text='<%# Bind("projName") %>' ></asp:Textbox>
-                           </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblProjName" runat="server" Text='<%# Bind("projName") %>'></asp:Label>
                             </ItemTemplate>
@@ -139,9 +148,6 @@
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Team No" SortExpression="teamNo">
-                            <EditItemTemplate>
-                                <asp:Textbox ID="txtTeamNo" runat="server" Text='<%# Bind("teamNo") %>' ></asp:Textbox>
-                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblTeamNo" runat="server" Text='<%# Bind("teamNo") %>'></asp:Label>
                             </ItemTemplate>
@@ -160,7 +166,9 @@
 
                         <asp:TemplateField HeaderText="Supervisor" SortExpression="supStr">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtSup" runat="server" Text='<%# Bind("empName") %>' ></asp:Textbox>
+                                <asp:DropDownList ID="ddlSupervisorEdit" runat="server" AutoPostBack="True">
+                                  <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                                </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblSup" runat="server" Text='<%# Bind("empName") %>'></asp:Label>
@@ -170,6 +178,9 @@
 
                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />

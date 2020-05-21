@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_ProjTask.aspx.vb" Inherits="Test.Conv_ProjTask" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Convenor
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Task Management
 </asp:Content>
@@ -95,13 +92,13 @@
                         <td align="right" valign="top" width="47%">
                             Start date
                             <asp:Label ID="Label4" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                            <asp:TextBox ID="txtStartDate" runat="server" CssClass="textbox"></asp:TextBox>
+                            <asp:TextBox ID="txtStartDate" runat="server" CssClass="textbox" readonly = "true"></asp:TextBox>
                             <asp:ImageButton ID="IMbStartDate" runat="server" ImageUrl="~/icons/icon_carlendar.gif" />
                         <td align="center" valign="top" width="3%">&nbsp;</td>
                         <td align="left" valign="top" width="47%">
                             End date
                             <asp:Label ID="Label5" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
-                            <asp:TextBox ID="txtEndDate" runat="server" CssClass="textbox"></asp:TextBox>
+                            <asp:TextBox ID="txtEndDate" runat="server" CssClass="textbox" readonly = "true"></asp:TextBox>
                             <asp:ImageButton ID="IMbEndDate" runat="server" ImageUrl="~/icons/icon_carlendar.gif" />
                         </td>
                     </tr>
@@ -210,13 +207,12 @@
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
-                        <%--<asp:CommandField ShowEditButton="True" >
+                        <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
+                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
-
-                        <asp:CommandField ShowDeleteButton="True"  >
-                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
-                        </asp:CommandField>--%>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
                     <HeaderStyle CssClass="GridViewHeaderStyle" />

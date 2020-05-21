@@ -1,4 +1,6 @@
-﻿Public Class Conv_ProjTask
+﻿Imports MySql.Data.MySqlClient
+
+Public Class Conv_ProjTask
     Inherits System.Web.UI.Page
 
     Sub Clear()
@@ -8,13 +10,13 @@
         txtStartDate.Text = ""
         txtEndDate.Text = ""
         ddlYear.Items.Clear()
-        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlProject.Items.Clear()
-        ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
     End Sub
 
     Protected Sub alert(ByVal scriptalert As String)
@@ -28,26 +30,34 @@
     '--function check()
     Function check() As Boolean
         Dim chk As String = 1
-
-        If ddlYear.SelectedItem.ToString = " [-- please select --] " Then
+        Dim selectedDateSt = Trim(txtStartDate.Text).ToString
+        Dim selectedDateEd = Trim(txtEndDate.Text).ToString
+        Dim regDate As Date = Date.Now()
+        Dim regDateStr As String = regDate.ToString("yyyy-MM-dd")
+        Dim curDate = DateTime.Parse(regDateStr)
+        If ddlYear.SelectedItem.Value = "0" Then
             Me.ddlYear.Focus()
             alert("Please select year")
             chk = 0
-        ElseIf ddlSemester.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlSemester.SelectedItem.Value = "0" Then
             Me.ddlSemester.Focus()
             alert("Please select semester")
             chk = 0
-        ElseIf ddlUnitCode.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
             Me.ddlUnitCode.Focus()
             alert("Please select unit")
             chk = 0
-        ElseIf ddlProject.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlProject.SelectedItem.Value = "0" Then
             Me.ddlProject.Focus()
             alert("Please select project")
             chk = 0
         ElseIf txtTaskNo.Text = "" Then
             Me.txtTaskNo.Focus()
             alert("Please add task No")
+            chk = 0
+        ElseIf Not (IsNumeric(txtTaskNo.Text)) Then
+            Me.txtTaskNo.Focus()
+            alert("Task No must be number")
             chk = 0
         ElseIf txtTaskTitle.Text = "" Then
             Me.txtTaskTitle.Focus()
@@ -67,6 +77,33 @@
             chk = 0
         End If
 
+        If Not (selectedDateSt = "") Then
+            Dim startDate As String = vClsFunc.DateString_Save(txtStartDate.Text)
+            Dim startdateC = DateTime.Parse(startDate)
+            If startdateC < curDate Then
+                alert("Cannot select past start date, please try again")
+                chk = 0
+            End If
+        End If
+
+        If Not (selectedDateEd = "") Then
+            Dim endDate As String = vClsFunc.DateString_Save(txtEndDate.Text)
+            Dim endDateC = DateTime.Parse(endDate)
+            If endDateC < curDate Then
+                alert("Cannot select past end date, please try again")
+                chk = 0
+            End If
+        End If
+        If selectedDateSt <> "" And selectedDateEd <> "" Then
+            Dim startDate As String = vClsFunc.DateString_Save(txtStartDate.Text)
+            Dim startdateC = DateTime.Parse(startDate)
+            Dim endDate As String = vClsFunc.DateString_Save(txtEndDate.Text)
+            Dim endDateC = DateTime.Parse(endDate)
+            If endDateC < startdateC Then
+                alert("Cannot set end-date before start-date")
+                chk = 0
+            End If
+        End If
         If chk = 0 Then
             Return False
         Else
@@ -119,7 +156,7 @@
     Protected Sub ddlYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlYear.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
@@ -132,7 +169,7 @@
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select a.offUnitId, CONCAT(b.unitId, ' - ', b.unitName) as unitStr " _
                 & " from offeredunit a " _
                 & " join unit b on a.unitId = b.unitId " _
@@ -147,7 +184,7 @@
     Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
         Dim selectedUnit = ddlUnitCode.SelectedItem.Value
         ddlProject.Items.Clear()
-        ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = " Select projId, projName from project where offUnitId = " & selectedUnit
         DT = M1.GetDatatable(SQL(0))
         ddlProject.DataSource = DT
@@ -162,7 +199,7 @@
                    & "  From task a " _
                    & "  Join project b on a.projId = b.projId " _
                    & "  Join offeredunit c on b.offUnitId = c.offUnitId " _
-                   & "  Join unit d on c.UnitId = d.UnitId "
+                   & "  Join unit d on c.UnitId = d.UnitId order by d.unitName, b.projName, a.taskNo"
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
         gvData.DataBind()
@@ -185,7 +222,7 @@
         If check() = False Then
             Exit Sub
         End If
-
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim projId As String = ddlProject.SelectedValue.ToString()
         Dim taskNo As String = Me.txtTaskNo.Text
         Dim taskTitle As String = Me.txtTaskTitle.Text
@@ -200,13 +237,26 @@
         cmd.Parameters.AddWithValue("@ptaskDesc", taskDesc)
         cmd.Parameters.AddWithValue("@pstartDate", startDate)
         cmd.Parameters.AddWithValue("@pendDate", endDate)
-        M1.Execute(SQL(0))
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
         Try
-            alert("Data entered successfully.")
-            clear()
-            loaddata()
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data entered successfully.")
+                Clear()
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
         Catch ex As Exception
-            alert("Data entered fail, please Try again.")
+            alert("Insert Error, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
         End Try
     End Sub
 
@@ -234,4 +284,105 @@
 
 #End Region
 
+#Region "gridview data"
+    Protected Sub gridviewdata_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvData.SelectedIndexChanging
+        Dim k1 As DataKey = gvData.DataKeys(e.NewSelectedIndex)
+    End Sub
+
+    Protected Sub gridviewdata_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvData.PageIndexChanging
+        Me.gvData.PageIndex = e.NewPageIndex
+        ViewState("page") = Me.gvData.PageIndex
+        loaddata()
+    End Sub
+
+    Protected Sub gvData_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvData.RowCancelingEdit
+        gvData.EditIndex = -1
+        Me.loaddata()
+    End Sub
+
+    Protected Sub gvData_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvData.RowEditing
+        gvData.EditIndex = e.NewEditIndex
+        'bind Data to the gridview control.
+        Me.loaddata()
+    End Sub
+
+    Protected Sub gvData_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvData.RowUpdating
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim taskId As String = Me.gvData.DataKeys(index).Values(0).ToString()
+        Dim taskNo As TextBox = CType(gvData.Rows(e.RowIndex).FindControl("txtTaskNo"), TextBox)
+        Dim taskTitle As TextBox = CType(gvData.Rows(e.RowIndex).FindControl("txtTaskTitle"), TextBox)
+
+
+        Dim taskNoStr As String = taskNo.Text
+        Dim taskTitleStr As String = taskTitle.Text
+
+        If taskNoStr = "" Then
+            alert("please enter updated task no.")
+            taskNo.Focus()
+            Exit Sub
+        ElseIf taskTitleStr = "" Then
+            alert("please enter updated task title")
+            taskTitle.Focus()
+            Exit Sub
+        End If
+
+        cmd.CommandText = "UPDATE_TASK;"
+        cmd.Parameters.AddWithValue("@ptaskId", taskId)
+        cmd.Parameters.AddWithValue("@ptaskNo", taskNoStr)
+        cmd.Parameters.AddWithValue("@ptaskTitle", taskTitleStr)
+
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Update data successfully")
+                gvData.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to update, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+    End Sub
+
+    Protected Sub gvData_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvData.RowDeleting
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim taskId As String = Me.gvData.DataKeys(index).Values(0).ToString()
+
+        cmd.CommandText = "DELETE_TASK;"
+        cmd.Parameters.AddWithValue("@ptaskId", taskId)
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+        Try
+            M1.Execute(SQL(0))
+
+            If resultMsg = "SUCCESS" Then
+                alert("Data deleted successfully")
+                gvData.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to delete, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+    End Sub
+#End Region
 End Class

@@ -23,7 +23,7 @@ Public Class Admin_EmpDesignation
     End Sub
     Sub loaddata()
 
-        SQL(0) = "select empEnrolId,a.empId as empId, empName, roleName from employeeenrolment a 
+        SQL(0) = "select empEnrolId,a.empId as empId, empName, roleName from employeeenrolment a
                   inner join employee b on a.empId = b.empId inner join role c on a.roleId = c.roleId;"
         DT = M1.GetDatatable(SQL(0))
         gvEmpDes.DataSource = DT
@@ -191,4 +191,19 @@ Public Class Admin_EmpDesignation
     '    loaddata()
 
     'End Sub
+    Protected Sub gridviewdata_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvEmpDes.SelectedIndexChanging
+        Dim k1 As DataKey = gvEmpDes.DataKeys(e.NewSelectedIndex)
+    End Sub
+
+    Protected Sub gridviewdata_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvEmpDes.PageIndexChanging
+        Me.gvEmpDes.PageIndex = e.NewPageIndex
+        ViewState("page") = Me.gvEmpDes.PageIndex
+        loaddata()
+    End Sub
+
+    Protected Sub gvEmpDes_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvEmpDes.RowCancelingEdit
+        gvEmpDes.EditIndex = -1
+        Me.loaddata()
+    End Sub
+
 End Class

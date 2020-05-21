@@ -1,9 +1,24 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_TeamEnrolment.aspx.vb" Inherits="Test.Conv_TeamEnrolment" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Team
-</asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
-    Team Allocation
+<asp:Content ID="Content1" ContentPlaceHolderID="Head" runat="server">
+    <script type="text/javascript" language="javascript">
+        function fnEnableDisblePrice(ID) {
+
+            var gridViewControl = document.getElementById('<%= gvStudent.ClientID %>');
+            var inputs = gridViewControl.getElementsByTagName("input");
+            if (inputs.length > 1) {
+                for (var i = 0; i < inputs.length; i++) {
+                    if (inputs[i].id.indexOf("_chkSelect") != -1) {
+                        if (inputs[i].id == ID) {
+                            inputs[i].checked = true;
+                        } else {
+                            inputs[i].checked = false;
+                        }
+                    }
+                }
+            }
+
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="MainContent" runat="server">
     <table width="100%">
@@ -98,7 +113,8 @@
                                             <tr><td height="20px">&nbsp;</td></tr>
                                             <tr>
                                                 <td align="center">
-                                                    <asp:GridView ID="gvSearch" runat="server" AutoGenerateColumns="False" 
+                                                    <asp:GridView ID="gvSearch" runat="server" AutoGenerateColumns="False"
+                                                        DataKeyNames="enrolId"
                                                         CssClass="GridViewBodyStyle">
                                                         <Columns>
                                                             <asp:BoundField HeaderText="Student ID" DataField="StuID" ReadOnly="True" />
@@ -125,14 +141,23 @@
         <tr>
             <td align="center" colspan="3">
                 <asp:GridView ID="gvStudent" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="stuid" 
+                    DataKeyNames="enrolId" 
                     AllowPaging="True" CssClass="GridViewBodyStyle" 
                     EmptyDataText="---No Record---">
                     <Columns>
-                        <asp:BoundField HeaderText="Student ID" DataField="stuid" ReadOnly="True" >
+                        <asp:TemplateField HeaderText="Project Manager">
+		                    <ItemTemplate>
+			                    <asp:CheckBox id="chkSelect" onclick="fnEnableDisblePrice(this.id);" runat="server"></asp:CheckBox>
+		                    </ItemTemplate>
+	                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+	                    </asp:TemplateField>
 
-                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
-                        </asp:BoundField>
+                        <asp:TemplateField HeaderText="Student ID">
+		                    <ItemTemplate>
+			                    <asp:Label ID="lblStuId" runat="server" Text='<%# Bind("stuid") %>' Width="200px"></asp:Label>
+                            </ItemTemplate>
+	                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+	                    </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Student Name" SortExpression="stuname">
                             <EditItemTemplate>
@@ -171,6 +196,96 @@
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="Btn" />
             </td>
         </tr>
-        <tr><td align="center" colspan="3" height="20px"></td></tr>
+       
+        <tr><td align="center" colspan="3"><br /></td></tr>
+       
+        <tr>
+            <td align="center" colspan="3" style="height: 20px">
+                                        <table>
+                                            <tr>
+                                                <td align="right">
+                                                    <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Student ID or Name"></asp:Label>
+                                                </td>
+                                                <td align="center">:</td>
+                                                <td align="left">
+                                                    <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox"></asp:TextBox>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+        </tr>
+        <tr><td align="center" colspan="3"><br /></td></tr>
+        <tr><td colspan="3" align="center">
+                                    <asp:Button ID="btnSearchForDelete" runat="server" Text="Search" />
+                                    &nbsp;<asp:Button ID="btnSearchCancel" runat="server" Text="Cancel" />
+                                    </td></tr>
+        <tr><td align="center" colspan="3"><br /></td></tr>
+        <tr>
+            <td align="center" colspan="3">
+                <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" 
+                    DataKeyNames="teamEnrolId" 
+                    AllowPaging="True" CssClass="GridViewBodyStyle" 
+                    EmptyDataText="---No Record---">
+                    <Columns>
+                        <asp:BoundField HeaderText="Year" DataField="offUnitYear" ReadOnly="True" >
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:BoundField>
+
+                        <asp:TemplateField HeaderText="Sem" SortExpression="offUnitSem">
+                            <ItemTemplate>
+                                <asp:Label ID="lblSem" runat="server" Text='<%# Bind("offUnitSem") %>' Width="30"></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Width="30px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:TemplateField>
+                        
+                        <asp:TemplateField HeaderText="Unit" SortExpression="unitStr">
+                            <ItemTemplate>
+                                <asp:Label ID="lblUnit" runat="server" Text='<%# Bind("unitStr") %>' Width="250px"></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Width="250px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Team Name" SortExpression="teamTitle">
+                            <ItemTemplate>
+                                <asp:Label ID="lblTeamTitle" runat="server" Text='<%# Bind("teamTitle") %>' Width="150px"></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Width="150px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:TemplateField>
+
+                        <asp:TemplateField HeaderText="Student Id" SortExpression="stuId">              
+                            <ItemTemplate>
+                                <asp:Label ID="lblStudent" runat="server" Text='<%# Bind("stuId") %>' Width="100px"></asp:Label>
+                            </ItemTemplate>
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="Student Name" SortExpression="stuName">
+                         
+                            <ItemTemplate>
+                                <asp:Label ID="lblStuName" runat="server" Text='<%# Bind("stuName") %>' Width="150px"></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Width="150px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:TemplateField>
+                        <asp:TemplateField HeaderText="PM" SortExpression="pm_role">
+                         
+                            <ItemTemplate>
+                                <asp:Label ID="lblPmRole" runat="server" Text='<%# Bind("pm_role") %>' Width="30"></asp:Label>
+                            </ItemTemplate>
+                            <HeaderStyle Width="30px" />
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:TemplateField>
+
+                      
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                    </Columns>
+                    <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
+                    <HeaderStyle CssClass="GridViewHeaderStyle" HorizontalAlign="Center" VerticalAlign="Top"/>
+                </asp:GridView>
+            </td>
+        </tr>
     </table>
 </asp:Content>

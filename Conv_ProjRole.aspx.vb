@@ -1,4 +1,6 @@
-﻿Public Class Conv_ProjRole
+﻿Imports MySql.Data.MySqlClient
+
+Public Class Conv_ProjRole
     Inherits System.Web.UI.Page
 
     Sub clear()
@@ -19,21 +21,21 @@
     Function check() As Boolean
         Dim chk As String = 1
 
-        If ddlYear.SelectedItem.ToString = " [-- please select --] " Then
+        If ddlYear.SelectedItem.Value = "0" Then
             Me.ddlYear.Focus()
             alert("Please select year")
             chk = 0
-        ElseIf ddlSemester.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlSemester.SelectedItem.Value = "0" Then
             Me.ddlSemester.Focus()
             alert("Please select semester")
             chk = 0
-        ElseIf ddlUnitCode.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
             Me.ddlUnitCode.Focus()
             alert("Please select unit")
             chk = 0
-        ElseIf ddlProject.SelectedItem.ToString = " [-- please select --] " Then
+        ElseIf ddlProject.SelectedItem.Value = "0" Then
             Me.ddlUnitCode.Focus()
-            alert("Please select unit")
+            alert("Please select project")
             chk = 0
         ElseIf txtRole.Text = "" Then
             Me.txtRole.Focus()
@@ -42,6 +44,12 @@
         ElseIf txtCost.Text = "" Then
             Me.txtCost.Focus()
             alert("Please add cost")
+            chk = 0
+        End If
+
+        If Not (IsNumeric(txtCost.Text)) Then
+            Me.txtCost.Focus()
+            alert("Cost must be number")
             chk = 0
         End If
 
@@ -71,7 +79,7 @@
     Protected Sub ddlYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlYear.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
@@ -84,7 +92,7 @@
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select a.offUnitId, CONCAT(b.unitId, ' - ', b.unitName) as unitStr " _
                 & " from offeredunit a " _
                 & " join unit b on a.unitId = b.unitId " _
@@ -99,7 +107,7 @@
     Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
         Dim selectedUnit = ddlUnitCode.SelectedItem.Value
         ddlProject.Items.Clear()
-        ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = " Select projId, projName from project where offUnitId = " & selectedUnit
         DT = M1.GetDatatable(SQL(0))
         ddlProject.DataSource = DT
@@ -123,7 +131,7 @@
                 & " join offeredUnit a on e.offUnitId = a.offUnitId " _
                 & " join unit b On a.unitID = b.unitID " _
                 & " join employeeEnrolment c on a.empEnrolId = c.EmpEnrolId " _
-                & " join employee d On c.empId = d.EmpId "
+                & " join employee d On c.empId = d.EmpId order by b.unitName, e.projName"
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
         gvData.DataBind()
@@ -143,6 +151,7 @@
             Exit Sub
         End If
 
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim projId As String = ddlProject.SelectedValue.ToString()
         Dim role As String = Me.txtRole.Text
         Dim cost As Double = Me.txtCost.Text
@@ -151,14 +160,151 @@
         cmd.Parameters.AddWithValue("@pprojId", projId)
         cmd.Parameters.AddWithValue("@ptmRolName", role)
         cmd.Parameters.AddWithValue("@ptmRolCost", cost)
-        M1.Execute(SQL(0))
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
         Try
-            alert("Data entered successfully.")
-            clear()
-            loaddata()
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data entered successfully.")
+                clear()
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
         Catch ex As Exception
-            alert("Data entered fail, please Try again.")
+            alert("Insert Error, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
         End Try
+
+    End Sub
+#End Region
+    Protected Sub gvData_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvData.RowCancelingEdit
+        gvData.EditIndex = -1
+        Me.loaddata()
+    End Sub
+
+    Protected Sub gvData_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvData.RowEditing
+        gvData.EditIndex = e.NewEditIndex
+        'bind Data to the gridview control.
+        Me.loaddata()
+    End Sub
+
+    Protected Sub gvData_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvData.RowUpdating
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim tmRolId As String = Me.gvData.DataKeys(index).Values(0).ToString()
+        Dim role As TextBox = CType(gvData.Rows(e.RowIndex).FindControl("txtRole"), TextBox)
+        Dim cost As TextBox = CType(gvData.Rows(e.RowIndex).FindControl("txtCost"), TextBox)
+
+
+        Dim roleStr As String = role.Text
+        Dim costStr As String = cost.Text
+
+        If roleStr = "" Then
+            alert("please enter updated project role")
+            role.Focus()
+            Exit Sub
+        ElseIf costStr = "" Then
+            alert("please enter updated cost per hour")
+            cost.Focus()
+            Exit Sub
+        End If
+
+        cmd.CommandText = "UPDATE_TEAMROLE;"
+        cmd.Parameters.AddWithValue("@ptmRolId", tmRolId)
+        cmd.Parameters.AddWithValue("@ptmRolName", roleStr)
+        cmd.Parameters.AddWithValue("@ptmRolCost", costStr)
+
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Update data successfully")
+                gvData.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to update, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+    End Sub
+
+    Protected Sub gvData_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvData.RowDeleting
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim tmRolId As String = Me.gvData.DataKeys(index).Values(0).ToString()
+
+        cmd.CommandText = "DELETE_TEAMROLE;"
+        cmd.Parameters.AddWithValue("@ptmRolId", tmRolId)
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+        Try
+            M1.Execute(SQL(0))
+
+            If resultMsg = "SUCCESS" Then
+                alert("Data deleted successfully")
+                gvData.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to delete, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+    End Sub
+
+    Protected Sub gridviewcompany_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvData.SelectedIndexChanging
+        Dim k1 As DataKey = gvData.DataKeys(e.NewSelectedIndex)
+    End Sub
+
+    Protected Sub gridviewcompany_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvData.PageIndexChanging
+        Me.gvData.PageIndex = e.NewPageIndex
+        ViewState("page") = Me.gvData.PageIndex
+        loaddata()
+    End Sub
+#Region "search"
+
+    Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
+        SQL(0) = " Select z.*, CONCAT(b.unitId, ' - ', b.unitName) as unitStr, " _
+                & " d.EmpName, a.offUnitYear, a.offUnitSem, e.projName " _
+                & " From teamRole z " _
+                & " join project e On e.projId = z.projId " _
+                & " join offeredUnit a on e.offUnitId = a.offUnitId " _
+                & " join unit b On a.unitID = b.unitID " _
+                & " join employeeEnrolment c on a.empEnrolId = c.EmpEnrolId " _
+                & " join employee d On c.empId = d.EmpId " _
+                & " Where z.tmRolName Like '" & searchTerm & "' " _
+                & " or e.projName Like '" & searchTerm & "' "
+        DT = M1.GetDatatable(SQL(0))
+        gvData.DataSource = DT
+        gvData.DataBind()
+    End Sub
+
+    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
+        txtSearch.Text = ""
+        loaddata()
     End Sub
 
 #End Region

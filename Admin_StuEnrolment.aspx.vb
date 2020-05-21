@@ -1,4 +1,6 @@
-﻿Public Class Admin_StuEnrolment
+﻿Imports MySql.Data.MySqlClient
+
+Public Class Admin_StuEnrolment
     Inherits System.Web.UI.Page
 
     Sub ClearValue()
@@ -10,25 +12,25 @@
         gvStudent.DataSource = DT_Student
         gvStudent.DataBind()
         ddlYear.Items.Clear()
-        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", 0))
+        ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", 0))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", 0))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
     End Sub
 
     Function check() As Boolean
         Dim chk As String = 1
 
-        If ddlYear.SelectedItem.Value = 0 Then
+        If ddlYear.SelectedItem.Value = "0" Then
             Me.ddlYear.Focus()
             alert("Please select year")
             chk = 0
-        ElseIf ddlSemester.SelectedItem.Value = 0 Then
+        ElseIf ddlSemester.SelectedItem.Value = "0" Then
             Me.ddlSemester.Focus()
             alert("Please select semester")
             chk = 0
-        ElseIf ddlUnitCode.SelectedItem.Value = 0 Then
+        ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
             Me.ddlUnitCode.Focus()
             alert("Please select unit")
             chk = 0
@@ -59,6 +61,20 @@
 
     End Sub
 
+    Sub loaddata()
+        SQL(0) = " Select a.enrolId, c.offUnitYear, c.offUnitSem, concat(d.unitId, ' - ', d.unitName) as unitStr,  " _
+                & " b.stuId, b.stuName from enrolment a " _
+                & " join student b on a.stuId = b.stuId " _
+                & " join offeredunit c on a.offUnitId = c.offUnitId " _
+                & " join unit d on c.unitId = d.unitId " _
+                & " order by offUnitYear, offUnitSem, unitStr, stuId "
+
+
+        DT = M1.GetDatatable(SQL(0))
+        gvData.DataSource = DT
+        gvData.DataBind()
+    End Sub
+
     Protected Sub alert(ByVal scriptalert As String)
         Dim script As String = ""
         script = "alert('" + scriptalert + "');"
@@ -67,6 +83,7 @@
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             loadYear()
+            loaddata()
         End If
     End Sub
 
@@ -85,7 +102,7 @@
     Protected Sub ddlYear_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlYear.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
-        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", 0))
+        ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
@@ -98,7 +115,7 @@
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
         ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", 0))
+        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select unitId,offUnitId from offeredunit where offUnitYear = " & selectedYear & " and offUnitSem = " & selectedSem
         DT = M1.GetDatatable(SQL(0))
         ddlUnitCode.DataSource = DT
@@ -126,7 +143,7 @@
         Dim stuId As String
         Dim stuName As String
         Dim stuLevel As String
-
+        Dim dupStu As Boolean = False
         stuId = gvSearch.Rows(gvSearch.SelectedIndex).Cells(0).Text
         stuName = gvSearch.Rows(gvSearch.SelectedIndex).Cells(1).Text
         stuLevel = gvSearch.Rows(gvSearch.SelectedIndex).Cells(2).Text
@@ -142,10 +159,22 @@
         R("stuId") = stuId
         R("stuName") = stuName
         R("stuLevel") = stuLevel
+        For Each GVRow As GridViewRow In Me.gvStudent.Rows
+            Dim K1 As DataKey = Me.gvStudent.DataKeys(GVRow.RowIndex)
+            Dim ckStuId As String = K1(0)
+            If stuId = ckStuId Then
+                dupStu = True
+            End If
+        Next
         'DT_Student.Rows.Add(stuId, stuName, stuLevel)
-        DT_Student.Rows.Add(R)
-        gvStudent.DataSource = DT_Student
-        gvStudent.DataBind()
+        If Not (dupStu) Then
+            DT_Student.Rows.Add(R)
+            gvStudent.DataSource = DT_Student
+            gvStudent.DataBind()
+        Else
+            Dim errMsg = "Student Id " + stuId + " already selected"
+            alert(errMsg)
+        End If
     End Sub
 
 #End Region
@@ -158,6 +187,36 @@
         DT_Student.Rows.RemoveAt(index)
         gvStudent.DataSource = DT_Student
         gvStudent.DataBind()
+    End Sub
+
+    Protected Sub gvData_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvData.RowDeleting
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim enrolId As String = Me.gvData.DataKeys(index).Values(0).ToString()
+
+        cmd.CommandText = "DELETE_ENROLMENT;"
+        cmd.Parameters.AddWithValue("@penrolId", enrolId)
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+        Try
+            M1.Execute(SQL(0))
+
+            If resultMsg = "SUCCESS" Then
+                alert("Data deleted successfully")
+                gvData.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to delete, please Try again or contact IT support.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
     End Sub
 
     Protected Sub btnSave_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
@@ -202,6 +261,43 @@
         ClearValue()
         pnQuerySearch.Visible = False
         loadYear()
+        loaddata()
+    End Sub
+
+    Protected Sub btnCancelSave_Click(sender As Object, e As EventArgs) Handles btnCancelSave.Click
+        ClearValue()
+        loaddata()
+        pnQuerySearch.Visible = False
+    End Sub
+
+    Protected Sub btnSearchForDelete_Click(sender As Object, e As EventArgs) Handles btnSearchForDelete.Click
+        Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
+        SQL(0) = " Select a.enrolId, c.offUnitYear, c.offUnitSem, concat(d.unitId, ' - ', d.unitName) as unitStr,  " _
+                & " b.stuId, b.stuName from enrolment a " _
+                & " join student b on a.stuId = b.stuId " _
+                & " join offeredunit c on a.offUnitId = c.offUnitId " _
+                & " join unit d on c.unitId = d.unitId " _
+                & " Where b.stuId Like '" & searchTerm & "' " _
+                & " or b.stuName Like '" & searchTerm & "' " _
+                & " order by offUnitYear, offUnitSem, unitStr, stuId "
+        DT = M1.GetDatatable(SQL(0))
+        gvData.DataSource = DT
+        gvData.DataBind()
+    End Sub
+
+    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
+        txtSearch.Text = ""
+        loaddata()
+    End Sub
+
+    Protected Sub gridviewdata_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvData.SelectedIndexChanging
+        Dim k1 As DataKey = gvData.DataKeys(e.NewSelectedIndex)
+    End Sub
+
+    Protected Sub gridviewdata_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvData.PageIndexChanging
+        Me.gvData.PageIndex = e.NewPageIndex
+        ViewState("page") = Me.gvData.PageIndex
+        loaddata()
     End Sub
 
     Protected Sub btnCancelSave_Click(sender As Object, e As EventArgs) Handles btnCancelSave.Click

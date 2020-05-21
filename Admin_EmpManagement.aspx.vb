@@ -204,6 +204,11 @@ Public Class Admin_EmpManagement
         Me.loaddata()
     End Sub
 
+    Protected Sub gvEmpolyee_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvEmployee.RowCancelingEdit
+        gvEmployee.EditIndex = -1
+        Me.loaddata()
+    End Sub
+
     Protected Sub gridviewcompany_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvEmployee.SelectedIndexChanging
         Dim k1 As DataKey = gvEmployee.DataKeys(e.NewSelectedIndex)
     End Sub

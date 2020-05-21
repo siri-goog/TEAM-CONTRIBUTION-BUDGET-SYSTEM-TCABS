@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_ProjRole.aspx.vb" Inherits="Test.Conv_ProjRole" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Convenor
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Set Up Team Role
 </asp:Content>
@@ -80,12 +77,13 @@
                         </td>
                     <td align="left" width="50%">
                         <asp:TextBox ID="txtCost" runat="server" Width="171px" 
-                            Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                            Font-Size="8pt" CssClass="textbox"></asp:TextBox> /Hour
                     </td>
                 </tr>
                 <tr>
                     <td colspan="3">&nbsp;</td>
                 </tr>
+
                 <tr>
                     <td align="center" colspan="3">
                         <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="Btn" />&nbsp;
@@ -93,6 +91,27 @@
                     </td>
                 </tr>
                 <tr><td align="center" colspan="3" height="20px"></td></tr>
+               
+                    <tr>
+                        <td align="center" colspan="3" height="20px">
+                            <table>
+                                <tr>
+                                    <td align="right">
+                                        Search by Project Name/Role
+                                    <td align="center">:</td>
+                                    <td align="left">
+                                        <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox"></asp:TextBox>
+                                    </td>
+                                </tr>
+                                <tr><td colspan="3">&nbsp;</td></tr>
+                                <tr><td colspan="3" align="center">
+                                    <asp:Button ID="btnSearch" runat="server" Text="Search" />
+                                    &nbsp;<asp:Button ID="btnSearchCancel" runat="server" Text="Cancel" />
+                                    </td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                 <tr><td align="center" colspan="3" height="20px"></td></tr>
             </table>
             </td>
         </tr>
@@ -115,9 +134,9 @@
                         </asp:BoundField>
 
                         <asp:TemplateField HeaderText="Project" SortExpression="projName">
-                            <EditItemTemplate>
+                            <%--<EditItemTemplate>
                                 <asp:Textbox ID="txtProjName" runat="server" Text='<%# Bind("projName") %>' ></asp:Textbox>
-                           </EditItemTemplate>
+                           </EditItemTemplate>--%>
                             <ItemTemplate>
                                 <asp:Label ID="lblProjName" runat="server" Text='<%# Bind("projName") %>' Width="200px"></asp:Label>
                             </ItemTemplate>
@@ -140,14 +159,17 @@
                                 <asp:Textbox ID="txtCost" runat="server" Text='<%# Bind("tmRolCost") %>' ></asp:Textbox>
                             </EditItemTemplate>
                             <ItemTemplate>
-                                <asp:Label ID="lblCost" runat="server" Text='<%# Bind("tmRolCost") %>' Width="250px"></asp:Label>
+                                <asp:Label ID="lblCost" runat="server" Text='<%# Bind("tmRolCost") %>' Width="100px"></asp:Label>
                             </ItemTemplate>
-                            <HeaderStyle Width="200px" />
+                            <HeaderStyle Width="100px" />
                             <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:TemplateField>
 
                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
