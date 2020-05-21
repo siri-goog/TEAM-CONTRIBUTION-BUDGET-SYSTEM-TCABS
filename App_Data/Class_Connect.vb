@@ -64,9 +64,12 @@ Public Class Class_Connect
                     cmd.Transaction = T1
                 End If
                 X = cmd.ExecuteNonQuery
+                resultMsg = cmd.Parameters.Item("msg").Value.ToString
                 cmd.Parameters.Clear()
+
             Catch ex As Exception
                 m_ErrorString = ex.Message
+                cmd.Parameters.Clear()
                 Return -1
             End Try
             Return X
@@ -90,6 +93,7 @@ Public Module Module1
     Public SQL(20) As String
     Public DT As DataTable
     Public m_ErrorString As String
+    Public resultMsg As String
     Public T1 As MySqlTransaction
     Public m_Tran As Boolean = False
     Public MessError As String = ""

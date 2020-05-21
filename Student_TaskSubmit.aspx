@@ -17,7 +17,7 @@
                             <asp:Label ID="Label5" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                         <td align="left" width="50%">
-                            <asp:DropDownList ID="ddlProject" runat="server" AutoPostBack="true" 
+                            <asp:DropDownList ID="ddlProject" runat="server" AutoPostBack="true"
                                 CssClass="DDSelect" Enabled="true" AppendDataBoundItems="true">
                                 <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
                             </asp:DropDownList>
@@ -42,7 +42,7 @@
                             <asp:Label ID="Label7" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                         <td align="left" width="50%">
-                            <asp:DropDownList ID="ddlTask" runat="server" AutoPostBack="true" 
+                            <asp:DropDownList ID="ddlTask" runat="server" AutoPostBack="true"
                                 CssClass="DDSelect" Enabled="true" AppendDataBoundItems="true">
                                 <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
                             </asp:DropDownList>
@@ -56,7 +56,7 @@
                             <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                             </td>
                         <td align="left" width="50%">
-                            <asp:DropDownList ID="ddlRole" runat="server" AutoPostBack="true" 
+                            <asp:DropDownList ID="ddlRole" runat="server" AutoPostBack="true"
                                 CssClass="DDSelect" Enabled="true" AppendDataBoundItems="true">
                                 <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
                             </asp:DropDownList>
@@ -70,7 +70,7 @@
                             <asp:Label ID="Label8" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                         <td align="left" width="50%">
-                            <asp:TextBox ID="txtMinutes" runat="server" Width="100px" 
+                            <asp:TextBox ID="txtMinutes" runat="server" Width="100px"
                                 Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                             &nbsp;&nbsp;&nbsp;
                             <asp:Label ID="Label3" runat="server" CssClass="LabelMenu" Text="Minutes"></asp:Label>
@@ -93,7 +93,7 @@
                                     </td>
                                     <td align="center" width="3%">:</td>
                                     <td align="left" width="50%">
-                                        <asp:DropDownList ID="ddlSearchProject" runat="server" AutoPostBack="true" 
+                                        <asp:DropDownList ID="ddlSearchProject" runat="server" AutoPostBack="true"
                                             CssClass="DDSelect" Enabled="true" AppendDataBoundItems="true">
                                             <asp:ListItem Value="0">[-- All --]</asp:ListItem>
                                         </asp:DropDownList>
@@ -105,7 +105,7 @@
                                     </td>
                                     <td align="center" width="3%">:</td>
                                     <td align="left" width="50%">
-                                        <asp:DropDownList ID="ddlSearchTask" runat="server" AutoPostBack="true" 
+                                        <asp:DropDownList ID="ddlSearchTask" runat="server" AutoPostBack="true"
                                             CssClass="DDSelect" Enabled="true" AppendDataBoundItems="true">
                                             <asp:ListItem Value="0">[-- All --]</asp:ListItem>
                                         </asp:DropDownList>
@@ -126,9 +126,9 @@
 
         <tr>
             <td align="center" colspan="3">
-                <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" 
-                    DataKeyNames="submitId" 
-                    AllowPaging="True" CssClass="GridViewBodyStyle" 
+                <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False"
+                    DataKeyNames="submitId"
+                    AllowPaging="True" CssClass="GridViewBodyStyle"
                     EmptyDataText="---No Record---">
                     <Columns>
 
@@ -140,7 +140,7 @@
                         </asp:TemplateField>
 
                         <asp:TemplateField HeaderText="Task" SortExpression="stuname">
-                            
+
                             <ItemTemplate>
                                 <asp:Label ID="lblTask" runat="server" Text='<%# Bind("taskTitle") %>' Width="100px"></asp:Label>
                             </ItemTemplate>

@@ -23,7 +23,7 @@ Public Class Admin_EmpDesignation
     End Sub
     Sub loaddata()
 
-        SQL(0) = "select empEnrolId,a.empId as empId, empName, roleName from employeeenrolment a 
+        SQL(0) = "select empEnrolId,a.empId as empId, empName, roleName from employeeenrolment a
                   inner join employee b on a.empId = b.empId inner join role c on a.roleId = c.roleId;"
         DT = M1.GetDatatable(SQL(0))
         gvEmpDes.DataSource = DT

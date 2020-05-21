@@ -37,15 +37,6 @@ Test
  Returns the Asp log object.
  </summary>
 </member>
-<member name="F:Test.Admin_EmpDesignation._Label2">
-<summary>
-Label2 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
 <member name="F:Test.Admin_EmpDesignation._Label8">
 <summary>
 Label8 control.
@@ -55,54 +46,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._txtUnitCode">
+<member name="F:Test.Admin_EmpDesignation._ddlEmpolyee">
 <summary>
-txtUnitCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._Label3">
-<summary>
-Label3 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._Label9">
-<summary>
-Label9 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._txtUnitName">
-<summary>
-txtUnitName control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._Label10">
-<summary>
-Label10 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._txtUnitName0">
-<summary>
-txtUnitName0 control.
+ddlEmpolyee control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -118,9 +64,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._txtName">
+<member name="F:Test.Admin_EmpDesignation._ddlRole">
 <summary>
-txtName control.
+ddlRole control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -145,18 +91,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._chkComCode">
+<member name="F:Test.Admin_EmpDesignation._txtSearch">
 <summary>
-chkComCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpDesignation._txtSearchUnit">
-<summary>
-txtSearchUnit control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -181,9 +118,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpDesignation._gvUnit">
+<member name="F:Test.Admin_EmpDesignation._gvEmpDes">
 <summary>
-gvUnit control.
+gvEmpDes control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -208,9 +145,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._txtUnitCode">
+<member name="F:Test.Admin_EmpManagement._txtemployeeId">
 <summary>
-txtUnitCode control.
+txtemployeeId control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -235,9 +172,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._txtUnitName">
+<member name="F:Test.Admin_EmpManagement._txtempName">
 <summary>
-txtUnitName control.
+txtempName control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -253,27 +190,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._txtUnitName0">
+<member name="F:Test.Admin_EmpManagement._txtemailId">
 <summary>
-txtUnitName0 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpManagement._Label11">
-<summary>
-Label11 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpManagement._txtName">
-<summary>
-txtName control.
+txtemailId control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -298,18 +217,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._chkComCode">
+<member name="F:Test.Admin_EmpManagement._txtSearch">
 <summary>
-chkComCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_EmpManagement._txtSearchUnit">
-<summary>
-txtSearchUnit control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -334,25 +244,34 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_EmpManagement._gvUnit">
+<member name="F:Test.Admin_EmpManagement._gvEmployee">
 <summary>
-gvUnit control.
+gvEmployee control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_ProjManagement._Label2">
+<member name="F:Test.Conv_ProjTask._Label7">
 <summary>
-Label2 control.
+Label7 control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_ProjManagement._Label8">
+<member name="F:Test.Conv_ProjTask._ddlYear">
+<summary>
+ddlYear control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label8">
 <summary>
 Label8 control.
 </summary>
@@ -361,9 +280,288 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_ProjManagement._txtUnitCode">
+<member name="F:Test.Conv_ProjTask._ddlSemester">
 <summary>
-txtUnitCode control.
+ddlSemester control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label11">
+<summary>
+Label11 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._ddlUnitCode">
+<summary>
+ddlUnitCode control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._txtTaskNo">
+<summary>
+txtTaskNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._txtTaskTitle">
+<summary>
+txtTaskTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label3">
+<summary>
+Label3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._txtTaskDesc">
+<summary>
+txtTaskDesc control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._txtStartDate">
+<summary>
+txtStartDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._IMbStartDate">
+<summary>
+IMbStartDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label5">
+<summary>
+Label5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._txtEndDate">
+<summary>
+txtEndDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._IMbEndDate">
+<summary>
+IMbEndDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Calendar1">
+<summary>
+Calendar1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Calendar2">
+<summary>
+Calendar2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._btnSave">
+<summary>
+btnSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._btnCancel">
+<summary>
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._txtSearch">
+<summary>
+txtSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._btnSearchCancel">
+<summary>
+btnSearchCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjTask._gvData">
+<summary>
+gvData control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjManagement._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjManagement._ddlYear">
+<summary>
+ddlYear control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjManagement._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjManagement._ddlSemester">
+<summary>
+ddlSemester control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjManagement._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjManagement._ddlUnitCode">
+<summary>
+ddlUnitCode control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -388,9 +586,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_ProjManagement._txtUnitName">
+<member name="F:Test.Conv_ProjManagement._txtProjName">
 <summary>
-txtUnitName control.
+txtProjName control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -406,27 +604,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_ProjManagement._txtUnitName0">
+<member name="F:Test.Conv_ProjManagement._txtProjDesc">
 <summary>
-txtUnitName0 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_ProjManagement._Label11">
-<summary>
-Label11 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_ProjManagement._txtName">
-<summary>
-txtName control.
+txtProjDesc control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -451,18 +631,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_ProjManagement._chkComCode">
+<member name="F:Test.Conv_ProjManagement._txtSearch">
 <summary>
-chkComCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_ProjManagement._txtSearchUnit">
-<summary>
-txtSearchUnit control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -487,34 +658,25 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_ProjManagement._gvUnit">
+<member name="F:Test.Conv_ProjManagement._gvData">
 <summary>
-gvUnit control.
+gvData control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label2">
+<member name="F:Test.Conv_ProjRole._Label1">
 <summary>
-Label2 control.
+Label1 control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label8">
-<summary>
-Label8 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._ddlYear">
+<member name="F:Test.Conv_ProjRole._ddlYear">
 <summary>
 ddlYear control.
 </summary>
@@ -523,25 +685,16 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label6">
+<member name="F:Test.Conv_ProjRole._Label4">
 <summary>
-Label6 control.
+Label4 control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label7">
-<summary>
-Label7 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._ddlSemester">
+<member name="F:Test.Conv_ProjRole._ddlSemester">
 <summary>
 ddlSemester control.
 </summary>
@@ -550,25 +703,16 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label12">
+<member name="F:Test.Conv_ProjRole._Label5">
 <summary>
-Label12 control.
+Label5 control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label13">
-<summary>
-Label13 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._ddlUnitCode">
+<member name="F:Test.Conv_ProjRole._ddlUnitCode">
 <summary>
 ddlUnitCode control.
 </summary>
@@ -577,7 +721,34 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label3">
+<member name="F:Test.Conv_ProjRole._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjRole._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjRole._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjRole._Label3">
 <summary>
 Label3 control.
 </summary>
@@ -586,7 +757,7 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label9">
+<member name="F:Test.Conv_ProjRole._Label9">
 <summary>
 Label9 control.
 </summary>
@@ -595,16 +766,16 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._lblUnitName">
+<member name="F:Test.Conv_ProjRole._txtRole">
 <summary>
-lblUnitName control.
+txtRole control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._Label10">
+<member name="F:Test.Conv_ProjRole._Label10">
 <summary>
 Label10 control.
 </summary>
@@ -613,61 +784,16 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._txtProjectName">
+<member name="F:Test.Conv_ProjRole._txtCost">
 <summary>
-txtProjectName control.
+txtCost control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._btnSearch">
-<summary>
-btnSearch control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._trSearchNo">
-<summary>
-trSearchNo control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._pnQuerySearch">
-<summary>
-pnQuerySearch control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._gvSearch">
-<summary>
-gvSearch control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._gvStudent">
-<summary>
-gvStudent control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_setProjectRole._btnSave">
+<member name="F:Test.Conv_ProjRole._btnSave">
 <summary>
 btnSave control.
 </summary>
@@ -676,9 +802,261 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_setProjectRole._btnCancelSave">
+<member name="F:Test.Conv_ProjRole._btnCancel">
 <summary>
-btnCancelSave control.
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_ProjRole._gvData">
+<summary>
+gvData control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._ddlYear">
+<summary>
+ddlYear control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._ddlSemester">
+<summary>
+ddlSemester control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._Label5">
+<summary>
+Label5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._ddlUnitCode">
+<summary>
+ddlUnitCode control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._Label11">
+<summary>
+Label11 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._ddlTeam">
+<summary>
+ddlTeam control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._trSearchNo">
+<summary>
+trSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._lblMenuSearchNo">
+<summary>
+lblMenuSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._txtSearchStu">
+<summary>
+txtSearchStu control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._pnQuerySearch">
+<summary>
+pnQuerySearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._gvSearch">
+<summary>
+gvSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._gvStudent">
+<summary>
+gvStudent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._btnSave">
+<summary>
+btnSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamEnrolment._btnCancel">
+<summary>
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._ddlYear">
+<summary>
+ddlYear control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._ddlSemester">
+<summary>
+ddlSemester control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._Label5">
+<summary>
+Label5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._ddlUnitCode">
+<summary>
+ddlUnitCode control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -703,9 +1081,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_TeamFormation._txtUnitCode">
+<member name="F:Test.Conv_TeamFormation._ddlProject">
 <summary>
-txtUnitCode control.
+ddlProject control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -730,9 +1108,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_TeamFormation._txtUnitName">
+<member name="F:Test.Conv_TeamFormation._txtNo">
 <summary>
-txtUnitName control.
+txtNo control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -748,27 +1126,36 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_TeamFormation._txtUnitName0">
-<summary>
-txtUnitName0 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_TeamFormation._Label11">
-<summary>
-Label11 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
 <member name="F:Test.Conv_TeamFormation._txtName">
 <summary>
 txtName control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._Label7">
+<summary>
+Label7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Conv_TeamFormation._ddlSupervisor">
+<summary>
+ddlSupervisor control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -793,45 +1180,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Conv_TeamFormation._chkComCode">
+<member name="F:Test.Conv_TeamFormation._gvData">
 <summary>
-chkComCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_TeamFormation._txtSearchUnit">
-<summary>
-txtSearchUnit control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_TeamFormation._btnSearch">
-<summary>
-btnSearch control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_TeamFormation._btnSearchCancel">
-<summary>
-btnSearchCancel control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Conv_TeamFormation._gvUnit">
-<summary>
-gvUnit control.
+gvData control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1126,9 +1477,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitManagement._txtUnitName0">
+<member name="F:Test.Admin_UnitManagement._txtUnitDesc">
 <summary>
-txtUnitName0 control.
+txtUnitDesc control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1144,9 +1495,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitManagement._txtName">
+<member name="F:Test.Admin_UnitManagement._txtCredit">
 <summary>
-txtName control.
+txtCredit control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1171,18 +1522,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitManagement._chkComCode">
+<member name="F:Test.Admin_UnitManagement._txtSearch">
 <summary>
-chkComCode control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_UnitManagement._txtSearchUnit">
-<summary>
-txtSearchUnit control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1207,9 +1549,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitManagement._gvUnit">
+<member name="F:Test.Admin_UnitManagement._gvData">
 <summary>
-gvUnit control.
+gvData control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1360,6 +1702,24 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
+<member name="F:Test.Admin_UnitOffering._Label10">
+<summary>
+Label10 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._ddlUnit">
+<summary>
+ddlUnit control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
 <member name="F:Test.Admin_UnitOffering._Label2">
 <summary>
 Label2 control.
@@ -1378,9 +1738,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitOffering._txtUnitCode">
+<member name="F:Test.Admin_UnitOffering._ddlYear">
 <summary>
-txtUnitCode control.
+ddlYear control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1405,27 +1765,9 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitOffering._txtUnitName">
+<member name="F:Test.Admin_UnitOffering._ddlSemester">
 <summary>
-txtUnitName control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_UnitOffering._Label10">
-<summary>
-Label10 control.
-</summary>
-<remarks>
-Auto-generated field.
-To modify move field declaration from designer file to code-behind file.
-</remarks>
-</member>
-<member name="F:Test.Admin_UnitOffering._txtUnitName0">
-<summary>
-txtUnitName0 control.
+ddlSemester control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1441,9 +1783,81 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitOffering._txtName">
+<member name="F:Test.Admin_UnitOffering._ddlConvenor">
 <summary>
-txtName control.
+ddlConvenor control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._txtRoomNo">
+<summary>
+txtRoomNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._Label5">
+<summary>
+Label5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._txtStartDate">
+<summary>
+txtStartDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._IMbStartDate">
+<summary>
+IMbStartDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Admin_UnitOffering._Calendar1">
+<summary>
+Calendar1 control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1468,18 +1882,18 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitOffering._chkComCode">
+<member name="F:Test.Admin_UnitOffering._Label12">
 <summary>
-chkComCode control.
+Label12 control.
 </summary>
 <remarks>
 Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitOffering._txtSearchUnit">
+<member name="F:Test.Admin_UnitOffering._txtSearch">
 <summary>
-txtSearchUnit control.
+txtSearch control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1504,9 +1918,1206 @@ Auto-generated field.
 To modify move field declaration from designer file to code-behind file.
 </remarks>
 </member>
-<member name="F:Test.Admin_UnitOffering._gvUnit">
+<member name="F:Test.Admin_UnitOffering._gvData">
 <summary>
-gvUnit control.
+gvData control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.login._txtUsername">
+<summary>
+txtUsername control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.login._txtPwd">
+<summary>
+txtPwd control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.login._btnSave">
+<summary>
+btnSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.dashboard._divAdmin">
+<summary>
+divAdmin control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.dashboard._divConvenor">
+<summary>
+divConvenor control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.dashboard._divSupervisor">
+<summary>
+divSupervisor control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.dashboard._divStudent">
+<summary>
+divStudent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.dashboard._gvDashboard">
+<summary>
+gvDashboard control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label13">
+<summary>
+Label13 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._ddlUnitCode">
+<summary>
+ddlUnitCode control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label7">
+<summary>
+Label7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._ddlTeam">
+<summary>
+ddlTeam control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label16">
+<summary>
+Label16 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label18">
+<summary>
+Label18 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._ddlMeeting">
+<summary>
+ddlMeeting control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._Label3">
+<summary>
+Label3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._ddlAttendee">
+<summary>
+ddlAttendee control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._btnAdd">
+<summary>
+btnAdd control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._trAdd">
+<summary>
+trAdd control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._gvAdd">
+<summary>
+gvAdd control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._btnSave">
+<summary>
+btnSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._btnCancel">
+<summary>
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._trSearchNo">
+<summary>
+trSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._lblMenuSearchNo">
+<summary>
+lblMenuSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._ddlSearch">
+<summary>
+ddlSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._pnQuerySearch">
+<summary>
+pnQuerySearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAttendee._gvData">
+<summary>
+gvData control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label13">
+<summary>
+Label13 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlUnitCode">
+<summary>
+ddlUnitCode control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label7">
+<summary>
+Label7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlTeam">
+<summary>
+ddlTeam control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label16">
+<summary>
+Label16 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label18">
+<summary>
+Label18 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlMeeting">
+<summary>
+ddlMeeting control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label3">
+<summary>
+Label3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlCatagory">
+<summary>
+ddlCatagory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label11">
+<summary>
+Label11 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlTitle">
+<summary>
+ddlTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._txtOther">
+<summary>
+txtOther control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._txtDetails">
+<summary>
+txtDetails control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label9">
+<summary>
+Label9 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label10">
+<summary>
+Label10 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlAction">
+<summary>
+ddlAction control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Label14">
+<summary>
+Label14 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._txtActionDetails">
+<summary>
+txtActionDetails control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._Button1">
+<summary>
+Button1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._btnCancel">
+<summary>
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._trSearchNo">
+<summary>
+trSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._lblMenuSearchNo">
+<summary>
+lblMenuSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._ddlSearch">
+<summary>
+ddlSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._pnQuerySearch">
+<summary>
+pnQuerySearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingMinutes._gvData">
+<summary>
+gvData control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label13">
+<summary>
+Label13 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._ddlUnitCode">
+<summary>
+ddlUnitCode control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label7">
+<summary>
+Label7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._ddlTeam">
+<summary>
+ddlTeam control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label16">
+<summary>
+Label16 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label18">
+<summary>
+Label18 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._ddlMeeting">
+<summary>
+ddlMeeting control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label3">
+<summary>
+Label3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._ddlCatagory">
+<summary>
+ddlCatagory control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label11">
+<summary>
+Label11 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._txtTitle">
+<summary>
+txtTitle control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._txtDetails">
+<summary>
+txtDetails control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._Button1">
+<summary>
+Button1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._btnCancel">
+<summary>
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._trSearchNo">
+<summary>
+trSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._lblMenuSearchNo">
+<summary>
+lblMenuSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._ddlSearch">
+<summary>
+ddlSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._pnQuerySearch">
+<summary>
+pnQuerySearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingAgenda._gvData">
+<summary>
+gvData control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label13">
+<summary>
+Label13 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlUnitCode">
+<summary>
+ddlUnitCode control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label7">
+<summary>
+Label7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlTeam">
+<summary>
+ddlTeam control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label16">
+<summary>
+Label16 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label18">
+<summary>
+Label18 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._txtMeetingTopic">
+<summary>
+txtMeetingTopic control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label5">
+<summary>
+Label5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._txtStartDate">
+<summary>
+txtStartDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._IMbStartDate">
+<summary>
+IMbStartDate control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Calendar1">
+<summary>
+Calendar1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label3">
+<summary>
+Label3 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlStartHr">
+<summary>
+ddlStartHr control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label9">
+<summary>
+Label9 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlStartMin">
+<summary>
+ddlStartMin control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlStart">
+<summary>
+ddlStart control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label10">
+<summary>
+Label10 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label14">
+<summary>
+Label14 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlEndHr">
+<summary>
+ddlEndHr control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label15">
+<summary>
+Label15 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlEndMin">
+<summary>
+ddlEndMin control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlStop">
+<summary>
+ddlStop control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Label11">
+<summary>
+Label11 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._txtLocation">
+<summary>
+txtLocation control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._Button1">
+<summary>
+Button1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._btnCancel">
+<summary>
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._trSearchNo">
+<summary>
+trSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._lblMenuSearchNo">
+<summary>
+lblMenuSearchNo control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._ddlMeetingStatus">
+<summary>
+ddlMeetingStatus control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._pnQuerySearch">
+<summary>
+pnQuerySearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_MeetingSetup._gvData">
+<summary>
+gvData control.
 </summary>
 <remarks>
 Auto-generated field.
@@ -1534,6 +3145,213 @@ To modify move field declaration from designer file to code-behind file.
 <member name="F:Test.SiteMaster._MainContent">
 <summary>
 MainContent control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskAccept._gv_Show">
+<summary>
+gv_Show control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label1">
+<summary>
+Label1 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label13">
+<summary>
+Label13 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._ddlUnit">
+<summary>
+ddlUnit control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label4">
+<summary>
+Label4 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label5">
+<summary>
+Label5 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._ddlProject">
+<summary>
+ddlProject control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label6">
+<summary>
+Label6 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label7">
+<summary>
+Label7 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._ddlTask">
+<summary>
+ddlTask control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label11">
+<summary>
+Label11 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label10">
+<summary>
+Label10 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._ddlRole">
+<summary>
+ddlRole control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label2">
+<summary>
+Label2 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label8">
+<summary>
+Label8 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._txtStuID">
+<summary>
+txtStuID control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._btnSave">
+<summary>
+btnSave control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._btnCancel">
+<summary>
+btnCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._Label12">
+<summary>
+Label12 control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._txtSearch">
+<summary>
+txtSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._btnSearch">
+<summary>
+btnSearch control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._btnSearchCancel">
+<summary>
+btnSearchCancel control.
+</summary>
+<remarks>
+Auto-generated field.
+To modify move field declaration from designer file to code-behind file.
+</remarks>
+</member>
+<member name="F:Test.Student_TaskSubmit._gvData">
+<summary>
+gvData control.
 </summary>
 <remarks>
 Auto-generated field.
