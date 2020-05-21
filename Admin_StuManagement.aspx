@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_StuManagement.aspx.vb" Inherits="Test.Admin_StuManagement" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Student
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Student Management
 </asp:Content>
@@ -49,7 +46,7 @@
                             </td>
                         <td align="left" width="50%">
                             <asp:DropDownList ID="ddlStudentLevel" runat="server" AutoPostBack="true">
-                                <asp:ListItem Value="0">[--Please Select--]</asp:ListItem>
+                                <asp:ListItem Value="none">[--Please Select--]</asp:ListItem>
                                 <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
                                 <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
                                 <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>

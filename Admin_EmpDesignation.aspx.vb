@@ -1,4 +1,6 @@
-﻿Public Class Admin_EmpDesignation
+﻿Imports MySql.Data.MySqlClient
+
+Public Class Admin_EmpDesignation
     Inherits System.Web.UI.Page
     Sub loadEmp()
 
@@ -30,6 +32,8 @@
     End Sub
 
 
+
+
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             loaddata()
@@ -43,52 +47,107 @@
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
     End Sub
 
+    Protected Sub gvStudent_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvEmpDes.RowEditing
+        gvEmpDes.EditIndex = e.NewEditIndex
+        'bind Data to the gridview control.
+        Me.loaddata()
+        Dim role As DropDownList = CType(gvEmpDes.Rows(gvEmpDes.EditIndex).FindControl("ddlRoleEdit"), DropDownList)
+        SQL(0) = "select roleId,roleName from role;"
+        DT = M1.GetDatatable(SQL(0))
+        role.DataSource = DT
+        role.DataTextField = "roleName"
+        role.DataValueField = "roleId"
+        role.DataBind()
+    End Sub
 
-    'Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
-    '    Dim constr As String = ConfigurationManager.ConnectionStrings("constr").ConnectionString
-    '    Dim con As New MySqlConnection(constr)
-    '    Dim cmd As New MySqlCommand
+    Protected Sub gvEmpDes_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvEmpDes.RowUpdating
+        Dim index As Integer = e.RowIndex
+        Dim empEnrolId As String = Me.gvEmpDes.DataKeys(index).Values(0).ToString()
+        Dim role As DropDownList = CType(gvEmpDes.Rows(e.RowIndex).FindControl("ddlRoleEdit"), DropDownList)
 
-    '    cmd.Connection = con
-    '    cmd.CommandText = "SP_ADD_ROLE"
-    '    cmd.CommandType = CommandType.StoredProcedure
-    '    cmd.Parameters.AddWithValue("@pempId", Convert.ToInt64(txtemployeeId.Text))
-    '    cmd.Parameters.AddWithValue("@proleName", txtemployeeRole.Text)
-    '    cmd.Parameters.AddWithValue("@proleDesc", txtRoleDesc.Text)
-    '    cmd.Parameters.AddWithValue("@proleType", DropDownList1.Text)
-    '    Try
-    '        con.Open()
-    '        If cmd.ExecuteScalar() IsNot " " Then
-    '            Dim message As String = cmd.ExecuteScalar.ToString()
-    '            alert(message)
-    '        Else
-    '            alert("Data inserted successfully")
-    '        End If
+        Dim roleStr As String = role.SelectedValue.ToString()
 
-    '    Catch er As MySqlException
-    '        MsgBox(er.Message)
-    '    Finally
-    '        con.Close()
-    '    End Try
-    'End Sub
+        cmd.CommandText = "UPDATE_EMP_ENROLMENT;"
+        cmd.Parameters.AddWithValue("@pempEnrolId", empEnrolId)
+        cmd.Parameters.AddWithValue("@proleId", roleStr)
+
+        Try
+            M1.Execute(SQL(0))
+            If m_ErrorString = "" Then
+                alert("Data updated successfully")
+                gvEmpDes.EditIndex = -1
+                loaddata()
+            Else
+                alert(m_ErrorString)
+                m_ErrorString = ""
+                cmd.Parameters.Clear()
+                gvEmpDes.EditIndex = -1
+                loaddata()
+            End If
+        Catch ex As Exception
+            alert("Fail to update, please Try again.")
+            cmd.Parameters.Clear()
+        End Try
+
+    End Sub
+
+    Protected Sub gvEmpDes_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvEmpDes.RowDeleting
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim index As Integer = e.RowIndex
+        Dim empEnrolId As String = Me.gvEmpDes.DataKeys(index).Values(0).ToString()
+
+        cmd.CommandText = "DELETE_EMPLOYEEENROLMENT;"
+        cmd.Parameters.AddWithValue("@pempEnrolId", empEnrolId)
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data deleted successfully")
+                gvEmpDes.EditIndex = -1
+                loaddata()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Fail to delete, please Try again.")
+            cmd.Parameters.Clear()
+            resultMsg = ""
+        End Try
+    End Sub
 
     Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-
+        Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim pempId As Integer = ddlEmpolyee.SelectedValue
         Dim proleId As String = ddlRole.SelectedValue
 
         cmd.CommandText = "SP_ADD_EMPENROLLMENT;"
         cmd.Parameters.AddWithValue("@pempId", pempId)
         cmd.Parameters.AddWithValue("@proleId", proleId)
-
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
 
         Try
             M1.Execute(SQL(0))
-            alert("Data entered successfully.")
-            ClearValue()
-
+            If resultMsg = "SUCCESS" Then
+                alert("Data entered successfully.")
+                ClearValue()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
         Catch ex As Exception
             alert("Data entered fail, please Try again.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
         End Try
     End Sub
     Sub ClearValue()
@@ -132,4 +191,19 @@
     '    loaddata()
 
     'End Sub
+    Protected Sub gridviewdata_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvEmpDes.SelectedIndexChanging
+        Dim k1 As DataKey = gvEmpDes.DataKeys(e.NewSelectedIndex)
+    End Sub
+
+    Protected Sub gridviewdata_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvEmpDes.PageIndexChanging
+        Me.gvEmpDes.PageIndex = e.NewPageIndex
+        ViewState("page") = Me.gvEmpDes.PageIndex
+        loaddata()
+    End Sub
+
+    Protected Sub gvEmpDes_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvEmpDes.RowCancelingEdit
+        gvEmpDes.EditIndex = -1
+        Me.loaddata()
+    End Sub
+
 End Class

@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_EmpDesignation.aspx.vb" Inherits="Test.Admin_EmpDesignation" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Employee
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Employee Designation
 </asp:Content>
@@ -134,11 +131,7 @@
                         <asp:TemplateField HeaderText="Role" SortExpression="roleName">
                             <EditItemTemplate>
                                 <asp:DropDownList ID="ddlRoleEdit" runat="server" AutoPostBack="True">
-                                    <asp:ListItem Value="Certificate">Certificate</asp:ListItem>
-                                    <asp:ListItem Value="Diploma">Diploma</asp:ListItem>
-                                    <asp:ListItem Value="Bachelor">Bachelor</asp:ListItem>
-                                    <asp:ListItem Value="Master">Master</asp:ListItem>
-                                    <asp:ListItem Value="PhD">PhD</asp:ListItem>
+                                  <asp:ListItem Value="">[--Please Select--]</asp:ListItem>
                                 </asp:DropDownList>
                             </EditItemTemplate>
                             <ItemTemplate>

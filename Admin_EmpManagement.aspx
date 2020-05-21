@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_EmpManagement.aspx.vb" Inherits="Test.Admin_EmpManagement" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Employee
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Employee Management
 </asp:Content>
@@ -46,7 +43,7 @@
                         <asp:Label ID="Label10" runat="server" CssClass="LabelMenu" Text=":"></asp:Label>
                         </td>
                     <td align="left" width="50%">
-                        <asp:TextBox ID="txtemailId" runat="server" Width="171px" 
+                        <asp:TextBox ID="txtemailId" runat="server" Width="171px" type="email"
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
                         </td>
                 </tr>
@@ -133,7 +130,7 @@
                         </asp:TemplateField>
                         <asp:TemplateField HeaderText="Employee Email" SortExpression="empEmail">
                             <EditItemTemplate>
-                                <asp:Textbox ID="txtEmpEmail" runat="server" Text='<%# Bind("empEmail") %>' ></asp:Textbox>
+                                <asp:Textbox ID="txtEmpEmail" runat="server"  Text='<%# Bind("empEmail") %>' ></asp:Textbox>
                            </EditItemTemplate>
                             <ItemTemplate>
                                 <asp:Label ID="lblEmpEmail" runat="server" Text='<%# Bind("empEmail") %>' Width="200px"></asp:Label>

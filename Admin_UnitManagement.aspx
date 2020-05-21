@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Admin_UnitManagement.aspx.vb" Inherits="Test.Admin_UnitManagement" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Unit of Study
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Unit Management
 </asp:Content>
@@ -22,7 +19,11 @@
                     <td align="left" width="50%">
                         <asp:TextBox ID="txtUnitCode" runat="server" Width="171px" 
                             Font-Size="8pt" CssClass="textbox"></asp:TextBox>
+                        <asp:RegularExpressionValidator ID="UnitCodeValidator" runat="server"
+         ErrorMessage="Unit code must contain 3 letters and 5 digits" ForeColor="Red" ValidationExpression="^[a-zA-Z]{3}[0-9]{5}$"
+        ControlToValidate="txtUnitCode"></asp:RegularExpressionValidator>
                     </td>
+                    
                 </tr>
                 <tr>
                     <td align="right" valign="top" width="47%">
@@ -87,7 +88,7 @@
                                     </td>
                                 </tr>--%>
                                 <tr>
-                                    <td align="right">Search by Unit Code</td>
+                                    <td align="right">Search by Unit Code/Unit Name</td>
                                     <td align="center">:</td>
                                     <td align="left">
                                         <asp:TextBox ID="txtSearch" runat="server" CssClass="textbox"></asp:TextBox>
@@ -151,6 +152,9 @@
 
                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />

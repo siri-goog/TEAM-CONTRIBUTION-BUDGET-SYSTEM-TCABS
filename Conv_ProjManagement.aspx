@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="vb" AutoEventWireup="false" MasterPageFile="~/Site.Master" CodeBehind="Conv_ProjManagement.aspx.vb" Inherits="Test.Conv_ProjManagement" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="TopHeader" runat="server">
-    Project
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainHeader" runat="server">
     Project Management
 </asp:Content>
@@ -142,6 +139,9 @@
 
                         <asp:CommandField HeaderText="Edit" ShowEditButton="True" >
                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
+                        </asp:CommandField>
+                        <asp:CommandField ShowDeleteButton="True"  HeaderText="Delete">
+                            <ItemStyle HorizontalAlign="Center" VerticalAlign="Top" />
                         </asp:CommandField>
                     </Columns>
                     <EmptyDataRowStyle Font-Names="Verdana" Font-Size="8pt" ForeColor="Blue" />
