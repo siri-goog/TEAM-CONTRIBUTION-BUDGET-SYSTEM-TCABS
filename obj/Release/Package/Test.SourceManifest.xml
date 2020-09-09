@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\obj\Release\Package\PackageTmp" />
+  <setAcl path="C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\obj\Release\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\googm\OneDrive\Master\Term 4\1_DB Implementation\Task\DI_Project\Git-Goog\Goog-Pond\obj\Release\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

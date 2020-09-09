@@ -27,6 +27,19 @@
         End If
     End Function
 
+    Sub clearSession()
+        Session("userId") = ""
+        Session("userName") = ""
+        Session("userRole") = ""
+        Session("userRole_tmp") = ""
+        Session("offUnitId") = ""
+        Session("unitId") = ""
+        Session("unit_tmp") = ""
+        Session("year_tmp") = ""
+        Session("sem_tmp") = ""
+        Session("teamEnrolId") = ""
+    End Sub
+
     Sub authen()
         Dim chk As String = 1
         Dim i As Integer = 0
@@ -78,6 +91,12 @@
         End If
 
         authen()
+    End Sub
+
+    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+        If Not Page.IsPostBack Then
+            clearSession()
+        End If
     End Sub
 
 End Class

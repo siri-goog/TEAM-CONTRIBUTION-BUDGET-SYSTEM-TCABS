@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="IIS Web Application Name" description="" value="TCABSGROUP1" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\googm\\OneDrive\\Master\\Term\ 4\\1_DB\ Implementation\\Task\\DI_Project\\Git-Goog\\Goog-Pond\\obj\\Release\\Package\\PackageTmp$" />
+    <parameterEntry kind="ProviderPath" scope="setAcl" match="^C:\\Users\\googm\\OneDrive\\Master\\Term\ 4\\1_DB\ Implementation\\Task\\DI_Project\\Git-Goog\\Goog-Pond\\obj\\Release\\Package\\PackageTmp$" />
+  </parameter>
+</parameters>

@@ -13,8 +13,6 @@ Public Class Conv_ProjTask
         ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlSemester.Items.Clear()
         ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
-        ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlProject.Items.Clear()
         ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
     End Sub
@@ -43,10 +41,10 @@ Public Class Conv_ProjTask
             Me.ddlSemester.Focus()
             alert("Please select semester")
             chk = 0
-        ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
-            Me.ddlUnitCode.Focus()
-            alert("Please select unit")
-            chk = 0
+            'ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
+            '    Me.ddlUnitCode.Focus()
+            '    alert("Please select unit")
+            '    chk = 0
         ElseIf ddlProject.SelectedItem.Value = "0" Then
             Me.ddlProject.Focus()
             alert("Please select project")
@@ -144,7 +142,9 @@ Public Class Conv_ProjTask
         Dim nextYear = nowYear + 1
         Dim nextYearStr = nextYear.ToString
         Dim nowYearStr = nowYear.ToString
-        SQL(0) = "select distinct(offUnitYear) from offeredunit where offUnitYear = " & nowYearStr & " or offUnitYear = " & nextYearStr
+        SQL(0) = "select distinct(offUnitYear) from offeredunit " _
+                & " where offUnitYear = " & nowYearStr & " Or offUnitYear = " & nextYearStr _
+                & " and unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         ddlYear.DataSource = DT
         ddlYear.DataTextField = "offUnitYear"
@@ -157,7 +157,8 @@ Public Class Conv_ProjTask
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
         ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
-        SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
+        SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear _
+                & " and unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
         ddlSemester.DataTextField = "offUnitSem"
@@ -168,29 +169,29 @@ Public Class Conv_ProjTask
     Protected Sub ddlSemester_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSemester.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
-        ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select a.offUnitId, CONCAT(b.unitId, ' - ', b.unitName) as unitStr " _
                 & " from offeredunit a " _
                 & " join unit b on a.unitId = b.unitId " _
-                & " where offUnitYear = " & selectedYear & " And offUnitSem = " & selectedSem
+                & " where offUnitYear = " & selectedYear & " And offUnitSem = " & selectedSem _
+                & " and a.unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
-        ddlUnitCode.DataSource = DT
-        ddlUnitCode.DataTextField = "unitStr"
-        ddlUnitCode.DataValueField = "offUnitId"
-        ddlUnitCode.DataBind()
-    End Sub
-
-    Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
-        Dim selectedUnit = ddlUnitCode.SelectedItem.Value
+        Try
+            Session("offUnitId") = DT.Rows(0)("offUnitId").ToString()
+        Catch ex As Exception
+            alert("There is no offered unit for selected year and semester")
+        End Try
         ddlProject.Items.Clear()
         ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
-        SQL(0) = " Select projId, projName from project where offUnitId = " & selectedUnit
+        SQL(0) = " Select projId, projName from project where offUnitId = " & Session("offUnitId")
         DT = M1.GetDatatable(SQL(0))
-        ddlProject.DataSource = DT
-        ddlProject.DataTextField = "projName"
-        ddlProject.DataValueField = "projId"
-        ddlProject.DataBind()
+        Try
+            ddlProject.DataSource = DT
+            ddlProject.DataTextField = "projName"
+            ddlProject.DataValueField = "projId"
+            ddlProject.DataBind()
+        Catch ex As Exception
+            alert("There is no project for selected year and semester")
+        End Try
     End Sub
 
     Sub loaddata()
@@ -199,7 +200,9 @@ Public Class Conv_ProjTask
                    & "  From task a " _
                    & "  Join project b on a.projId = b.projId " _
                    & "  Join offeredunit c on b.offUnitId = c.offUnitId " _
-                   & "  Join unit d on c.UnitId = d.UnitId order by d.unitName, b.projName, a.taskNo"
+                   & "  Join unit d on c.UnitId = d.UnitId " _
+                   & "  Where c.unitId = '" & Session("unitID") & "' " _
+                   & "  order by d.unitName, b.projName, a.taskNo "
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
         gvData.DataBind()
@@ -242,12 +245,12 @@ Public Class Conv_ProjTask
         rvPrm.Size = 200
         rvPrm.Direction = ParameterDirection.Output
         cmd.Parameters.Add(rvPrm)
-
         Try
             M1.Execute(SQL(0))
             If resultMsg = "SUCCESS" Then
                 alert("Data entered successfully.")
                 Clear()
+                loadYear()
                 loaddata()
             Else
                 alert(resultMsg)
@@ -385,4 +388,5 @@ Public Class Conv_ProjTask
         End Try
     End Sub
 #End Region
+
 End Class

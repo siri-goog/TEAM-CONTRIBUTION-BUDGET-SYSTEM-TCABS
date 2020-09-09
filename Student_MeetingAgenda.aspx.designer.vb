@@ -14,33 +14,6 @@ Option Explicit On
 Partial Public Class Student_MeetingAgenda
 
     '''<summary>
-    '''Label12 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label12 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''Label13 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label13 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''ddlUnitCode control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlUnitCode As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Label2 control.
     '''</summary>
     '''<remarks>
@@ -86,13 +59,13 @@ Partial Public Class Student_MeetingAgenda
     Protected WithEvents Label7 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''ddlTeam control.
+    '''lblTeam control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents ddlTeam As Global.System.Web.UI.WebControls.DropDownList
+    Protected WithEvents lblTeam As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
     '''Label16 control.
@@ -185,13 +158,13 @@ Partial Public Class Student_MeetingAgenda
     Protected WithEvents txtDetails As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
-    '''Button1 control.
+    '''btnSave control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents Button1 As Global.System.Web.UI.WebControls.Button
+    Protected WithEvents btnSave As Global.System.Web.UI.WebControls.Button
 
     '''<summary>
     '''btnCancel control.

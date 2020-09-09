@@ -219,11 +219,11 @@ Public Class Admin_StuManagement
     End Sub
 
     '--gridview page
-    Protected Sub gridviewcompany_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvStudent.SelectedIndexChanging
+    Protected Sub gvStudent_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvStudent.SelectedIndexChanging
         Dim k1 As DataKey = gvStudent.DataKeys(e.NewSelectedIndex)
     End Sub
 
-    Protected Sub gridviewcompany_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvStudent.PageIndexChanging
+    Protected Sub gvStudent_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvStudent.PageIndexChanging
         Me.gvStudent.PageIndex = e.NewPageIndex
         ViewState("page") = Me.gvStudent.PageIndex
         loaddata()

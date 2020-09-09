@@ -209,11 +209,11 @@ Public Class Admin_EmpManagement
         Me.loaddata()
     End Sub
 
-    Protected Sub gridviewcompany_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvEmployee.SelectedIndexChanging
+    Protected Sub gvEmpolyee_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvEmployee.SelectedIndexChanging
         Dim k1 As DataKey = gvEmployee.DataKeys(e.NewSelectedIndex)
     End Sub
 
-    Protected Sub gridviewcompany_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvEmployee.PageIndexChanging
+    Protected Sub gvEmpolyee_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvEmployee.PageIndexChanging
         Me.gvEmployee.PageIndex = e.NewPageIndex
         ViewState("page") = Me.gvEmployee.PageIndex
         loaddata()

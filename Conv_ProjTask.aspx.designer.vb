@@ -50,24 +50,6 @@ Partial Public Class Conv_ProjTask
     Protected WithEvents ddlSemester As Global.System.Web.UI.WebControls.DropDownList
 
     '''<summary>
-    '''Label11 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label11 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''ddlUnitCode control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents ddlUnitCode As Global.System.Web.UI.WebControls.DropDownList
-
-    '''<summary>
     '''Label6 control.
     '''</summary>
     '''<remarks>

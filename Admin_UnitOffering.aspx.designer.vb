@@ -140,15 +140,6 @@ Partial Public Class Admin_UnitOffering
     Protected WithEvents Label5 As Global.System.Web.UI.WebControls.Label
 
     '''<summary>
-    '''Label6 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
     '''txtStartDate control.
     '''</summary>
     '''<remarks>
@@ -167,6 +158,33 @@ Partial Public Class Admin_UnitOffering
     Protected WithEvents IMbStartDate As Global.System.Web.UI.WebControls.ImageButton
 
     '''<summary>
+    '''Label6 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label6 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''txtEndDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtEndDate As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
+    '''IMbEndDate control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents IMbEndDate As Global.System.Web.UI.WebControls.ImageButton
+
+    '''<summary>
     '''Calendar1 control.
     '''</summary>
     '''<remarks>
@@ -174,6 +192,15 @@ Partial Public Class Admin_UnitOffering
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents Calendar1 As Global.System.Web.UI.WebControls.Calendar
+
+    '''<summary>
+    '''Calendar2 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Calendar2 As Global.System.Web.UI.WebControls.Calendar
 
     '''<summary>
     '''btnSave control.

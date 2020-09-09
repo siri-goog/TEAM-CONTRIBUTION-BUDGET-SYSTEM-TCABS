@@ -7,7 +7,7 @@ Public Class Conv_ProjManagement
     Sub clear()
         ddlYear.SelectedIndex() = 0
         ddlSemester.SelectedIndex() = 0
-        ddlUnitCode.SelectedIndex() = 0
+        'ddlUnitCode.SelectedIndex() = 0
         txtProjName.Text = ""
         txtProjDesc.Text = ""
     End Sub
@@ -31,10 +31,10 @@ Public Class Conv_ProjManagement
             Me.ddlSemester.Focus()
             alert("Please select semester")
             chk = 0
-        ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
-            Me.ddlUnitCode.Focus()
-            alert("Please select unit")
-            chk = 0
+            'ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
+            '    Me.ddlUnitCode.Focus()
+            '    alert("Please select unit")
+            '    chk = 0
         ElseIf txtProjName.Text = "" Then
             Me.txtProjName.Focus()
             alert("Please add project name")
@@ -61,7 +61,9 @@ Public Class Conv_ProjManagement
         Dim nextYear = nowYear + 1
         Dim nextYearStr = nextYear.ToString
         Dim nowYearStr = nowYear.ToString
-        SQL(0) = "select distinct(offUnitYear) from offeredunit where offUnitYear = " & nowYearStr & " or offUnitYear = " & nextYearStr
+        SQL(0) = "select distinct(offUnitYear) from offeredunit " _
+                & " where offUnitYear = " & nowYearStr & " Or offUnitYear = " & nextYearStr _
+                & " and unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         ddlYear.DataSource = DT
         ddlYear.DataTextField = "offUnitYear"
@@ -74,7 +76,8 @@ Public Class Conv_ProjManagement
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
         ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
-        SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
+        SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear _
+                & " and unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
         ddlSemester.DataTextField = "offUnitSem"
@@ -85,17 +88,17 @@ Public Class Conv_ProjManagement
     Protected Sub ddlSemester_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSemester.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
-        ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select a.offUnitId, CONCAT(b.unitId, ' - ', b.unitName) as unitStr " _
                 & " from offeredunit a " _
                 & " join unit b on a.unitId = b.unitId " _
-                & " where offUnitYear = " & selectedYear & " And offUnitSem = " & selectedSem
+                & " where offUnitYear = " & selectedYear & " And offUnitSem = " & selectedSem _
+                & " and a.unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
-        ddlUnitCode.DataSource = DT
-        ddlUnitCode.DataTextField = "unitStr"
-        ddlUnitCode.DataValueField = "offUnitId"
-        ddlUnitCode.DataBind()
+        Try
+            Session("offUnitId") = DT.Rows(0)("offUnitId").ToString()
+        Catch ex As Exception
+            alert("There is no offered unit for this year and semester")
+        End Try
     End Sub
 
 
@@ -107,7 +110,8 @@ Public Class Conv_ProjManagement
                  & " join offeredUnit a on z.offUnitId = a.offUnitId " _
                  & " join unit b on a.unitID = b.unitID " _
                  & " join employeeEnrolment c on a.empEnrolId = c.EmpEnrolId " _
-                 & " join employee d on c.empId = d.EmpId "
+                 & " join employee d on c.empId = d.EmpId " _
+                 & " Where a.unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
         gvData.DataBind()
@@ -136,7 +140,8 @@ Public Class Conv_ProjManagement
         End If
 
         Dim rvPrm As MySqlParameter = New MySqlParameter
-        Dim unit As String = ddlUnitCode.SelectedValue.ToString()
+        'Dim unit As String = ddlUnitCode.SelectedValue.ToString()
+        Dim unit As String = Session("offUnitId")
         Dim projName As String = Me.txtProjName.Text
         Dim projDesc As String = Me.txtProjDesc.Text
 

@@ -50,6 +50,24 @@ Partial Public Class Admin_UnitManagement
     Protected WithEvents UnitCodeValidator As Global.System.Web.UI.WebControls.RegularExpressionValidator
 
     '''<summary>
+    '''Label10 control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
+
+    '''<summary>
+    '''txtUnitDesc control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents txtUnitDesc As Global.System.Web.UI.WebControls.TextBox
+
+    '''<summary>
     '''Label3 control.
     '''</summary>
     '''<remarks>
@@ -75,24 +93,6 @@ Partial Public Class Admin_UnitManagement
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
     Protected WithEvents txtUnitName As Global.System.Web.UI.WebControls.TextBox
-
-    '''<summary>
-    '''Label10 control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents Label10 As Global.System.Web.UI.WebControls.Label
-
-    '''<summary>
-    '''txtUnitDesc control.
-    '''</summary>
-    '''<remarks>
-    '''Auto-generated field.
-    '''To modify move field declaration from designer file to code-behind file.
-    '''</remarks>
-    Protected WithEvents txtUnitDesc As Global.System.Web.UI.WebControls.TextBox
 
     '''<summary>
     '''Label11 control.

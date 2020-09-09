@@ -86,7 +86,9 @@ Public Class Class_Connect
     End Sub
 End Class
 Public Module Module1
-    Public StrDb As String = "Password=Hangcross99;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost; Allow User Variables=True"
+    'Public StrDb As String = "Password=qweiop93;Persist Security Info=True;User ID=root; Initial Catalog=tcabs; Pooling=False; Data Source=localhost; Allow User Variables=True"
+
+    Public StrDb As String = "Database=tcabs; Data Source=tcabsdb.mysql.database.azure.com; User Id=goog@tcabsdb; Password=DBITcabs@2020;"
 
     Public Myconn As MySqlConnection
     Public M1 As New Class_Connect
@@ -103,5 +105,6 @@ Public Module Module1
     Public DT3 As DataTable
     Public DT4 As DataTable
     Public DT_Student As New DataTable
+    Public DT_Temp As New DataTable
     Public cmd As New MySqlCommand
 End Module

@@ -300,13 +300,6 @@ Public Class Admin_StuEnrolment
         loaddata()
     End Sub
 
-    Protected Sub btnCancelSave_Click(sender As Object, e As EventArgs) Handles btnCancelSave.Click
-        ClearValue()
-        pnQuerySearch.Visible = False
-    End Sub
-
-
-
 #End Region
 
 End Class

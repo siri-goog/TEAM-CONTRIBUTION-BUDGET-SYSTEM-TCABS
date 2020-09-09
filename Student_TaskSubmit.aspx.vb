@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports System.Web.UI.WebControls.Expressions
+Imports MySql.Data.MySqlClient
 
 Public Class Student_TaskSubmit
     Inherits System.Web.UI.Page
@@ -11,6 +12,7 @@ Public Class Student_TaskSubmit
 
     Sub clear()
         ddlProject.SelectedIndex() = 0
+        lblTeam.Text = ""
         ddlTask.SelectedIndex() = 0
         ddlRole.SelectedIndex() = 0
         txtMinutes.Text = ""
@@ -56,10 +58,8 @@ Public Class Student_TaskSubmit
 #Region "load data"
 
     Sub loadProject()
-        'SQL(0) = " Select * From project " _
-        '& " Where offUnitId = '" & Session("offUnitId") & "' "
         SQL(0) = " Select * From project " _
-        & " Where offUnitId = 8"
+        & " Where offUnitId = '" & Session("offUnitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         ddlProject.DataSource = DT
         ddlProject.DataTextField = "projName"
@@ -86,7 +86,7 @@ Public Class Student_TaskSubmit
 
     Private Sub ddlProject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlProject.SelectedIndexChanged
         '--load team
-        SQL(0) = "  select concat(b.teamid, ' - ', b.teamTitle) as teamStr " _
+        SQL(0) = "  select b.teamid, concat(b.teamNo, ' - ', b.teamTitle) as teamStr " _
                 & " from teamenrol a " _
                 & " join team b on a.teamId = b.teamId " _
                 & " join project c on b.projId = c.projId " _
@@ -154,9 +154,8 @@ Public Class Student_TaskSubmit
                     & " join teamEnrol g On a.teamEnrolId = g.teamEnrolId " _
                     & " join enrolment h on g.enrolId = h.enrolId " _
                     & " join student i On h.stuId = i.stuId " _
-                    & " Where h.stuId = 101318759 And d.offUnitId = 8"
-        '& " Where h.student = '" & Session("userId") & "' " _
-        '& " And d.offUnitId = '" & Session("offUnitId") & "' "
+                    & " Where h.stuId = '" & Session("userId") & "' " _
+                    & " And d.offUnitId = '" & Session("offUnitId") & "' "
 
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
@@ -202,7 +201,7 @@ Public Class Student_TaskSubmit
 
         cmd.CommandText = "ADD_TASK_SUBMIT;"
         cmd.Parameters.AddWithValue("@ptaskId", taskId)
-        cmd.Parameters.AddWithValue("@pteamEnrolId", "16")
+        cmd.Parameters.AddWithValue("@pteamEnrolId", Session("teamEnrolId"))
         cmd.Parameters.AddWithValue("@pminutesTaken", minutes)
         cmd.Parameters.AddWithValue("@ptmRolId", tmRoleId)
 
@@ -234,67 +233,6 @@ Public Class Student_TaskSubmit
 
 #Region "gridview data"
 
-    ''--managing gridview
-    'Protected Sub gvData_rowcancelingedit(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewCancelEditEventArgs) Handles gvStudent.RowCancelingEdit
-    '    gvData.EditIndex = -1
-    '    Me.loaddata()
-    'End Sub
-
-    ''--show ddl and radiobutton GridView
-    'Protected Sub gvData_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvStudent.RowDataBound
-    '    If e.Row.RowType = DataControlRowType.DataRow Then
-    '        Dim drv As DataRowView = e.Row.DataItem
-    '        Dim no As Integer = e.Row.RowIndex
-    '        Dim itemNo As Integer = (ViewState("Page") * 10) + no
-
-    '        Dim ddlID As DropDownList = e.Row.FindControl("ddlStuLevel")
-    '        If Not IsNothing(ddlID) Then
-    '            ddlID.SelectedValue = DT.Rows.Item(itemNo)("stulevel").ToString
-    '        End If
-    '    End If
-    'End Sub
-
-    ''--click edit
-    'Protected Sub gvData_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvStudent.RowEditing
-    '    gvData.EditIndex = e.NewEditIndex
-    '    'bind Data to the gridview control.
-    '    Me.loaddata()
-    'End Sub
-
-    ''--click update
-    'Protected Sub gvData_rowupdating(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewUpdateEventArgs) Handles gvStudent.RowUpdating
-    '    Dim index As Integer = e.RowIndex
-    '    Dim stuid As String = Me.gvStudent.DataKeys(index).Values(0).ToString()
-    '    Dim stuname As TextBox = CType(gvStudent.Rows(e.RowIndex).FindControl("txtStuName"), TextBox)
-    '    Dim stulevel As DropDownList = CType(gvStudent.Rows(e.RowIndex).FindControl("ddlStuLevel"), DropDownList)
-
-    '    Dim stunameStr As String = stuname.Text
-    '    Dim stulevelStr As String = stulevel.SelectedValue.ToString()
-
-    '    cmd.CommandText = "UPDATE_STUDENT;"
-    '    cmd.Parameters.AddWithValue("@pstuId", stuid)
-    '    cmd.Parameters.AddWithValue("@pstuName", stunameStr)
-    '    cmd.Parameters.AddWithValue("@pstulevel", stulevelStr)
-    '    M1.Execute(SQL(0))
-    '    alert("Data edited successfully")
-    '    gvData.EditIndex = -1
-    '    loaddata()
-    'End Sub
-
-    ''--click delete
-    'Protected Sub gvStudent_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvStudent.RowDeleting
-    '    Dim index As Integer = e.RowIndex
-    '    Dim stuid As String = Me.gvData.DataKeys(index).Values(0).ToString()
-
-    '    cmd.CommandText = "DELETE_STUDENT;"
-    '    cmd.Parameters.AddWithValue("@pstuId", stuid)
-    '    M1.Execute(SQL(0))
-    '    alert("Data edited successfully")
-    '    gvData.EditIndex = -1
-    '    loaddata()
-    'End Sub
-
-    '--gridview page
     Protected Sub gridviewdata_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvData.SelectedIndexChanging
         Dim k1 As DataKey = gvData.DataKeys(e.NewSelectedIndex)
     End Sub
@@ -318,7 +256,8 @@ Public Class Student_TaskSubmit
         SQL(0) = " select taskStatus from task_submit where submitId = " & submitId
         DT = M1.GetDatatable(SQL(0))
         'Dim status As String = DT.Rows(0)("taskStatus").ToString()
-        'If status <> "Submitted" Then
+        'If status <> "
+        ' Then
         '    alert("Only Submitted status allowed to update")
         '    gvData.EditIndex = -1
         '    loaddata()
@@ -350,7 +289,11 @@ Public Class Student_TaskSubmit
 
         Dim ddlRoleEdit As DropDownList = CType(gvData.Rows(e.RowIndex).FindControl("ddlRole"), DropDownList)
         Dim minute As TextBox = CType(gvData.Rows(gvData.EditIndex).FindControl("txtMin"), TextBox)
-
+        Dim status As Label = CType(gvData.Rows(gvData.EditIndex).FindControl("lblStatus"), Label)
+        Dim isLog As String = "No"
+        If status.Text = "resubmit" Then
+            isLog = "Yes"
+        End If
         Dim minuteVal As String = minute.Text
         Dim roleVal As String = ddlRoleEdit.SelectedItem.Value
 
@@ -368,6 +311,8 @@ Public Class Student_TaskSubmit
         cmd.Parameters.AddWithValue("@psubmitId", submitId)
         cmd.Parameters.AddWithValue("@pminutesTaken", minuteVal)
         cmd.Parameters.AddWithValue("@ptmRolId", roleVal)
+        cmd.Parameters.AddWithValue("@pisLog", isLog)
+        cmd.Parameters.AddWithValue("@pstuId", Session("userId"))
 
         rvPrm.ParameterName = "msg"
         rvPrm.MySqlDbType = MySqlDbType.String
@@ -420,6 +365,24 @@ Public Class Student_TaskSubmit
             resultMsg = ""
             cmd.Parameters.Clear()
         End Try
+    End Sub
+
+    Protected Sub gvEmpDes_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvData.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim drv As DataRowView = e.Row.DataItem()
+
+            '--Check Edit
+            If e.Row.DataItem("taskStatus") <> "submitted" Then
+                If e.Row.DataItem("taskStatus") <> "resubmit" Then
+                    e.Row.Cells(6).Text = ""
+                End If
+            End If
+
+            '--Check Delete
+            If e.Row.DataItem("taskStatus") <> "submitted" Then
+                e.Row.Cells(7).Text = ""
+            End If
+        End If
     End Sub
 
 #End Region

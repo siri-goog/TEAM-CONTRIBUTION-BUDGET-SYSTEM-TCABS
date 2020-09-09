@@ -2,6 +2,7 @@
 
 Public Class Admin_EmpDesignation
     Inherits System.Web.UI.Page
+
     Sub loadEmp()
 
         SQL(0) = "SELECT CONCAT(empId, ': ', empName) as empNameStr,empId from employee order by empId asc;"
@@ -31,9 +32,6 @@ Public Class Admin_EmpDesignation
 
     End Sub
 
-
-
-
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         If Not Page.IsPostBack Then
             loaddata()
@@ -47,7 +45,67 @@ Public Class Admin_EmpDesignation
         ScriptManager.RegisterStartupScript(Me, Me.GetType(), "jscall", script, True)
     End Sub
 
-    Protected Sub gvStudent_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvEmpDes.RowEditing
+    Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
+        Dim rvPrm As MySqlParameter = New MySqlParameter
+        Dim pempId As Integer = ddlEmpolyee.SelectedValue
+        Dim proleId As String = ddlRole.SelectedValue
+
+        cmd.CommandText = "SP_ADD_EMPENROLLMENT;"
+        cmd.Parameters.AddWithValue("@pempId", pempId)
+        cmd.Parameters.AddWithValue("@proleId", proleId)
+        rvPrm.ParameterName = "msg"
+        rvPrm.MySqlDbType = MySqlDbType.String
+        rvPrm.Size = 200
+        rvPrm.Direction = ParameterDirection.Output
+        cmd.Parameters.Add(rvPrm)
+
+        Try
+            M1.Execute(SQL(0))
+            If resultMsg = "SUCCESS" Then
+                alert("Data entered successfully.")
+                ClearValue()
+            Else
+                alert(resultMsg)
+            End If
+            resultMsg = ""
+        Catch ex As Exception
+            alert("Data entered fail, please Try again.")
+            resultMsg = ""
+            cmd.Parameters.Clear()
+        End Try
+    End Sub
+    Sub ClearValue()
+        DT.Clear()
+        ddlEmpolyee.Items.Clear()
+        ddlEmpolyee.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        ddlRole.Items.Clear()
+        ddlRole.Items.Insert(0, New ListItem("[--Please Select--]", ""))
+        loaddata()
+        loadEmp()
+        loadRole()
+    End Sub
+
+    Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
+        Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
+        SQL(0) = "SP_SEARCH_EMPENROLMENT('" & searchTerm & "');"
+        DT = M1.GetDatatable(SQL(0))
+        gvEmpDes.DataSource = DT
+        gvEmpDes.DataBind()
+    End Sub
+
+    Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
+        ddlEmpolyee.SelectedIndex() = 0
+        ddlRole.SelectedIndex() = 0
+    End Sub
+
+    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
+        txtSearch.Text = ""
+        loaddata()
+    End Sub
+
+#Region "gvEmpDes"
+
+    Protected Sub gvEmpDes_rowediting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewEditEventArgs) Handles gvEmpDes.RowEditing
         gvEmpDes.EditIndex = e.NewEditIndex
         'bind Data to the gridview control.
         Me.loaddata()
@@ -121,81 +179,11 @@ Public Class Admin_EmpDesignation
         End Try
     End Sub
 
-    Protected Sub btnsave_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnSave.Click
-        Dim rvPrm As MySqlParameter = New MySqlParameter
-        Dim pempId As Integer = ddlEmpolyee.SelectedValue
-        Dim proleId As String = ddlRole.SelectedValue
-
-        cmd.CommandText = "SP_ADD_EMPENROLLMENT;"
-        cmd.Parameters.AddWithValue("@pempId", pempId)
-        cmd.Parameters.AddWithValue("@proleId", proleId)
-        rvPrm.ParameterName = "msg"
-        rvPrm.MySqlDbType = MySqlDbType.String
-        rvPrm.Size = 200
-        rvPrm.Direction = ParameterDirection.Output
-        cmd.Parameters.Add(rvPrm)
-
-        Try
-            M1.Execute(SQL(0))
-            If resultMsg = "SUCCESS" Then
-                alert("Data entered successfully.")
-                ClearValue()
-            Else
-                alert(resultMsg)
-            End If
-            resultMsg = ""
-        Catch ex As Exception
-            alert("Data entered fail, please Try again.")
-            resultMsg = ""
-            cmd.Parameters.Clear()
-        End Try
-    End Sub
-    Sub ClearValue()
-        DT.Clear()
-        ddlEmpolyee.Items.Clear()
-        ddlEmpolyee.Items.Insert(0, New ListItem("[--Please Select--]", ""))
-        ddlRole.Items.Clear()
-        ddlRole.Items.Insert(0, New ListItem("[--Please Select--]", ""))
-        loaddata()
-        loadEmp()
-        loadRole()
-    End Sub
-
-    Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
-        SQL(0) = "SP_SEARCH_EMPENROLMENT('" & searchTerm & "');"
-        DT = M1.GetDatatable(SQL(0))
-        gvEmpDes.DataSource = DT
-        gvEmpDes.DataBind()
-    End Sub
-
-    Protected Sub btnCancel_Click(sender As Object, e As EventArgs) Handles btnCancel.Click
-        ddlEmpolyee.SelectedIndex() = 0
-        ddlRole.SelectedIndex() = 0
-    End Sub
-
-    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
-        txtSearch.Text = ""
-        loaddata()
-    End Sub
-
-    'Protected Sub gvEmpDes_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvEmpDes.RowDeleting
-    '    Dim index As Integer = e.RowIndex
-    '    Dim empEnrolId As String = Me.gvEmpDes.DataKeys(index).Values(0).ToString()
-
-    '    cmd.CommandText = "SP_DELETE_EMLPLOYEE;"
-    '    cmd.Parameters.AddWithValue("@pempId", pempId)
-    '    M1.Execute(SQL(0))
-    '    alert("Data deleted successfully")
-    '    gvEmployee.EditIndex = -1
-    '    loaddata()
-
-    'End Sub
-    Protected Sub gridviewdata_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvEmpDes.SelectedIndexChanging
+    Protected Sub gvEmpDes_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvEmpDes.SelectedIndexChanging
         Dim k1 As DataKey = gvEmpDes.DataKeys(e.NewSelectedIndex)
     End Sub
 
-    Protected Sub gridviewdata_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvEmpDes.PageIndexChanging
+    Protected Sub gvEmpDes_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvEmpDes.PageIndexChanging
         Me.gvEmpDes.PageIndex = e.NewPageIndex
         ViewState("page") = Me.gvEmpDes.PageIndex
         loaddata()
@@ -205,5 +193,17 @@ Public Class Admin_EmpDesignation
         gvEmpDes.EditIndex = -1
         Me.loaddata()
     End Sub
+
+    Protected Sub gvEmpDes_RowDataBound(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewRowEventArgs) Handles gvEmpDes.RowDataBound
+        If e.Row.RowType = DataControlRowType.DataRow Then
+            Dim drv As DataRowView = e.Row.DataItem()
+
+            If e.Row.DataItem("empId") = "1111" Then
+                e.Row.Cells(3).Text = ""
+                e.Row.Cells(4).Text = ""
+            End If
+        End If
+    End Sub
+#End Region
 
 End Class

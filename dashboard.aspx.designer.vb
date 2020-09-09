@@ -50,11 +50,74 @@ Partial Public Class dashboard
     Protected WithEvents divStudent As Global.System.Web.UI.HtmlControls.HtmlGenericControl
 
     '''<summary>
-    '''gvDashboard control.
+    '''divPM_taskAccept control.
     '''</summary>
     '''<remarks>
     '''Auto-generated field.
     '''To modify move field declaration from designer file to code-behind file.
     '''</remarks>
-    Protected WithEvents gvDashboard As Global.System.Web.UI.WebControls.GridView
+    Protected WithEvents divPM_taskAccept As Global.System.Web.UI.HtmlControls.HtmlAnchor
+
+    '''<summary>
+    '''divRegisteredUnit control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divRegisteredUnit As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''divUnitConv control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divUnitConv As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''gvConvenor control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gvConvenor As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''divUnitSup control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divUnitSup As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''gvSupervisor control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gvSupervisor As Global.System.Web.UI.WebControls.GridView
+
+    '''<summary>
+    '''divUnitStu control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents divUnitStu As Global.System.Web.UI.HtmlControls.HtmlGenericControl
+
+    '''<summary>
+    '''gvStudent control.
+    '''</summary>
+    '''<remarks>
+    '''Auto-generated field.
+    '''To modify move field declaration from designer file to code-behind file.
+    '''</remarks>
+    Protected WithEvents gvStudent As Global.System.Web.UI.WebControls.GridView
 End Class

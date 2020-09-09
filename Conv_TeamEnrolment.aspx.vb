@@ -12,13 +12,13 @@ Public Class Conv_TeamEnrolment
         ddlYear.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlSemester.Items.Clear()
         ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
-        ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
+        'ddlUnitCode.Items.Clear()
+        'ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlTeam.Items.Clear()
         ddlTeam.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         ddlYear.SelectedIndex() = 0
         ddlSemester.SelectedIndex() = 0
-        ddlUnitCode.SelectedIndex() = 0
+        'ddlUnitCode.SelectedIndex() = 0
         ddlProject.SelectedIndex() = 0
         ddlTeam.SelectedIndex() = 0
     End Sub
@@ -40,10 +40,10 @@ Public Class Conv_TeamEnrolment
             Me.ddlSemester.Focus()
             alert("Please select semester")
             chk = 0
-        ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
-            Me.ddlUnitCode.Focus()
-            alert("Please select unit")
-            chk = 0
+            'ElseIf ddlUnitCode.SelectedItem.Value = "0" Then
+            '    Me.ddlUnitCode.Focus()
+            '    alert("Please select unit")
+            '    chk = 0
         ElseIf ddlProject.SelectedItem.Value = "0" Then
             Me.ddlProject.Focus()
             alert("Please select Project")
@@ -71,7 +71,9 @@ Public Class Conv_TeamEnrolment
         Dim nextYear = nowYear + 1
         Dim nextYearStr = nextYear.ToString
         Dim nowYearStr = nowYear.ToString
-        SQL(0) = "select distinct(offUnitYear) from offeredunit where offUnitYear = " & nowYearStr & " or offUnitYear = " & nextYearStr
+        SQL(0) = "select distinct(offUnitYear) from offeredunit " _
+                & " where offUnitYear = " & nowYearStr & " Or offUnitYear = " & nextYearStr _
+                & " and unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         ddlYear.DataSource = DT
         ddlYear.DataTextField = "offUnitYear"
@@ -84,7 +86,8 @@ Public Class Conv_TeamEnrolment
         Dim selectedYear = ddlYear.SelectedItem.Value
         ddlSemester.Items.Clear()
         ddlSemester.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
-        SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear
+        SQL(0) = "select distinct(offUnitSem) from offeredunit where offUnitYear = " & selectedYear _
+                & " and unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
         ddlSemester.DataSource = DT
         ddlSemester.DataTextField = "offUnitSem"
@@ -94,30 +97,44 @@ Public Class Conv_TeamEnrolment
     Protected Sub ddlSemester_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlSemester.SelectedIndexChanged
         Dim selectedYear = ddlYear.SelectedItem.Value
         Dim selectedSem = ddlSemester.SelectedItem.Value
-        ddlUnitCode.Items.Clear()
-        ddlUnitCode.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
         SQL(0) = "select a.offUnitId, CONCAT(b.unitId, ' - ', b.unitName) as unitStr " _
                 & " from offeredunit a " _
                 & " join unit b on a.unitId = b.unitId " _
-                & " where offUnitYear = " & selectedYear & " And offUnitSem = " & selectedSem
+                & " where offUnitYear = " & selectedYear & " And offUnitSem = " & selectedSem _
+                & " and a.unitId = '" & Session("unitId") & "' "
         DT = M1.GetDatatable(SQL(0))
-        ddlUnitCode.DataSource = DT
-        ddlUnitCode.DataTextField = "unitStr"
-        ddlUnitCode.DataValueField = "offUnitId"
-        ddlUnitCode.DataBind()
-    End Sub
-    Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
-        Dim selectedUnit = ddlUnitCode.SelectedItem.Value
-        'Session("offUnitId") = selectedUnit
+        Try
+            Session("offUnitId") = DT.Rows(0)("offUnitId").ToString()
+        Catch ex As Exception
+            alert("There is no offered unit for selected year and semester")
+        End Try
         ddlProject.Items.Clear()
         ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
-        SQL(0) = " Select projId, projName from project where offUnitId = " & selectedUnit
+        SQL(0) = " Select projId, projName from project where offUnitId = " & Session("offUnitId")
         DT = M1.GetDatatable(SQL(0))
-        ddlProject.DataSource = DT
-        ddlProject.DataTextField = "projName"
-        ddlProject.DataValueField = "projId"
-        ddlProject.DataBind()
+        Try
+            ddlProject.DataSource = DT
+            ddlProject.DataTextField = "projName"
+            ddlProject.DataValueField = "projId"
+            ddlProject.DataBind()
+        Catch ex As Exception
+            alert("There is no project for selected year and semester")
+        End Try
     End Sub
+
+    'Protected Sub ddlUnitCode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlUnitCode.SelectedIndexChanged
+    '    Dim selectedUnit = ddlUnitCode.SelectedItem.Value
+    '    'Session("offUnitId") = selectedUnit
+    '    ddlProject.Items.Clear()
+    '    ddlProject.Items.Insert(0, New ListItem("[--Please Select--]", "0"))
+    '    SQL(0) = " Select projId, projName from project where offUnitId = " & selectedUnit
+    '    DT = M1.GetDatatable(SQL(0))
+    '    ddlProject.DataSource = DT
+    '    ddlProject.DataTextField = "projName"
+    '    ddlProject.DataValueField = "projId"
+    '    ddlProject.DataBind()
+    'End Sub
+
     Protected Sub ddlProject_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ddlProject.SelectedIndexChanged
         Dim selectedProj As String = ddlProject.SelectedItem.Value.ToString()
         SQL(0) = "  Select * " _
@@ -137,10 +154,6 @@ Public Class Conv_TeamEnrolment
         End If
     End Sub
 
-    'Sub loaddata()
-    '   SQL(0) = " GET_STUDENT;"
-    '  DT = M1.GetDatatable(SQL(0))
-    'End Sub
     Sub loaddata()
         SQL(0) = " select a.teamEnrolId, e.offUnitYear, e.offUnitSem, concat(f.unitId, ' - ', f.unitName) as unitStr, b.teamTitle,  " _
                 & " c.stuId, d.stuName, case when a.pm_role=1 then 'Yes' else 'No' end as pm_role from teamenrol a " _
@@ -148,9 +161,9 @@ Public Class Conv_TeamEnrolment
                 & " inner join enrolment c on a.enrolId = c.enrolId " _
                 & " inner join student d on c.stuId = d.stuId " _
                 & " inner join offeredunit e on e.offUnitId = c.offUnitId " _
-                & " inner join unit f on f.unitId = e.unitId order by offUnitYear, offUnitSem, unitStr, teamTitle, stuId"
-
-
+                & " inner join unit f on f.unitId = e.unitId " _
+                & " Where e.unitId = '" & Session("unitID") & "' " _
+                & " order by offUnitYear, offUnitSem, unitStr, teamTitle, stuId "
         DT = M1.GetDatatable(SQL(0))
         gvData.DataSource = DT
         gvData.DataBind()
@@ -161,25 +174,31 @@ Public Class Conv_TeamEnrolment
 #Region "GV Search"
 
     Protected Sub btnSearch_Click(sender As Object, e As EventArgs) Handles btnSearch.Click
-        Dim searchTerm As String = "%" & Trim(txtSearchStu.Text) & "%"
-        Dim selectedUnit = ddlUnitCode.SelectedItem.Value
-        If selectedUnit = "0" Then
-            alert("Please select unit first")
-            Exit Sub
-        End If
+        If Session("offUnitId") = "" Then
+            alert("Please select year and semester")
+            ddlYear.Focus()
+        Else
+            Dim searchTerm As String = "%" & Trim(txtSearchStu.Text) & "%"
+            Dim selectedUnit = Session("offUnitId")
+            If selectedUnit = "0" Then
+                alert("Please select unit first")
+                Exit Sub
+            End If
 
-        SQL(0) = " Select a.enrolId, b.stuId, b.stuName, b.stulevel " _
+            SQL(0) = " Select a.enrolId, b.stuId, b.stuName, b.stulevel " _
                 & " from enrolment a " _
                 & " join student b on a.stuId = b.stuId " _
                 & " join offeredunit c On a.offUnitId = c.offUnitId " _
-                & " Where c.offUnitId = " & selectedUnit _
-                & " and b.stuId like '" & searchTerm & "'" _
-                & " and b.stuName like '" & searchTerm & "'"
-        DT = M1.GetDatatable(SQL(0))
-        gvSearch.DataSource = DT
-        gvSearch.DataBind()
-        pnQuerySearch.Visible = True
-        DT.Clear()
+                & " Where c.offUnitId = " & selectedUnit & " " _
+                & " And (b.stuId Like '" & searchTerm & "'" _
+                & " or b.stuName like '" & searchTerm & "')"
+            DT = M1.GetDatatable(SQL(0))
+            gvSearch.DataSource = DT
+            gvSearch.DataBind()
+            pnQuerySearch.Visible = True
+            'DT.Clear()
+        End If
+
     End Sub
 
     Protected Sub gvSearch_SelectedIndexChanged(sender As Object, e As EventArgs) Handles gvSearch.SelectedIndexChanged
@@ -340,6 +359,41 @@ Public Class Conv_TeamEnrolment
         loaddata()
     End Sub
 
+    '--click cancel
+    Protected Sub btncancel_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
+        clear()
+        loadYear()
+        loaddata()
+        pnQuerySearch.Visible = False
+    End Sub
+
+#End Region
+
+#Region "GV Data"
+
+    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
+        txtSearch.Text = ""
+        loaddata()
+    End Sub
+
+    Protected Sub btnSearchForDelete_Click(sender As Object, e As EventArgs) Handles btnSearchForDelete.Click
+        Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
+
+        SQL(0) = " select a.teamEnrolId, e.offUnitYear, e.offUnitSem, concat(f.unitId, ' - ', f.unitName) as unitStr, b.teamTitle,  " _
+                & " c.stuId, d.stuName, case when a.pm_role=1 then 'Yes' else 'No' end as pm_role from teamenrol a " _
+                & " inner join team b on a.teamid = b.teamid " _
+                & " inner join enrolment c on a.enrolId = c.enrolId " _
+                & " inner join student d on c.stuId = d.stuId " _
+                & " inner join offeredunit e on e.offUnitId = c.offUnitId " _
+                & " inner join unit f on f.unitId = e.unitId " _
+                & " Where d.stuId Like '" & searchTerm & "' " _
+                & " or d.stuName Like '" & searchTerm & "' " _
+                & " order by offUnitYear, offUnitSem, unitStr, teamTitle, stuId "
+        DT = M1.GetDatatable(SQL(0))
+        gvData.DataSource = DT
+        gvData.DataBind()
+    End Sub
+
     Protected Sub gvData_RowDeleting(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewDeleteEventArgs) Handles gvData.RowDeleting
         Dim rvPrm As MySqlParameter = New MySqlParameter
         Dim index As Integer = e.RowIndex
@@ -370,43 +424,11 @@ Public Class Conv_TeamEnrolment
         End Try
     End Sub
 
-    Protected Sub btnSearchForDelete_Click(sender As Object, e As EventArgs) Handles btnSearchForDelete.Click
-        Dim searchTerm As String = "%" & Trim(txtSearch.Text) & "%"
-
-        SQL(0) = " select a.teamEnrolId, e.offUnitYear, e.offUnitSem, concat(f.unitId, ' - ', f.unitName) as unitStr, b.teamTitle,  " _
-                & " c.stuId, d.stuName, case when a.pm_role=1 then 'Yes' else 'No' end as pm_role from teamenrol a " _
-                & " inner join team b on a.teamid = b.teamid " _
-                & " inner join enrolment c on a.enrolId = c.enrolId " _
-                & " inner join student d on c.stuId = d.stuId " _
-                & " inner join offeredunit e on e.offUnitId = c.offUnitId " _
-                & " inner join unit f on f.unitId = e.unitId " _
-                & " Where d.stuId Like '" & searchTerm & "' " _
-                & " or d.stuName Like '" & searchTerm & "' " _
-                & " order by offUnitYear, offUnitSem, unitStr, teamTitle, stuId "
-
-        DT = M1.GetDatatable(SQL(0))
-        gvData.DataSource = DT
-        gvData.DataBind()
-    End Sub
-
-    '--click cancel
-    Protected Sub btncancel_click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        clear()
-        loadYear()
-        loaddata()
-        pnQuerySearch.Visible = False
-    End Sub
-
-    Protected Sub btnSearchCancel_Click(sender As Object, e As EventArgs) Handles btnSearchCancel.Click
-        txtSearch.Text = ""
-        loaddata()
-    End Sub
-
-    Protected Sub gridviewdata_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvData.SelectedIndexChanging
+    Protected Sub gvData_selectedindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewSelectEventArgs) Handles gvData.SelectedIndexChanging
         Dim k1 As DataKey = gvData.DataKeys(e.NewSelectedIndex)
     End Sub
 
-    Protected Sub gridviewdata_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvData.PageIndexChanging
+    Protected Sub gvData_pageindexchanging(ByVal sender As Object, ByVal e As System.Web.UI.WebControls.GridViewPageEventArgs) Handles gvData.PageIndexChanging
         Me.gvData.PageIndex = e.NewPageIndex
         ViewState("page") = Me.gvData.PageIndex
         loaddata()
